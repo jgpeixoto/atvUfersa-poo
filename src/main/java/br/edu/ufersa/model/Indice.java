@@ -1,13 +1,12 @@
-package br.com.ufersa.model;
-
+package br.edu.ufersa.model;
 public class Indice {
 
     // Enum que representa o estado da matrícula do aluno na turma
     public enum EstadoMatricula {
         Matr, // Matriculado
-        Apr, // Aprovado
-        Rep, // Reprovado
-        Canc // Cancelado
+        Apr,  // Aprovado
+        Rep,  // Reprovado
+        Canc  // Cancelado
     }
 
     private int id;

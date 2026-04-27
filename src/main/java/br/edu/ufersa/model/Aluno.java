@@ -1,4 +1,4 @@
-package br.com.ufersa.model;
+package br.edu.ufersa.model;
 import java.util.Arrays;
 import java.util.List;
 
