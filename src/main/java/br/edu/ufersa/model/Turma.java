@@ -1,3 +1,4 @@
+package br.edu.ufersa.model;
 import java.util.ArrayList;
 
 public class Turma {
