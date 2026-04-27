@@ -1,3 +1,5 @@
+package br.edu.ufersa.model;
+
 public class Professor extends Usuario {
     private String cpf;
     private Turma[] turmas;
