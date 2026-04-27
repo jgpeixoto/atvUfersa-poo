@@ -1,4 +1,4 @@
-package br.com.ufersa.model;
+package br.edu.ufersa.model;
 
 public class Disciplina {
     private int id;
