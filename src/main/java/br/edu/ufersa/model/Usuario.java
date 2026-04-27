@@ -1,3 +1,5 @@
+package br.edu.ufersa.model;
+
 public class Usuario {
     public enum TipoUsuario {
         Aluno,
@@ -43,7 +45,7 @@ public class Usuario {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    
+
     public TipoUsuario getTipo() {
         return tipo;
     }
@@ -59,6 +61,7 @@ public class Usuario {
         al.setMatricula(matricula);
         return al;
     }
+
     public static Professor cadastrarProfessor(String nome, String endereco, String cpf) {
         Professor prof = new Professor(ids++);
         prof.setNome(nome);
@@ -66,6 +69,7 @@ public class Usuario {
         prof.setCpf(cpf);
         return prof;
     }
+
     public static Usuario cadastrarAdmin(String nome, String endereco) {
         Usuario admin = new Usuario(ids++, TipoUsuario.Admin);
         admin.setNome(nome);

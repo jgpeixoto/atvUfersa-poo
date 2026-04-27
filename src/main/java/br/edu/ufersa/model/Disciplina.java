@@ -1,3 +1,5 @@
+package br.com.ufersa.model;
+
 public class Disciplina {
     private int id;
     private String nome;
@@ -29,10 +31,10 @@ public class Disciplina {
 
     static Disciplina[] buscar(String nome) {
         /*
-            inserir query de banco de dados para busca aqui numa
-            implementação real
-            SELECT * FROM disciplinas WHERE nome LIKE %{this.nome}%
-        */
+         * inserir query de banco de dados para busca aqui numa
+         * implementação real
+         * SELECT * FROM disciplinas WHERE nome LIKE %{this.nome}%
+         */
         return new Disciplina[0];
     }
 }
