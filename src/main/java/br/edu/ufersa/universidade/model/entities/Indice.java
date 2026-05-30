@@ -1,4 +1,4 @@
-package br.edu.ufersa.model;
+package br.edu.ufersa.universidade.model.entities;
 public class Indice {
 
     // Enum que representa o estado da matrícula do aluno na turma

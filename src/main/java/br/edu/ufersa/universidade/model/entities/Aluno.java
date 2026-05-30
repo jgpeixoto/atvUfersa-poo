@@ -1,4 +1,4 @@
-package br.edu.ufersa.model;
+package br.edu.ufersa.universidade.model.entities;
 import java.util.Arrays;
 import java.util.List;
 
