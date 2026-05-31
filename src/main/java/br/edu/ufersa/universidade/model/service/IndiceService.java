@@ -1,6 +1,6 @@
-package br.edu.ufersa.universidade.service;
+package br.edu.ufersa.universidade.model.service;
 
-import br.edu.ufersa.universidade.dao.IndiceDAO;
+import br.edu.ufersa.universidade.model.dao.IndiceDAO;
 import br.edu.ufersa.universidade.model.entities.Indice;
 import java.sql.SQLException;
 import java.util.ArrayList;
