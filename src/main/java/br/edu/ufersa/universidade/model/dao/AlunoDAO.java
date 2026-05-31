@@ -1,4 +1,4 @@
-package br.edu.ufersa.universidade.dao;
+package br.edu.ufersa.universidade.model.dao;
 
 import br.edu.ufersa.universidade.model.entities.Aluno;
 import java.sql.*;
