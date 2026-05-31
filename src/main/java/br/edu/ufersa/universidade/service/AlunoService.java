@@ -73,7 +73,7 @@ public class AlunoService {
         return total / count;
     }
 
-    /
+
     // VERIFICAR SE ALUNO ESTÁ APROVADO EM UMA DISCIPLINA
     // Regra de negócio: média >= 5 e faltas <= 25% das aulas
 
