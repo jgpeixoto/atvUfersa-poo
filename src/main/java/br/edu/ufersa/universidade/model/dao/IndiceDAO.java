@@ -103,7 +103,7 @@ public class IndiceDAO {
 
     // ATUALIZAR NOTAS E FALTAS
 
-    public void atualizar(int idIndice, Indice indice) throws SQLException {
+    public void atualizar(Indice indice) throws SQLException {
         String sql = "UPDATE indice SET nota1 = ?, nota2 = ?, nota3 = ?, faltas = ?, estado = ? " +
                 "WHERE id_indice = ?";
 
@@ -113,7 +113,7 @@ public class IndiceDAO {
         stmt.setInt(3, indice.getNota3());
         stmt.setInt(4, indice.getFaltas());
         stmt.setString(5, indice.getEstado().name());
-        stmt.setInt(6, idIndice);
+        stmt.setInt(6, indice.getId());
         stmt.executeUpdate();
         stmt.close();
     }
@@ -127,5 +127,27 @@ public class IndiceDAO {
         stmt.setInt(1, idIndice);
         stmt.executeUpdate();
         stmt.close();
+    }
+
+    public ArrayList<Indice> buscarPorTurma(int idTurma) throws SQLException {
+        ArrayList<Indice> lista = new ArrayList<>();
+        String sql = "SELECT * FROM indice WHERE id_turma = ?";
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        stmt.setInt(1, idTurma);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            Indice indice = new Indice(rs.getInt("id_indice"));
+            Turma turma = new Turma(rs.getInt("id_turma"));
+            indice.setTurma(turma);
+            indice.setNota1(rs.getInt("nota1"));
+            indice.setNota2(rs.getInt("nota2"));
+            indice.setNota3(rs.getInt("nota3"));
+            indice.setFaltas(rs.getInt("faltas"));
+            indice.setEstado(Indice.EstadoMatricula.valueOf(rs.getString("estado")));
+            lista.add(indice);
+        }
+        rs.close();
+        stmt.close();
+        return lista;
     }
 }
