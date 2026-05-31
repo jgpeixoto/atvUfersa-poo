@@ -1,3 +1,5 @@
+package br.edu.ufersa.universidade;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,7 +12,7 @@ public class Main {
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/universidade", "root", "admin");
         var rs = con.getMetaData().getTables("universidade", null, null, null);
         if (!rs.next())
-            DatabaseUtils.runMigration(con, "./schema.sql");
+            DatabaseUtils.runMigration(con, "/schema.sql");
         System.out.println("Connected!");
         con.close();
     }

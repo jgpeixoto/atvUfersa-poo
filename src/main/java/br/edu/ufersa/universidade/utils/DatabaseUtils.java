@@ -1,7 +1,7 @@
 package br.edu.ufersa.universidade.utils;
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.sql.*;
+import java.io.InputStreamReader;
 
 public class DatabaseUtils {
 
@@ -9,7 +9,8 @@ public class DatabaseUtils {
     {
         try {
             Statement statement = connection.createStatement();
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            var reader = new InputStreamReader(DatabaseUtils.class.getResourceAsStream(filePath));
+            BufferedReader br = new BufferedReader(reader);
 
             // String Builder to build the query line by line.
             StringBuilder query = new StringBuilder();
@@ -34,8 +35,10 @@ public class DatabaseUtils {
                 do {
                 System.out.println(rs.getString(3));
             } while (rs.next());
+            br.close();
+            reader.close();
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 }
