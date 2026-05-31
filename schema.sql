@@ -1,6 +1,3 @@
-CREATE DATABASE universidade;
-USE universidade;
-
 CREATE TABLE usuario (
   id_usuario INTEGER PRIMARY KEY AUTO_INCREMENT,
   nome TEXT,
