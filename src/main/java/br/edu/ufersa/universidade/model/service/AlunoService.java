@@ -80,10 +80,9 @@ public class AlunoService {
 
     public boolean estaAprovado(Indice indice) {
         double media = indice.obterMedia();
-        // Considerando máximo de 60 aulas no semestre
-        double percentualFaltas = (indice.getFaltas() / 60.0) * 100;
+        double frequencia = indice.obterFrequencia();
 
-        return media >= 5.0 && percentualFaltas <= 25.0;
+        return media >= 5.0 && frequencia >= 75.0;
     }
 
 
