@@ -21,6 +21,9 @@ public class Usuario {
     public int getId() { // apenas get, dado apenas ao instanciar
         return id;
     }
+    public void setId(int id) { // apenas get, dado apenas ao instanciar
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;

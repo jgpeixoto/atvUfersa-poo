@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ProfessorDAO {
 
-    private Connection connection;
+    private final Connection connection;
 
     public ProfessorDAO(Connection connection) {
         this.connection = connection;
@@ -42,7 +42,7 @@ public class ProfessorDAO {
                 ps2.setString(1, professor.getCpf());
                 ps2.setInt(2, idGerado);
                 ps2.executeUpdate();
-
+                professor.setId(idGerado);
                 connection.commit();
             } catch (SQLException e) {
                 connection.rollback();
@@ -51,6 +51,9 @@ public class ProfessorDAO {
         } catch (SQLException e) {
             System.err.println("Erro ao salvar professor: " + e.getMessage());
         }
+        try {
+            connection.setAutoCommit(true);
+        } catch (SQLException ignored) {}
     }
 
     public void atualizar(Professor professor) {

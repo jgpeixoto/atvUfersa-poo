@@ -12,6 +12,7 @@ CREATE TABLE professor (
     CONSTRAINT fk_usuario_prof
     FOREIGN KEY (id_usuario)
     REFERENCES usuario(id_usuario)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE aluno (
@@ -20,6 +21,7 @@ CREATE TABLE aluno (
     CONSTRAINT fk_usuario_aluno
     FOREIGN KEY (id_usuario)
     REFERENCES usuario(id_usuario)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE disciplina (
@@ -38,10 +40,12 @@ CREATE TABLE turma (
     ativo BOOL,
     CONSTRAINT fk_professor_turma
     FOREIGN KEY (cpf_professor)
-    REFERENCES professor(cpf),
+    REFERENCES professor(cpf)
+    ON DELETE CASCADE,
     CONSTRAINT fk_disciplina_turma
     FOREIGN KEY (id_disciplina)
     REFERENCES disciplina(id_disciplina)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE indice (
@@ -55,8 +59,10 @@ CREATE TABLE indice (
     estado ENUM('Matr', 'Apr', 'Rep', 'Canc'),
     CONSTRAINT fk_aluno_indice
     FOREIGN KEY (matricula_aluno)
-    REFERENCES aluno(matricula),
+    REFERENCES aluno(matricula)
+    ON DELETE CASCADE,
     CONSTRAINT fk_turma_indice
     FOREIGN KEY (id_turma)
     REFERENCES turma(id_turma)
+    ON DELETE CASCADE
 );

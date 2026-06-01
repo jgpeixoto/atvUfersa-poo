@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class IndiceDAO {
 
-    private Connection connection;
+    private final Connection connection;
 
     public IndiceDAO(Connection connection) {
         this.connection = connection;

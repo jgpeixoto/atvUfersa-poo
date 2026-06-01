@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class IndiceService {
 
-    private IndiceDAO indiceDAO;
+    private final IndiceDAO indiceDAO;
 
     public IndiceService(IndiceDAO indiceDAO) {
         this.indiceDAO = indiceDAO;
@@ -35,25 +35,25 @@ public class IndiceService {
     }
 
     // LANÇAR NOTAS
-    // Regra de negócio: notas devem ser entre 0 e 10
+    // Regra de negócio: notas devem ser entre 0 e 100
     // Atualiza o estado automaticamente (Apr ou Rep)
 
     public void lancarNotas(int idIndice, Indice indice) throws SQLException {
-        if (indice.getNota1() < 0 || indice.getNota1() > 10 ||
-                indice.getNota2() < 0 || indice.getNota2() > 10 ||
-                indice.getNota3() < 0 || indice.getNota3() > 10) {
-            throw new IllegalArgumentException("Notas devem ser entre 0 e 10!");
+        if (indice.getNota1() < 0 || indice.getNota1() > 100 ||
+                indice.getNota2() < 0 || indice.getNota2() > 100 ||
+                indice.getNota3() < 0 || indice.getNota3() > 100) {
+            throw new IllegalArgumentException("Notas devem ser entre 0 e 100!");
         }
 
         // Define o estado automaticamente com base na média
         double media = indice.obterMedia();
-        if (media >= 5.0) {
+        if (media >= 50) {
             indice.setEstado(Indice.EstadoMatricula.Apr); // Aprovado
         } else {
             indice.setEstado(Indice.EstadoMatricula.Rep); // Reprovado
         }
 
-        indiceDAO.atualizar(idIndice, indice);
+        indiceDAO.atualizar(indice);
     }
 
 
@@ -69,6 +69,6 @@ public class IndiceService {
             throw new IllegalArgumentException("Só é possível cancelar matrículas ativas!");
         }
         indice.setEstado(Indice.EstadoMatricula.Canc);
-        indiceDAO.atualizar(idIndice, indice);
+        indiceDAO.atualizar(indice);
     }
 }

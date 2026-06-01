@@ -1,13 +1,15 @@
 package br.edu.ufersa.universidade.model.dao;
 
 import br.edu.ufersa.universidade.model.entities.Aluno;
+import br.edu.ufersa.universidade.model.entities.Disciplina;
+
 import java.sql.*;
 import java.util.ArrayList;
 
 public class AlunoDAO {
 
     // Conexão com o banco de dados, recebida pelo construtor
-    private Connection connection;
+    private final Connection connection;
 
     public AlunoDAO(Connection connection) {
         this.connection = connection;
@@ -127,6 +129,7 @@ public class AlunoDAO {
         stmtAluno.setLong(1, aluno.getMatricula());
         stmtAluno.setInt(2, idUsuario);
         stmtAluno.executeUpdate();
+        aluno.setId(idUsuario);
 
         stmtAluno.close();
         stmtUsuario.close();
@@ -141,5 +144,23 @@ public class AlunoDAO {
         stmt.setLong(1, matricula);
         stmt.executeUpdate();
         stmt.close();
+    }
+
+    public ArrayList<Disciplina> obterDisciplinasConcluidas(Aluno aluno) throws SQLException {
+        String sql = "SELECT d.* FROM disciplina d JOIN aluno a, indice i WHERE a.matricula = ?" +
+                "AND i.matricula_aluno = a.matricula AND i.estado = 'Apr'";
+        ArrayList<Disciplina> concluidas = new ArrayList<>();
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        stmt.setLong(1, aluno.getMatricula());
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            Disciplina disciplina = new Disciplina(rs.getInt("id_disciplina"));
+            disciplina.setNome(rs.getString("nome"));
+            disciplina.setCodigo(rs.getString("codigo"));
+            concluidas.add(disciplina);
+        }
+
+        return concluidas;
     }
 }

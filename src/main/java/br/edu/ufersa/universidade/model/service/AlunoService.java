@@ -3,6 +3,7 @@ package br.edu.ufersa.universidade.model.service;
 import br.edu.ufersa.universidade.model.dao.AlunoDAO;
 import br.edu.ufersa.universidade.model.dao.IndiceDAO;
 import br.edu.ufersa.universidade.model.entities.Aluno;
+import br.edu.ufersa.universidade.model.entities.Disciplina;
 import br.edu.ufersa.universidade.model.entities.Indice;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,8 +11,8 @@ import java.util.ArrayList;
 public class AlunoService {
 
     // O Service usa os DAOs para acessar o banco
-    private AlunoDAO alunoDAO;
-    private IndiceDAO indiceDAO;
+    private final AlunoDAO alunoDAO;
+    private final IndiceDAO indiceDAO;
 
     public AlunoService(AlunoDAO alunoDAO, IndiceDAO indiceDAO) {
         this.alunoDAO = alunoDAO;
@@ -94,5 +95,9 @@ public class AlunoService {
             throw new IllegalArgumentException("Aluno não encontrado!");
         }
         alunoDAO.deletar(matricula);
+    }
+
+    public ArrayList<Disciplina> obterDisciplinasConcluidas(Aluno aluno) throws SQLException {
+        return alunoDAO.obterDisciplinasConcluidas(aluno);
     }
 }

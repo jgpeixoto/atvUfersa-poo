@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class TurmaDAO {
 
-    private Connection connection;
+    private final Connection connection;
 
     public TurmaDAO(Connection connection) {
         this.connection = connection;
