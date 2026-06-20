@@ -1,0 +1,262 @@
+/* =========================================================
+   styles.css
+   Folha de estilos compartilhada entre as telas de Aluno e
+   Professor, baseada no protótipo Figma "Weitinho".
+   ========================================================= */
+
+.root-bg {
+    -fx-background-color: linear-gradient(to bottom right, #eaf1fb, #c9dbf2);
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    -fx-background-color: #16213e;
+    -fx-pref-width: 165;
+    -fx-min-width: 165;
+}
+
+.logo-circle {
+    -fx-background-color: #1f2f55;
+    -fx-background-radius: 50%;
+    -fx-border-color: #4d6bb3;
+    -fx-border-width: 2;
+    -fx-border-radius: 50%;
+}
+
+.logo-text {
+    -fx-text-fill: white;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+.sidebar-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #d6def2;
+    -fx-font-size: 12px;
+    -fx-padding: 14 8 14 8;
+    -fx-alignment: center;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+}
+
+.sidebar-item:hover {
+    -fx-background-color: #1f2f55;
+}
+
+.sidebar-item-active {
+    -fx-background-color: #0d1730;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 14 8 14 8;
+    -fx-alignment: center;
+    -fx-border-color: #4d6bb3 transparent #4d6bb3 transparent;
+    -fx-border-width: 1 0 1 0;
+}
+
+.sidebar-icon {
+    -fx-fill: #d6def2;
+    -fx-font-size: 22px;
+}
+
+/* ---------- Top bar ---------- */
+.topbar {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-padding: 14 24 14 24;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 8, 0, 0, 2);
+}
+
+.topbar-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1c2b4a;
+}
+
+.topbar-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6b7894;
+}
+
+.topbar-section-title {
+    -fx-font-size: 20px;
+    -fx-text-fill: #2b3a67;
+}
+
+.avatar-placeholder {
+    -fx-background-color: #c9d4e8;
+    -fx-background-radius: 50%;
+    -fx-border-color: #1c2b4a;
+    -fx-border-width: 2;
+    -fx-border-radius: 50%;
+}
+
+.btn-sair {
+    -fx-background-color: #3d2c8d;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 18;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+
+.btn-sair:hover {
+    -fx-background-color: #4a37a8;
+}
+
+/* ---------- Cards ---------- */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 10, 0, 0, 2);
+}
+
+.card-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2b3a67;
+    -fx-padding: 0 0 8 0;
+}
+
+/* ---------- Search bar ---------- */
+.search-bar {
+    -fx-background-color: #e7eaf0;
+    -fx-background-radius: 18;
+    -fx-padding: 8 16 8 16;
+}
+
+.search-bar .text-field, .search-bar TextField {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-font-size: 13px;
+}
+
+.search-icon {
+    -fx-text-fill: #8e98ab;
+    -fx-font-size: 14px;
+}
+
+/* ---------- TableView ---------- */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #d9d9d9;
+    -fx-background-radius: 6 6 0 0;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+    -fx-size: 36px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-alignment: center-left;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-table-cell-border-color: transparent;
+    -fx-border-color: transparent transparent #eeeeee transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #fafbfd;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #e7eefc;
+}
+
+.table-cell {
+    -fx-alignment: center-left;
+    -fx-font-size: 13px;
+    -fx-text-fill: #2c2c2c;
+    -fx-padding: 8 6 8 6;
+}
+
+/* ---------- Status badges ---------- */
+.badge {
+    -fx-padding: 3 14 3 14;
+    -fx-background-radius: 14;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-min-width: 70px;
+}
+
+.badge-green {
+    -fx-background-color: #8ee6a0;
+    -fx-text-fill: #1c5c33;
+}
+
+.badge-yellow {
+    -fx-background-color: #f4e07c;
+    -fx-text-fill: #6b5c00;
+}
+
+.badge-red {
+    -fx-background-color: #f28b82;
+    -fx-text-fill: #7a1d12;
+}
+
+.badge-gray {
+    -fx-background-color: #c9c9c9;
+    -fx-text-fill: #4a4a4a;
+}
+
+/* ---------- Progress bars (Frequência) ---------- */
+.freq-bar .bar {
+    -fx-background-insets: 0;
+    -fx-padding: 6px;
+    -fx-background-radius: 8;
+}
+
+.freq-bar .track {
+    -fx-background-color: #e2e6ee;
+    -fx-background-radius: 8;
+}
+
+.freq-bar-green .bar { -fx-background-color: #4ddc6a; }
+.freq-bar-yellow .bar { -fx-background-color: #f4d35e; }
+.freq-bar-red .bar { -fx-background-color: #f28b82; }
+
+/* ---------- ComboBox (status dropdown) ---------- */
+.status-combo {
+    -fx-font-size: 12px;
+    -fx-background-radius: 6;
+}
+
+/* ---------- Watermark logo on dashboard ---------- */
+.watermark-circle {
+    -fx-fill: #2b3a67;
+    -fx-opacity: 0.10;
+}
+
+.watermark-text {
+    -fx-fill: white;
+    -fx-opacity: 0.55;
+    -fx-font-weight: bold;
+}
+
+/* ---------- Generic link-style "Adicionar +" buttons ---------- */
+.btn-link {
+    -fx-background-color: transparent;
+    -fx-text-fill: #3d2c8d;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 2 4 2 4;
+}
+
+.btn-link:hover {
+    -fx-underline: true;
+}
