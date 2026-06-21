@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="br.edu.ufersa.universidade.controller.ConfirmarExclusaoController"
+      styleClass="confirm-popup"
+      prefWidth="500" maxWidth="500"
+      spacing="20"
+      stylesheets="@../css/styles.css">
+
+    <padding>
+        <Insets top="25" right="30" bottom="25" left="30"/>
+    </padding>
+
+    <!-- Cabeçalho: título + botão fechar (X) -->
+    <HBox alignment="CENTER_LEFT">
+        <Label text="Confirmar exclusão" styleClass="confirm-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="✕" fx:id="btnFechar" onAction="#fechar" styleClass="btn-fechar-popup"/>
+    </HBox>
+
+    <!-- Ícone de alerta + mensagem (texto fixo) -->
+    <HBox spacing="15" alignment="CENTER_LEFT">
+        <Label text="⚠" styleClass="confirm-icon"/>
+        <Label text="Tem certeza que deseja excluir este item?" styleClass="confirm-message" wrapText="true"/>
+    </HBox>
+
+    <!-- Botões -->
+    <HBox spacing="15" alignment="CENTER_LEFT">
+        <Button text="Cancelar" fx:id="btnCancelar" onAction="#cancelar" styleClass="btn-cancelar-popup"/>
+        <Button text="Excluir  🗑" fx:id="btnExcluir" onAction="#confirmarExclusao" styleClass="btn-excluir-popup"/>
+    </HBox>
+
+</VBox>
