@@ -1,3 +1,5 @@
+package br.edu.ufersa.universidade.view;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -2,20 +2,12 @@ package br.edu.ufersa.universidade.model.dao;
 
 import br.edu.ufersa.universidade.model.entities.Aluno;
 import br.edu.ufersa.universidade.model.entities.Disciplina;
+import br.edu.ufersa.universidade.utils.DatabaseUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class AlunoDAO {
-
-    // Conexão com o banco de dados, recebida pelo construtor
-    private final Connection connection;
-
-    public AlunoDAO(Connection connection) {
-        this.connection = connection;
-    }
-
-
     // BUSCAR TODOS OS ALUNOS
     // Faz SELECT nas tabelas aluno + usuario (JOIN)
     // e retorna uma lista com todos os alunos
@@ -27,7 +19,7 @@ public class AlunoDAO {
                 "FROM aluno a " +
                 "JOIN usuario u ON a.id_usuario = u.id_usuario";
 
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
 
         // Para cada linha retornada, cria um objeto Aluno e adiciona na lista
@@ -55,7 +47,7 @@ public class AlunoDAO {
                 "JOIN usuario u ON a.id_usuario = u.id_usuario " +
                 "WHERE a.matricula = ?";
 
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setLong(1, matricula); // substitui o ? pelo valor da matrícula
         ResultSet rs = stmt.executeQuery();
 
@@ -85,7 +77,7 @@ public class AlunoDAO {
                 "JOIN usuario u ON a.id_usuario = u.id_usuario " +
                 "WHERE u.nome LIKE ?";
 
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setString(1, "%" + nome + "%"); // % significa "qualquer coisa antes/depois"
         ResultSet rs = stmt.executeQuery();
 
@@ -109,6 +101,7 @@ public class AlunoDAO {
 
     public void inserir(Aluno aluno) throws SQLException {
         // Passo 1: insere na tabela usuario
+        Connection connection = DatabaseUtils.getConnection();
         String sqlUsuario = "INSERT INTO usuario (nome, senha, endereco, tipo) VALUES (?, ?, ?, 'Aluno')";
         PreparedStatement stmtUsuario = connection.prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
         stmtUsuario.setString(1, aluno.getNome());
@@ -140,7 +133,7 @@ public class AlunoDAO {
 
     public void deletar(long matricula) throws SQLException {
         String sql = "DELETE FROM aluno WHERE matricula = ?";
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setLong(1, matricula);
         stmt.executeUpdate();
         stmt.close();
@@ -150,7 +143,7 @@ public class AlunoDAO {
         String sql = "SELECT d.* FROM disciplina d JOIN aluno a, indice i WHERE a.matricula = ?" +
                 "AND i.matricula_aluno = a.matricula AND i.estado = 'Apr'";
         ArrayList<Disciplina> concluidas = new ArrayList<>();
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setLong(1, aluno.getMatricula());
         ResultSet rs = stmt.executeQuery();
 

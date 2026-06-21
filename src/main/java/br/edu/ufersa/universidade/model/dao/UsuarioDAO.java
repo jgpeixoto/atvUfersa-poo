@@ -3,23 +3,18 @@ package br.edu.ufersa.universidade.model.dao;
 import br.edu.ufersa.universidade.model.entities.Aluno;
 import br.edu.ufersa.universidade.model.entities.Disciplina;
 import br.edu.ufersa.universidade.model.entities.Usuario;
+import br.edu.ufersa.universidade.utils.DatabaseUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class UsuarioDAO {
-    private final Connection connection;
-
-    public UsuarioDAO(Connection connection) {
-        this.connection = connection;
-    }
-
     public ArrayList<Usuario> buscarTodos() throws SQLException {
         ArrayList<Usuario> lista = new ArrayList<>();
 
         String sql = "SELECT * FROM usuario";
 
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
 
         // Para cada linha retornada, cria um objeto Aluno e adiciona na lista
@@ -38,7 +33,7 @@ public class UsuarioDAO {
 
     public Usuario buscarPorId(int id) throws SQLException {
         String sql = "SELECT * FROM usuario WHERE id_usuario = ?";
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setInt(1, id);
         ResultSet rs = stmt.executeQuery();
 
@@ -60,7 +55,7 @@ public class UsuarioDAO {
 
         String sql = "SELECT * FROM aluno WHERE nome LIKE ?";
 
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setString(1, "%" + nome + "%");
         ResultSet rs = stmt.executeQuery();
 
@@ -80,7 +75,7 @@ public class UsuarioDAO {
 
     public void inserir(Usuario user) throws SQLException {
         String sqlUsuario = "INSERT INTO usuario (nome, senha, endereco, tipo) VALUES (?, ?, ?, ?)";
-        PreparedStatement stmtUsuario = connection.prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement stmtUsuario = DatabaseUtils.getConnection().prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
         stmtUsuario.setString(1, user.getNome());
         stmtUsuario.setString(2, user.getSenha());
         stmtUsuario.setString(3, user.getEndereco());
@@ -91,7 +86,7 @@ public class UsuarioDAO {
 
     public void atualizar(Usuario user) throws SQLException {
         String sqlUsuario = "UPDATE usuario SET nome = ?, senha = ?, endereco = ?, tipo = ? WHERE id_usuario = ?";
-        PreparedStatement stmtUsuario = connection.prepareStatement(sqlUsuario);
+        PreparedStatement stmtUsuario = DatabaseUtils.getConnection().prepareStatement(sqlUsuario);
         stmtUsuario.setString(1, user.getNome());
         stmtUsuario.setString(2, user.getSenha());
         stmtUsuario.setString(3, user.getEndereco());
@@ -105,7 +100,7 @@ public class UsuarioDAO {
 
     public void deletarPorId(int id) throws SQLException {
         String sql = "DELETE FROM usuario WHERE id_usuario = ?";
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setInt(1, id);
         stmt.executeUpdate();
         stmt.close();

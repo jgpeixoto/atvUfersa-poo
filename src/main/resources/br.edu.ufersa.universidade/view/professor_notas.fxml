@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -15,9 +16,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.shape.Circle?>
 
-<BorderPane styleClass="root-bg" stylesheets="@../../../../../css/styles.css" xmlns="http://javafx.com/javafx"
+<BorderPane styleClass="root-bg" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="br.edu.ufersa.universidade.controller.ProfessorTurmasController"
+            fx:controller="br.edu.ufersa.universidade.controller.ProfessorNotasController"
             prefWidth="1100" prefHeight="740">
 
     <!-- ===================== SIDEBAR ===================== -->
@@ -26,14 +27,19 @@
             <StackPane prefHeight="120">
                 <ImageView fitWidth="84" fitHeight="84" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../images/logo.png" />
+                        <Image url="@../images/logo.png" />
                     </image>
                 </ImageView>
             </StackPane>
 
             <VBox styleClass="sidebar-item-active" alignment="CENTER" spacing="4">
-                <Label text="Turmas" styleClass="sidebar-item-active" />
-                <Label text="🎓" style="-fx-font-size: 20px; -fx-text-fill: white;" />
+                <Label text="Notas" styleClass="sidebar-item-active" />
+                <Label text="📖" style="-fx-font-size: 20px; -fx-text-fill: white;" />
+            </VBox>
+
+            <VBox styleClass="sidebar-item" alignment="CENTER" spacing="4" onMouseClicked="#handleAbrirTurmas">
+                <Label text="Turmas" styleClass="sidebar-item" />
+                <Label text="🎓" style="-fx-font-size: 20px; -fx-text-fill: #d6def2;" />
             </VBox>
 
             <Region VBox.vgrow="ALWAYS" />
@@ -48,25 +54,28 @@
             <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="16">
                 <Label text="Professor" styleClass="topbar-subtitle" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label text="Turmas" styleClass="topbar-title" />
+                <Label text="Lançamento de notas" styleClass="topbar-title" />
                 <Region HBox.hgrow="ALWAYS" />
                 <Button text="Sair  ➜" styleClass="btn-sair" onAction="#handleSair" />
             </HBox>
 
             <VBox styleClass="card" spacing="12" VBox.vgrow="ALWAYS">
 
-                <ComboBox fx:id="comboTurma" promptText="Selecione uma turma ...." maxWidth="Infinity" />
+                <HBox styleClass="search-bar" alignment="CENTER_LEFT" spacing="8" maxWidth="460">
+                    <Label text="🔍" styleClass="search-icon" />
+                    <TextField fx:id="campoBusca" promptText="Buscar por nome, matrícula..." HBox.hgrow="ALWAYS" />
+                </HBox>
 
-                <TableView fx:id="tableTurmas" VBox.vgrow="ALWAYS">
+                <TableView fx:id="tableNotas" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colTurma" text="Turma" prefWidth="160" />
-                        <TableColumn fx:id="colDisciplina" text="Disciplina" prefWidth="120" />
-                        <TableColumn fx:id="colCodigo" text="Código" prefWidth="100" />
-                        <TableColumn fx:id="colFrequencia" text="Frequência" prefWidth="120" />
-                        <TableColumn fx:id="colNotas" text="Notas" prefWidth="120" />
+                        <TableColumn fx:id="colNome" text="Nome" prefWidth="180" />
+                        <TableColumn fx:id="colP1" text="P1" prefWidth="80" />
+                        <TableColumn fx:id="colP2" text="P2" prefWidth="80" />
+                        <TableColumn fx:id="colP3" text="P3" prefWidth="80" />
+                        <TableColumn fx:id="colMedia" text="Média" prefWidth="90" />
+                        <TableColumn fx:id="colStatus" text="Status" prefWidth="120" />
                     </columns>
                 </TableView>
-
             </VBox>
         </VBox>
     </center>
