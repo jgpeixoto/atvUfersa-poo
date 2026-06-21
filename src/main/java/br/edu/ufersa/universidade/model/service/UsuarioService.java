@@ -8,11 +8,7 @@ import java.util.ArrayList;
 
 public class UsuarioService {
 
-    private final UsuarioDAO usuarioDAO;
-
-    public UsuarioService(UsuarioDAO usuarioDAO) {
-        this.usuarioDAO = usuarioDAO;
-    }
+    private final UsuarioDAO usuarioDAO = new UsuarioDAO();
 
     public void cadastrar(Usuario user) throws SQLException {
         usuarioDAO.inserir(user);

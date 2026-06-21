@@ -12,59 +12,54 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="br.edu.ufersa.universidade.controller.GerenteAdcAlunoController"
-            prefWidth="1440" prefHeight="1024"
-            styleClass="app-root"
-            stylesheets="@../css/styles.css">
+<BorderPane prefHeight="1024" prefWidth="1440" styleClass="app-root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.universidade.controller.GerenteAdcAlunoController">
 
     <!-- ===================== SIDEBAR ===================== -->
     <left>
-        <VBox prefWidth="220" styleClass="sidebar" alignment="TOP_CENTER" spacing="0">
+        <VBox alignment="TOP_CENTER" prefWidth="220" spacing="0" styleClass="sidebar">
 
             <VBox alignment="CENTER" styleClass="sidebar-logo-box">
                 <padding>
-                    <Insets top="30" bottom="30" left="0" right="0"/>
+                    <Insets bottom="30" left="0" right="0" top="30" />
                 </padding>
-                <ImageView fitWidth="120" fitHeight="120" preserveRatio="true">
+                <ImageView fitHeight="120" fitWidth="120" preserveRatio="true">
                     <image>
-                        <Image url="@../images/logo.png"/>
+                        <Image url="@../images/logo.png" />
                     </image>
                 </ImageView>
             </VBox>
 
-            <VBox styleClass="sidebar-menu" spacing="0">
-                <VBox styleClass="sidebar-item" alignment="CENTER" spacing="8">
+            <VBox spacing="0" styleClass="sidebar-menu">
+                <VBox alignment="CENTER" spacing="8" styleClass="sidebar-item">
                     <padding>
-                        <Insets top="18" bottom="18" left="0" right="0"/>
+                        <Insets bottom="18" left="0" right="0" top="18" />
                     </padding>
-                    <Label text="Disciplina" styleClass="sidebar-item-label"/>
-                    <Label text="🗓" styleClass="sidebar-item-icon"/>
+                    <Label styleClass="sidebar-item-label" text="Disciplina" />
+                    <Label styleClass="sidebar-item-icon" text="🗓" />
                 </VBox>
 
-                <VBox styleClass="sidebar-item" alignment="CENTER" spacing="8">
+                <VBox alignment="CENTER" spacing="8" styleClass="sidebar-item">
                     <padding>
-                        <Insets top="18" bottom="18" left="0" right="0"/>
+                        <Insets bottom="18" left="0" right="0" top="18" />
                     </padding>
-                    <Label text="Turmas" styleClass="sidebar-item-label"/>
-                    <Label text="👥" styleClass="sidebar-item-icon"/>
+                    <Label styleClass="sidebar-item-label" text="Turmas" />
+                    <Label styleClass="sidebar-item-icon" text="👥" />
                 </VBox>
 
-                <VBox styleClass="sidebar-item" alignment="CENTER" spacing="8">
+                <VBox alignment="CENTER" spacing="8" styleClass="sidebar-item">
                     <padding>
-                        <Insets top="18" bottom="18" left="0" right="0"/>
+                        <Insets bottom="18" left="0" right="0" top="18" />
                     </padding>
-                    <Label text="Professores" styleClass="sidebar-item-label"/>
-                    <Label text="🎒" styleClass="sidebar-item-icon"/>
+                    <Label styleClass="sidebar-item-label" text="Professores" />
+                    <Label styleClass="sidebar-item-icon" text="🎒" />
                 </VBox>
 
-                <VBox styleClass="sidebar-item, sidebar-item-active" alignment="CENTER" spacing="8">
+                <VBox alignment="CENTER" spacing="8" styleClass="sidebar-item, sidebar-item-active">
                     <padding>
-                        <Insets top="18" bottom="18" left="0" right="0"/>
+                        <Insets bottom="18" left="0" right="0" top="18" />
                     </padding>
-                    <Label text="Alunos" styleClass="sidebar-item-label"/>
-                    <Label text="👤" styleClass="sidebar-item-icon"/>
+                    <Label styleClass="sidebar-item-label" text="Alunos" />
+                    <Label styleClass="sidebar-item-icon" text="👤" />
                 </VBox>
             </VBox>
 
@@ -78,55 +73,51 @@
             <!-- Header -->
             <HBox alignment="CENTER_LEFT" styleClass="app-header">
                 <padding>
-                    <Insets top="20" right="40" bottom="20" left="40"/>
+                    <Insets bottom="20" left="40" right="40" top="20" />
                 </padding>
-                <Label text="Gerente" styleClass="app-header-title"/>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Button text="Sair  ➜" fx:id="btnSair" onAction="#sair" styleClass="btn-sair"/>
+                <Label styleClass="app-header-title" text="Gerente" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="btnSair" onAction="#sair" styleClass="btn-sair" text="Sair  ➜" />
             </HBox>
 
             <!-- Corpo -->
             <StackPane styleClass="app-body" VBox.vgrow="ALWAYS">
                 <padding>
-                    <Insets top="30" right="40" bottom="30" left="40"/>
+                    <Insets bottom="30" left="40" right="40" top="30" />
                 </padding>
 
                 <!-- Card do formulário -->
-                <VBox styleClass="form-card" spacing="18" maxWidth="900" maxHeight="-Infinity"
-                      StackPane.alignment="TOP_LEFT">
+                <VBox maxHeight="-Infinity" maxWidth="900" spacing="18" styleClass="form-card" StackPane.alignment="TOP_LEFT">
                     <padding>
-                        <Insets top="35" right="45" bottom="35" left="45"/>
+                        <Insets bottom="35" left="45" right="45" top="35" />
                     </padding>
 
-                    <Label text="Novo aluno" styleClass="form-title"/>
+                    <Label styleClass="form-title" text="Novo aluno" />
 
                     <VBox spacing="6">
-                        <Label text="Nome" styleClass="form-label"/>
-                        <TextField fx:id="campoNome" styleClass="form-input"/>
+                        <Label styleClass="form-label" text="Nome" />
+                        <TextField fx:id="campoNome" styleClass="form-input" />
                     </VBox>
 
                     <VBox spacing="6">
-                        <Label text="Endereço" styleClass="form-label"/>
-                        <TextField fx:id="campoEndereco" styleClass="form-input"/>
+                        <Label styleClass="form-label" text="Endereço" />
+                        <TextField fx:id="campoEndereco" styleClass="form-input" />
                     </VBox>
 
                     <VBox spacing="6">
-                        <Label text="Matrícula" styleClass="form-label"/>
-                        <TextField fx:id="campoMatricula" styleClass="form-input"/>
+                        <Label styleClass="form-label" text="Matrícula" />
+                        <TextField fx:id="campoMatricula" styleClass="form-input" />
                     </VBox>
 
-                    <VBox spacing="6">
-                        <Label text="Histórico escolar" styleClass="form-label"/>
-                        <TextField fx:id="campoHistorico" styleClass="form-input"/>
-                    </VBox>
+                    <VBox spacing="6" />
 
                     <!-- Botões -->
-                    <HBox spacing="15" alignment="CENTER_RIGHT">
+                    <HBox alignment="CENTER_RIGHT" spacing="15">
                         <padding>
-                            <Insets top="25" right="0" bottom="0" left="0"/>
+                            <Insets bottom="0" left="0" right="0" top="25" />
                         </padding>
-                        <Button text="Cancelar" fx:id="btnCancelar" onAction="#cancelar" styleClass="btn-cancelar"/>
-                        <Button text="Salvar" fx:id="btnSalvar" onAction="#salvarAluno" styleClass="btn-salvar"/>
+                        <Button fx:id="btnCancelar" onAction="#cancelar" styleClass="btn-cancelar" text="Cancelar" />
+                        <Button fx:id="btnSalvar" onAction="#salvarAluno" styleClass="btn-salvar" text="Salvar" />
                     </HBox>
 
                 </VBox>

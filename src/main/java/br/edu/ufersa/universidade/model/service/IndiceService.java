@@ -7,12 +7,7 @@ import java.util.ArrayList;
 
 public class IndiceService {
 
-    private final IndiceDAO indiceDAO;
-
-    public IndiceService(IndiceDAO indiceDAO) {
-        this.indiceDAO = indiceDAO;
-    }
-
+    private final IndiceDAO indiceDAO = new IndiceDAO();
 
     // LISTAR ÍNDICES DE UM ALUNO
 

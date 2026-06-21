@@ -11,14 +11,8 @@ import java.util.ArrayList;
 public class AlunoService {
 
     // O Service usa os DAOs para acessar o banco
-    private final AlunoDAO alunoDAO;
-    private final IndiceDAO indiceDAO;
-
-    public AlunoService(AlunoDAO alunoDAO, IndiceDAO indiceDAO) {
-        this.alunoDAO = alunoDAO;
-        this.indiceDAO = indiceDAO;
-    }
-
+    private final AlunoDAO alunoDAO = new AlunoDAO();
+    private final IndiceDAO indiceDAO = new IndiceDAO();
 
     // LISTAR TODOS OS ALUNOS
     // Só repassa pro DAO, sem regra de negócio aqui

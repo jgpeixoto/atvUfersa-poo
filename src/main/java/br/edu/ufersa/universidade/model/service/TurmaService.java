@@ -9,13 +9,8 @@ import java.util.ArrayList;
 
 public class TurmaService {
 
-    private final TurmaDAO turmaDAO;
-    private final IndiceDAO indiceDAO;
-
-    public TurmaService(TurmaDAO turmaDAO, IndiceDAO indiceDAO) {
-        this.turmaDAO = turmaDAO;
-        this.indiceDAO = indiceDAO;
-    }
+    private final TurmaDAO turmaDAO = new TurmaDAO();
+    private final IndiceDAO indiceDAO = new IndiceDAO();
 
     public void cadastrar(Turma turma, Usuario solicitante) {
         verificarPermissaoGerente(solicitante);

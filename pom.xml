@@ -73,7 +73,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>Main</mainClass>
+                            <mainClass>br.edu.ufersa.universidade.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

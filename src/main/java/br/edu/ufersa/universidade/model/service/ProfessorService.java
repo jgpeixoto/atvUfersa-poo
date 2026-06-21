@@ -8,11 +8,7 @@ import java.util.ArrayList;
 
 public class ProfessorService {
 
-    private final ProfessorDAO professorDAO;
-
-    public ProfessorService(ProfessorDAO professorDAO) {
-        this.professorDAO = professorDAO;
-    }
+    private final ProfessorDAO professorDAO = new ProfessorDAO();
 
     public void cadastrar(Professor professor, Usuario solicitante) {
         verificarPermissaoGerente(solicitante);

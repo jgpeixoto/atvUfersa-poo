@@ -8,11 +8,7 @@ import java.util.ArrayList;
 
 public class DisciplinaService {
 
-    private final DisciplinaDAO disciplinaDAO;
-
-    public DisciplinaService(DisciplinaDAO disciplinaDAO) {
-        this.disciplinaDAO = disciplinaDAO;
-    }
+    private final DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
 
     public void cadastrar(Disciplina disciplina) throws SQLException {
         disciplinaDAO.inserir(disciplina);

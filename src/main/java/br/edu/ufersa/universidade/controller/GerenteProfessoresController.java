@@ -14,11 +14,6 @@ public class GerenteProfessoresController {
     @FXML private TextField campoBusca;
     @FXML private Button btnAdicionar;
     @FXML private TableView<Professor> tabelaProfessores;
-    @FXML private TableColumn<Professor, String> colNome;
-    @FXML private TableColumn<Professor, String> colEndereco;
-    @FXML private TableColumn<Professor, String> colCpf;
-    @FXML private TableColumn<Professor, Turma[]> colTurmas;
-    @FXML private TableColumn colAjustes;
 
     @FXML public void sair(ActionEvent e) {
 
