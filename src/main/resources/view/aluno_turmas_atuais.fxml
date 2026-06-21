@@ -10,9 +10,11 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.shape.Circle?>
 
-<BorderPane styleClass="root-bg" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx"
+<BorderPane styleClass="root-bg" stylesheets="@../../../../../css/styles.css" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="br.edu.ufersa.universidade.controller.AlunoTurmasAtuaisController"
             prefWidth="1100" prefHeight="740">
@@ -21,8 +23,11 @@
     <left>
         <VBox styleClass="sidebar" alignment="TOP_CENTER" spacing="0">
             <StackPane prefHeight="120">
-                <Circle styleClass="logo-circle" radius="42" />
-                <Label text="WEITINHO" styleClass="logo-text" wrapText="true" maxWidth="70" textAlignment="CENTER" />
+                <ImageView fitWidth="84" fitHeight="84" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../../images/logo.png" />
+                    </image>
+                </ImageView>
             </StackPane>
 
             <VBox styleClass="sidebar-item-active" alignment="CENTER" spacing="4">
@@ -96,10 +101,6 @@
                         <!-- linhas preenchidas dinamicamente pelo controller -->
                     </VBox>
                     <Region VBox.vgrow="ALWAYS" />
-                    <StackPane>
-                        <Circle styleClass="watermark-circle" radius="120" />
-                        <Label text="WEITINHO" styleClass="watermark-text" />
-                    </StackPane>
                 </VBox>
 
             </HBox>
