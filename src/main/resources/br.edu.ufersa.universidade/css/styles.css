@@ -1,7 +1,7 @@
 /* =========================================================
    styles.css
    Folha de estilos compartilhada entre as telas de Aluno e
-   Professor, baseada no protótipo Figma "Weitinho".
+   Professor, baseada no protótipo Figma.
    ========================================================= */
 
 .root-bg {
@@ -259,4 +259,61 @@
 
 .btn-link:hover {
     -fx-underline: true;
+}
+
+/*
+   PALETA DE CORES - Faculdade
+   Baseado no protótipo do Figma */
+
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+
+    /* Paleta principal */
+    -azul-fundo: #1B2A52;       /* fundo azul escuro */
+    -azul-fundo-claro: #24386b;
+    -roxo-botao: #5B4FE8;       /* botão roxo */
+    -roxo-botao-hover: #6F63F5;
+    -branco: #FFFFFF;
+}
+
+/* ===========================================================
+   TELA DE BOAS-VINDAS (inicioview.fxml)
+   =========================================================== */
+
+.welcome-root {
+    -fx-background-color: #1B2A52;
+}
+
+.welcome-text-flow {
+    -fx-padding: 10 0 0 0;
+}
+
+.welcome-text-regular {
+    -fx-fill: #FFFFFF;
+    -fx-font-size: 32px;
+}
+
+.welcome-text-bold {
+    -fx-fill: #FFFFFF;
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+}
+
+/* Botão de login (roxo, arredondado, como no design) */
+.btn-login {
+    -fx-background-color: #5B4FE8;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 30;
+    -fx-padding: 14 40 14 40;
+    -fx-cursor: hand;
+}
+
+.btn-login:hover {
+    -fx-background-color: #6F63F5;
+}
+
+.btn-login:pressed {
+    -fx-background-color: #4A3FCB;
 }

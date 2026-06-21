@@ -91,7 +91,7 @@
 
                 <!-- Coluna direita: Frequência -->
                 <VBox styleClass="card" spacing="10" HBox.hgrow="ALWAYS" prefWidth="420">
-                    <Label text="Frêquencia" styleClass="card-title" />
+                    <Label text="Frequência" styleClass="card-title" />
                     <VBox fx:id="boxFrequencia" spacing="20">
                         <!-- linhas preenchidas dinamicamente pelo controller -->
                     </VBox>
