@@ -260,3 +260,399 @@
 .btn-link:hover {
     -fx-underline: true;
 }
+
+/*
+   PALETA DE CORES - Faculdade
+   Baseado no protótipo do Figma */
+
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+
+    /* Paleta principal */
+    -azul-fundo: #1B2A52;       /* fundo azul escuro */
+    -azul-fundo-claro: #24386b;
+    -roxo-botao: #5B4FE8;       /* botão roxo */
+    -roxo-botao-hover: #6F63F5;
+    -branco: #FFFFFF;
+}
+
+/* ===========================================================
+   TELA DE BOAS-VINDAS (inicioview.fxml)
+   =========================================================== */
+
+.welcome-root {
+    -fx-background-color: #1B2A52;
+}
+
+.welcome-text-flow {
+    -fx-padding: 10 0 0 0;
+}
+
+.welcome-text-regular {
+    -fx-fill: #FFFFFF;
+    -fx-font-size: 32px;
+}
+
+.welcome-text-bold {
+    -fx-fill: #FFFFFF;
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+}
+
+/* Botão de login (roxo, arredondado, como no design) */
+.btn-login {
+    -fx-background-color: #5B4FE8;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 30;
+    -fx-padding: 14 40 14 40;
+    -fx-cursor: hand;
+}
+
+.btn-login:hover {
+    -fx-background-color: #6F63F5;
+}
+
+.btn-login:pressed {
+    -fx-background-color: #4A3FCB;
+}
+
+/* ===========================================================
+   TELA DE LOGIN (LoginView.fxml)
+   =========================================================== */
+
+/* Header branco com logo + nome da faculdade */
+.login-header {
+    -fx-background-color: #FFFFFF;
+}
+
+.header-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #241E5C;
+}
+
+/* Fundo geral com gradiente azul claro */
+.login-background {
+    -fx-background-color: linear-gradient(to bottom, #EAF0FB, #AFC3E8);
+}
+
+/* Card central roxo bem claro */
+.login-card {
+    -fx-background-color: #E3E1FA;
+    -fx-background-radius: 24;
+}
+
+.login-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #241E5C;
+}
+
+.login-subtitle {
+    -fx-font-size: 15px;
+    -fx-text-fill: #4B4575;
+}
+
+/* Campos de input (usuário / senha) com ícone */
+.input-field {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 14;
+    -fx-padding: 10 18 10 18;
+}
+
+.input-icon {
+    -fx-font-size: 16px;
+}
+
+.input-text {
+    -fx-background-color: transparent;
+    -fx-font-size: 15px;
+    -fx-text-fill: #241E5C;
+}
+
+.input-text .text-field,
+.input-text:focused {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* ComboBox de seleção de perfil */
+.input-combo {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 14;
+    -fx-font-size: 15px;
+    -fx-text-fill: #241E5C;
+    -fx-padding: 4 8 4 8;
+}
+
+.input-combo .list-cell {
+    -fx-text-fill: #241E5C;
+    -fx-padding: 8 14 8 14;
+}
+
+/* Botão Entrar (roxo escuro, full width) */
+.btn-entrar {
+    -fx-background-color: #241E5C;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 14;
+    -fx-padding: 14 0 14 0;
+    -fx-cursor: hand;
+}
+
+.btn-entrar:hover {
+    -fx-background-color: #322A78;
+}
+
+.btn-entrar:pressed {
+    -fx-background-color: #1A1640;
+}
+
+/* ===========================================================
+   TELAS GERENTE (GerenteAlunosView.fxml / GerenteProfessoresView.fxml)
+   Layout base: sidebar + header + tabela
+   =========================================================== */
+
+.app-root {
+    -fx-background-color: #FFFFFF;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar {
+    -fx-background-color: #1B2A52;
+}
+
+.sidebar-logo-box {
+    -fx-background-color: #1B2A52;
+}
+
+.sidebar-menu {
+    -fx-background-color: #1B2A52;
+}
+
+.sidebar-item {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 1.5;
+    -fx-cursor: hand;
+}
+
+.sidebar-item:hover {
+    -fx-background-color: #24386b;
+}
+
+.sidebar-item-active {
+    -fx-border-color: #FFFFFF;
+    -fx-background-color: #24386b;
+}
+
+.sidebar-item-label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.sidebar-item-icon {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 26px;
+}
+
+/* ---------- HEADER ---------- */
+.app-header {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #E0E0E0 transparent;
+    -fx-border-width: 0 0 2 0;
+}
+
+.app-header-title {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1B2A52;
+}
+
+.btn-sair {
+    -fx-background-color: #5B4FE8;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 24;
+    -fx-padding: 10 24 10 24;
+    -fx-cursor: hand;
+}
+
+.btn-sair:hover {
+    -fx-background-color: #6F63F5;
+}
+
+/* ---------- CORPO / FUNDO ---------- */
+.app-content {
+    -fx-background-color: #FFFFFF;
+}
+
+.app-body {
+    -fx-background-color: linear-gradient(to bottom, #FFFFFF, #AFC3E8);
+}
+
+/* ---------- BUSCA + BOTÃO ADICIONAR ---------- */
+.search-field {
+    -fx-background-color: #E5E5E5;
+    -fx-background-radius: 10;
+    -fx-padding: 12 18 12 18;
+    -fx-font-size: 15px;
+    -fx-text-fill: #333333;
+}
+
+.btn-adicionar {
+    -fx-background-color: #1B2A52;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 12 22 12 22;
+    -fx-cursor: hand;
+}
+
+.btn-adicionar:hover {
+    -fx-background-color: #24386b;
+}
+
+/* ---------- TABELA ---------- */
+.app-table {
+    -fx-background-color: transparent;
+    -fx-table-cell-border-color: transparent;
+}
+
+.app-table .column-header-background {
+    -fx-background-color: #ECECEC;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.app-table .column-header,
+.app-table .filler {
+    -fx-background-color: transparent;
+    -fx-size: 48px;
+}
+
+.app-table .column-header .label {
+    -fx-text-fill: #1B2A52;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.app-table .table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-table-cell-border-color: transparent;
+    -fx-border-color: transparent transparent #EFEFEF transparent;
+    -fx-cell-size: 56px;
+}
+
+.app-table .table-row-cell:odd {
+    -fx-background-color: #F4F6FB;
+}
+
+.app-table .table-row-cell:selected {
+    -fx-background-color: #DCE2F5;
+}
+
+.app-table .table-cell {
+    -fx-text-fill: #333333;
+    -fx-font-size: 15px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 10 0 10;
+}
+
+/* Botões de Editar / Excluir dentro das linhas da tabela */
+.btn-editar-linha {
+    -fx-background-color: #1B1B1B;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 6;
+    -fx-min-width: 32px;
+    -fx-min-height: 32px;
+    -fx-cursor: hand;
+}
+
+.btn-editar-linha:hover {
+    -fx-background-color: #3A3A3A;
+}
+
+.btn-excluir-linha {
+    -fx-background-color: #D32F2F;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 6;
+    -fx-min-width: 32px;
+    -fx-min-height: 32px;
+    -fx-cursor: hand;
+}
+
+.btn-excluir-linha:hover {
+    -fx-background-color: #E84444;
+}
+
+/* ===========================================================
+   TELAS DE FORMULÁRIO - ADICIONAR
+   (GerenteAdcDisciplinaView.fxml / -professor- / -aluno-)
+   =========================================================== */
+
+.form-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 18, 0, 0, 4);
+}
+
+.form-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1B2A52;
+}
+
+.form-label {
+    -fx-font-size: 15px;
+    -fx-text-fill: #333333;
+}
+
+.form-input {
+    -fx-background-color: #DCDCDC;
+    -fx-background-radius: 8;
+    -fx-padding: 12 16 12 16;
+    -fx-font-size: 15px;
+}
+
+.form-input:focused {
+    -fx-background-color: #D0D0D0;
+}
+
+/* Botão Cancelar (vermelho) */
+.btn-cancelar {
+    -fx-background-color: #D9534F;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 12 30 12 30;
+    -fx-cursor: hand;
+}
+
+.btn-cancelar:hover {
+    -fx-background-color: #E36561;
+}
+
+/* Botão Salvar (azul escuro) */
+.btn-salvar {
+    -fx-background-color: #2E4A6B;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 12 30 12 30;
+    -fx-cursor: hand;
+}
+
+.btn-salvar:hover {
+    -fx-background-color: #3A5C82;
+}
