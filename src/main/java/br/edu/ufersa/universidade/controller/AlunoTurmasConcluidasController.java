@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-import javax.swing.*;
 
 public class AlunoTurmasConcluidasController {
     @FXML private TextField campoBusca;

@@ -18,7 +18,7 @@
 <BorderPane styleClass="root-bg" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="br.edu.ufersa.universidade.controller.ProfessorFrequenciaController"
-            prefWidth="1100" prefHeight="740">
+            maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="1280.0" prefHeight="650.0" prefWidth="1280.0">
 
     <!-- ===================== SIDEBAR ===================== -->
     <left>

@@ -18,28 +18,13 @@ import java.sql.SQLException;
  * Use esta classe pra abrir as telas — não o Main.java, que só testa a
  * conexão/migração do banco e não desenha nada na tela.
  *
- * Pra testar uma tela diferente, troque o nome do arquivo no getResource()
- * abaixo (ex: "professor_turmas.fxml", "professor_notas.fxml", etc.)
+ * Pra testar uma tela diferente, troque o nome do arquivo no getResName()
+ * abaixo (ex: "professor_turmas", "professor_notas", etc.)
  */
-public class AppUI extends Application {
-
+public class AppUI extends BaseView {
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(
-                getClass().getResource("/br.edu.ufersa.universidade/view/aluno_turmas_concluidas.fxml"));
-        primaryStage.setTitle("Weitinho");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent t) {
-                try {
-                    DatabaseUtils.getConnection().close();
-                } catch (SQLException ignored) {}
-                Platform.exit();
-                System.exit(0);
-            }
-        });
-        primaryStage.show();
+    protected String getResName() {
+        return "LoginView";
     }
 
     public static void main(String[] args) {
