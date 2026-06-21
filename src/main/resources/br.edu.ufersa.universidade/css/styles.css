@@ -593,3 +593,66 @@
 .btn-excluir-linha:hover {
     -fx-background-color: #E84444;
 }
+
+/* ===========================================================
+   TELAS DE FORMULÁRIO - ADICIONAR
+   (GerenteAdcDisciplinaView.fxml / -professor- / -aluno-)
+   =========================================================== */
+
+.form-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 18, 0, 0, 4);
+}
+
+.form-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1B2A52;
+}
+
+.form-label {
+    -fx-font-size: 15px;
+    -fx-text-fill: #333333;
+}
+
+.form-input {
+    -fx-background-color: #DCDCDC;
+    -fx-background-radius: 8;
+    -fx-padding: 12 16 12 16;
+    -fx-font-size: 15px;
+}
+
+.form-input:focused {
+    -fx-background-color: #D0D0D0;
+}
+
+/* Botão Cancelar (vermelho) */
+.btn-cancelar {
+    -fx-background-color: #D9534F;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 12 30 12 30;
+    -fx-cursor: hand;
+}
+
+.btn-cancelar:hover {
+    -fx-background-color: #E36561;
+}
+
+/* Botão Salvar (azul escuro) */
+.btn-salvar {
+    -fx-background-color: #2E4A6B;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 12 30 12 30;
+    -fx-cursor: hand;
+}
+
+.btn-salvar:hover {
+    -fx-background-color: #3A5C82;
+}
