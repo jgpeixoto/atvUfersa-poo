@@ -1,24 +1,18 @@
 package br.edu.ufersa.universidade.model.dao;
 import br.edu.ufersa.universidade.model.entities.Disciplina;
+import br.edu.ufersa.universidade.utils.DatabaseUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class DisciplinaDAO {
 
-    // Conexão com o banco de dados, recebida pelo construtor
-    private final Connection connection;
-
-    public DisciplinaDAO(Connection connection) {
-        this.connection = connection;
-    }
-
     public ArrayList<Disciplina> buscarTodos() throws SQLException {
         ArrayList<Disciplina> lista = new ArrayList<>();
 
         String sql = "SELECT id_disciplina, nome, codigo FROM disciplina";
 
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
 
         // Para cada linha retornada, cria um objeto Aluno e adiciona na lista
@@ -37,7 +31,7 @@ public class DisciplinaDAO {
     public Disciplina buscarPorId(int id) throws SQLException {
         String sql = "SELECT id_disciplina, nome, codigo FROM disciplina WHERE id_disciplina = ?";
 
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setInt(1, id);
         ResultSet rs = stmt.executeQuery();
 
@@ -55,7 +49,7 @@ public class DisciplinaDAO {
     public Disciplina buscarPorCodigo(String codigo) throws SQLException {
         String sql = "SELECT id_disciplina, nome, codigo FROM disciplina WHERE codigo = ?";
 
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setString(1, codigo);
         ResultSet rs = stmt.executeQuery();
 
@@ -75,7 +69,7 @@ public class DisciplinaDAO {
     public ArrayList<Disciplina> buscarPorNome(String nome) throws SQLException {
         ArrayList<Disciplina> lista = new ArrayList<>();
         String sql = "SELECT id_disciplina, nome, codigo FROM disciplina WHERE nome LIKE ?";
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setString(1, '%' + nome + '%');
         ResultSet rs = stmt.executeQuery();
 
@@ -94,7 +88,7 @@ public class DisciplinaDAO {
 
     public void inserir(Disciplina disciplina) throws SQLException {
         String sqlDisciplina = "INSERT INTO disciplina (nome, codigo) VALUES (?, ?)";
-        PreparedStatement stmtDisciplina = connection.prepareStatement(sqlDisciplina, Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement stmtDisciplina = DatabaseUtils.getConnection().prepareStatement(sqlDisciplina, Statement.RETURN_GENERATED_KEYS);
         stmtDisciplina.setString(1, disciplina.getNome());
         stmtDisciplina.setString(2, disciplina.getCodigo());
         stmtDisciplina.executeUpdate();
@@ -104,7 +98,7 @@ public class DisciplinaDAO {
 
     public void atualizar(Disciplina disciplina) throws SQLException {
         String sqlDisciplina = "UPDATE disciplina SET nome = ?, codigo = ? WHERE id_disciplina = ?";
-        PreparedStatement stmtDisciplina = connection.prepareStatement(sqlDisciplina);
+        PreparedStatement stmtDisciplina = DatabaseUtils.getConnection().prepareStatement(sqlDisciplina);
         stmtDisciplina.setString(1, disciplina.getNome());
         stmtDisciplina.setString(2, disciplina.getCodigo());
         stmtDisciplina.setInt(3, disciplina.getId());
@@ -115,14 +109,14 @@ public class DisciplinaDAO {
 
     public void deletarPorId(int id) throws SQLException {
         String sql = "DELETE FROM disciplina WHERE id_disciplina = ?";
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setInt(1, id);
         stmt.executeUpdate();
         stmt.close();
     }
     public void deletarPorCodigo(String codigo) throws SQLException {
         String sql = "DELETE FROM disciplina WHERE codigo = ?";
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setString(1, codigo);
         stmt.executeUpdate();
         stmt.close();

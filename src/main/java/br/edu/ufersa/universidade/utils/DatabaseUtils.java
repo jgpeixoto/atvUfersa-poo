@@ -5,9 +5,19 @@ import java.io.InputStreamReader;
 
 public class DatabaseUtils {
 
-    public static void runMigration(Connection connection, String filePath)
+    // Singleton connection
+    private static Connection instance;
+
+    public static Connection getConnection() throws SQLException {
+        if (instance == null)
+            instance = DriverManager.getConnection("jdbc:mysql://localhost:3306/universidade", "root", "admin");
+        return instance;
+    }
+
+    public static void runMigration(String filePath)
     {
         try {
+            Connection connection = DatabaseUtils.getConnection();
             Statement statement = connection.createStatement();
             var reader = new InputStreamReader(DatabaseUtils.class.getResourceAsStream(filePath));
             BufferedReader br = new BufferedReader(reader);

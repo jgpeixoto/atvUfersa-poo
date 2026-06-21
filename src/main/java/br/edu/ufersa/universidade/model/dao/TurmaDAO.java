@@ -1,18 +1,12 @@
 package br.edu.ufersa.universidade.model.dao;
 
 import br.edu.ufersa.universidade.model.entities.*;
+import br.edu.ufersa.universidade.utils.DatabaseUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class TurmaDAO {
-
-    private final Connection connection;
-
-    public TurmaDAO(Connection connection) {
-        this.connection = connection;
-    }
-
     private Turma mapear(ResultSet rs) throws SQLException {
         Turma t = new Turma(rs.getInt("id_turma"));
         t.setLocal(rs.getString("local_de_aula"));
@@ -57,7 +51,7 @@ public class TurmaDAO {
                 INSERT INTO turma (id_disciplina, cpf_professor, aulas_ministradas, local_de_aula, horario, ativo)
                 VALUES (?, ?, ?, ?, ?, ?)
                 """;
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (PreparedStatement ps = DatabaseUtils.getConnection().prepareStatement(sql)) {
             ps.setInt(1, turma.getDisciplina().getId());
             ps.setString(2, turma.getProfessor().getCpf());
             ps.setInt(3, turma.getAulasMinistradas());
@@ -77,7 +71,7 @@ public class TurmaDAO {
                     local_de_aula = ?, horario = ?, ativo = ?
                 WHERE id_turma = ?
                 """;
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (PreparedStatement ps = DatabaseUtils.getConnection().prepareStatement(sql)) {
             ps.setInt(1, turma.getDisciplina().getId());
             ps.setString(2, turma.getProfessor().getCpf());
             ps.setInt(3, turma.getAulasMinistradas());
@@ -93,7 +87,7 @@ public class TurmaDAO {
 
     public void deletar(int id) {
         String sql = "DELETE FROM turma WHERE id_turma = ?";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (PreparedStatement ps = DatabaseUtils.getConnection().prepareStatement(sql)) {
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -103,7 +97,7 @@ public class TurmaDAO {
 
     public Turma buscarPorId(int id) {
         String sql = SQL_BASE + " WHERE t.id_turma = ?";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (PreparedStatement ps = DatabaseUtils.getConnection().prepareStatement(sql)) {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) return mapear(rs);
@@ -116,7 +110,7 @@ public class TurmaDAO {
     public ArrayList<Turma> buscarPorProfessor(int idProfessor) {
         String sql = SQL_BASE + " WHERE p.id_usuario = ?";
         ArrayList<Turma> lista = new ArrayList<>();
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (PreparedStatement ps = DatabaseUtils.getConnection().prepareStatement(sql)) {
             ps.setInt(1, idProfessor);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) lista.add(mapear(rs));
@@ -129,7 +123,7 @@ public class TurmaDAO {
     public ArrayList<Turma> buscarPorDisciplina(int idDisciplina) {
         String sql = SQL_BASE + " WHERE t.id_disciplina = ?";
         ArrayList<Turma> lista = new ArrayList<>();
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (PreparedStatement ps = DatabaseUtils.getConnection().prepareStatement(sql)) {
             ps.setInt(1, idDisciplina);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) lista.add(mapear(rs));
@@ -141,7 +135,7 @@ public class TurmaDAO {
 
     public ArrayList<Turma> listarTodas() {
         ArrayList<Turma> lista = new ArrayList<>();
-        try (PreparedStatement ps = connection.prepareStatement(SQL_BASE)) {
+        try (PreparedStatement ps = DatabaseUtils.getConnection().prepareStatement(SQL_BASE)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) lista.add(mapear(rs));
         } catch (SQLException e) {

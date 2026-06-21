@@ -2,18 +2,12 @@ package br.edu.ufersa.universidade.model.dao;
 
 import br.edu.ufersa.universidade.model.entities.Indice;
 import br.edu.ufersa.universidade.model.entities.Turma;
+import br.edu.ufersa.universidade.utils.DatabaseUtils;
+
 import java.sql.*;
 import java.util.ArrayList;
 
 public class IndiceDAO {
-
-    private final Connection connection;
-
-    public IndiceDAO(Connection connection) {
-        this.connection = connection;
-    }
-
-
     // BUSCAR TODOS OS ÍNDICES DE UM ALUNO
     // Recebe a matrícula e retorna todos os índices do aluno
 
@@ -21,7 +15,7 @@ public class IndiceDAO {
         ArrayList<Indice> lista = new ArrayList<>();
 
         String sql = "SELECT * FROM indice WHERE matricula_aluno = ?";
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setLong(1, matricula);
         ResultSet rs = stmt.executeQuery();
 
@@ -55,7 +49,7 @@ public class IndiceDAO {
 
     public Indice buscarPorId(int idIndice) throws SQLException {
         String sql = "SELECT * FROM indice WHERE id_indice = ?";
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setInt(1, idIndice);
         ResultSet rs = stmt.executeQuery();
 
@@ -88,7 +82,7 @@ public class IndiceDAO {
         String sql = "INSERT INTO indice (matricula_aluno, id_turma, nota1, nota2, nota3, faltas, estado) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setLong(1, matriculaAluno);
         stmt.setInt(2, indice.getTurma().getId());
         stmt.setInt(3, indice.getNota1());
@@ -107,7 +101,7 @@ public class IndiceDAO {
         String sql = "UPDATE indice SET nota1 = ?, nota2 = ?, nota3 = ?, faltas = ?, estado = ? " +
                 "WHERE id_indice = ?";
 
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setInt(1, indice.getNota1());
         stmt.setInt(2, indice.getNota2());
         stmt.setInt(3, indice.getNota3());
@@ -123,7 +117,7 @@ public class IndiceDAO {
 
     public void deletar(int idIndice) throws SQLException {
         String sql = "DELETE FROM indice WHERE id_indice = ?";
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setInt(1, idIndice);
         stmt.executeUpdate();
         stmt.close();
@@ -132,7 +126,7 @@ public class IndiceDAO {
     public ArrayList<Indice> buscarPorTurma(int idTurma) throws SQLException {
         ArrayList<Indice> lista = new ArrayList<>();
         String sql = "SELECT * FROM indice WHERE id_turma = ?";
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setInt(1, idTurma);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
