@@ -1,3 +1,5 @@
+package br.edu.ufersa.universidade;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,10 +9,10 @@ import br.edu.ufersa.universidade.utils.DatabaseUtils;
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DatabaseUtils.getConnection();
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/universidade", "root", "admin");
         var rs = con.getMetaData().getTables("universidade", null, null, null);
         if (!rs.next())
-            DatabaseUtils.runMigration("/schema.sql");
+            DatabaseUtils.runMigration(con, "/schema.sql");
         System.out.println("Connected!");
         con.close();
     }

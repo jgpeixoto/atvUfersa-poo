@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="br.edu.ufersa.universidade.controller.GerenteAdcTurmaController"
+            prefWidth="1440" prefHeight="1024"
+            styleClass="app-root"
+            stylesheets="@../css/styles.css">
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <left>
+        <VBox prefWidth="220" styleClass="sidebar" alignment="TOP_CENTER" spacing="0">
+
+            <VBox alignment="CENTER" styleClass="sidebar-logo-box">
+                <padding>
+                    <Insets top="30" bottom="30" left="0" right="0"/>
+                </padding>
+                <ImageView fitWidth="120" fitHeight="120" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/logo.png"/>
+                    </image>
+                </ImageView>
+            </VBox>
+
+            <VBox styleClass="sidebar-menu" spacing="0">
+                <VBox styleClass="sidebar-item" alignment="CENTER" spacing="8">
+                    <padding>
+                        <Insets top="18" bottom="18" left="0" right="0"/>
+                    </padding>
+                    <Label text="Disciplina" styleClass="sidebar-item-label"/>
+                    <Label text="🗓" styleClass="sidebar-item-icon"/>
+                </VBox>
+
+                <VBox styleClass="sidebar-item, sidebar-item-active" alignment="CENTER" spacing="8">
+                    <padding>
+                        <Insets top="18" bottom="18" left="0" right="0"/>
+                    </padding>
+                    <Label text="Turmas" styleClass="sidebar-item-label"/>
+                    <Label text="👥" styleClass="sidebar-item-icon"/>
+                </VBox>
+
+                <VBox styleClass="sidebar-item" alignment="CENTER" spacing="8">
+                    <padding>
+                        <Insets top="18" bottom="18" left="0" right="0"/>
+                    </padding>
+                    <Label text="Professores" styleClass="sidebar-item-label"/>
+                    <Label text="🎒" styleClass="sidebar-item-icon"/>
+                </VBox>
+
+                <VBox styleClass="sidebar-item" alignment="CENTER" spacing="8">
+                    <padding>
+                        <Insets top="18" bottom="18" left="0" right="0"/>
+                    </padding>
+                    <Label text="Alunos" styleClass="sidebar-item-label"/>
+                    <Label text="👤" styleClass="sidebar-item-icon"/>
+                </VBox>
+            </VBox>
+
+        </VBox>
+    </left>
+
+    <!-- ===================== CONTEÚDO ===================== -->
+    <center>
+        <VBox styleClass="app-content">
+
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" styleClass="app-header">
+                <padding>
+                    <Insets top="20" right="40" bottom="20" left="40"/>
+                </padding>
+                <Label text="Gerente" styleClass="app-header-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Sair  ➜" fx:id="btnSair" onAction="#sair" styleClass="btn-sair"/>
+            </HBox>
+
+            <!-- Corpo -->
+            <StackPane styleClass="app-body" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets top="30" right="40" bottom="30" left="40"/>
+                </padding>
+
+                <!-- Card do formulário -->
+                <VBox styleClass="form-card" spacing="18" maxWidth="1000" maxHeight="-Infinity"
+                      StackPane.alignment="TOP_LEFT">
+                    <padding>
+                        <Insets top="35" right="45" bottom="35" left="45"/>
+                    </padding>
+
+                    <!-- Título + botão Adicionar participantes -->
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Nova turma" styleClass="form-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Adicionar participantes" fx:id="btnAdicionarParticipantes"
+                                onAction="#abrirParticipantes" styleClass="btn-adicionar-participantes"/>
+                    </HBox>
+
+                    <VBox spacing="6">
+                        <Label text="Disciplina" styleClass="form-label"/>
+                        <TextField fx:id="campoDisciplina" styleClass="form-input"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Horário" styleClass="form-label"/>
+                        <TextField fx:id="campoHorario" styleClass="form-input"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Alunos" styleClass="form-label"/>
+                        <TextField fx:id="campoAlunos" styleClass="form-input"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Local" styleClass="form-label"/>
+                        <TextField fx:id="campoLocal" styleClass="form-input"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Status (Ativa ou finalizada)" styleClass="form-label"/>
+                        <ComboBox fx:id="comboStatus" promptText="Selecione" styleClass="form-input-combo" prefWidth="320">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Ativa"/>
+                                    <String fx:value="Finalizada"/>
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                    </VBox>
+
+                    <!-- Botões -->
+                    <HBox spacing="15" alignment="CENTER_RIGHT">
+                        <padding>
+                            <Insets top="25" right="0" bottom="0" left="0"/>
+                        </padding>
+                        <Button text="Cancelar" fx:id="btnCancelar" onAction="#cancelar" styleClass="btn-cancelar"/>
+                        <Button text="Salvar" fx:id="btnSalvar" onAction="#salvarTurma" styleClass="btn-salvar"/>
+                    </HBox>
+
+                </VBox>
+
+            </StackPane>
+
+        </VBox>
+    </center>
+
+</BorderPane>

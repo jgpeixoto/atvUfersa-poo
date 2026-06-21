@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane styleClass="root-bg" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="br.edu.ufersa.universidade.controller.ProfessorTurmasController"
+            prefWidth="1100" prefHeight="740">
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <left>
+        <VBox styleClass="sidebar" alignment="TOP_CENTER" spacing="0">
+            <StackPane prefHeight="120">
+                <ImageView fitWidth="84" fitHeight="84" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/logo.png" />
+                    </image>
+                </ImageView>
+            </StackPane>
+
+            <VBox styleClass="sidebar-item-active" alignment="CENTER" spacing="4">
+                <Label text="Turmas" styleClass="sidebar-item-active" />
+                <Label text="🎓" style="-fx-font-size: 20px; -fx-text-fill: white;" />
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS" />
+        </VBox>
+    </left>
+
+    <!-- ===================== CONTEÚDO ===================== -->
+    <center>
+        <VBox spacing="16">
+            <padding><Insets top="20" right="24" bottom="20" left="24" /></padding>
+
+            <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="16">
+                <Label text="Professor" styleClass="topbar-subtitle" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label text="Turmas" styleClass="topbar-title" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button text="Sair  ➜" styleClass="btn-sair" onAction="#handleSair" />
+            </HBox>
+
+            <VBox styleClass="card" spacing="12" VBox.vgrow="ALWAYS">
+
+                <ComboBox fx:id="comboTurma" promptText="Selecione uma turma ...." maxWidth="Infinity" />
+
+                <TableView fx:id="tableTurmas" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colTurma" text="Turma" prefWidth="160" />
+                        <TableColumn fx:id="colDisciplina" text="Disciplina" prefWidth="120" />
+                        <TableColumn fx:id="colCodigo" text="Código" prefWidth="100" />
+                        <TableColumn fx:id="colFrequencia" text="Frequência" prefWidth="120" />
+                        <TableColumn fx:id="colNotas" text="Notas" prefWidth="120" />
+                    </columns>
+                </TableView>
+
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

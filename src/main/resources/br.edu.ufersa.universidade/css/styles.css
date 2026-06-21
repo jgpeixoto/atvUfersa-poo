@@ -10,13 +10,13 @@
 
 /* ---------- Sidebar ---------- */
 .sidebar {
-    -fx-background-color: #16213e;
+    -fx-background-color: #1b2a4d;
     -fx-pref-width: 165;
     -fx-min-width: 165;
 }
 
 .logo-circle {
-    -fx-background-color: #1f2f55;
+    -fx-background-color: #24375f;
     -fx-background-radius: 50%;
     -fx-border-color: #4d6bb3;
     -fx-border-width: 2;
@@ -41,11 +41,11 @@
 }
 
 .sidebar-item:hover {
-    -fx-background-color: #1f2f55;
+    -fx-background-color: #24375f;
 }
 
 .sidebar-item-active {
-    -fx-background-color: #0d1730;
+    -fx-background-color: #10192e;
     -fx-text-fill: white;
     -fx-font-size: 12px;
     -fx-font-weight: bold;
@@ -592,4 +592,114 @@
 
 .btn-excluir-linha:hover {
     -fx-background-color: #E84444;
+}
+
+/* ===========================================================
+   TELAS DE FORMULÁRIO - ADICIONAR
+   (GerenteAdcDisciplinaView.fxml / -professor- / -aluno-)
+   =========================================================== */
+
+.form-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 18, 0, 0, 4);
+}
+
+.form-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1B2A52;
+}
+
+.form-label {
+    -fx-font-size: 15px;
+    -fx-text-fill: #333333;
+}
+
+.form-input {
+    -fx-background-color: #DCDCDC;
+    -fx-background-radius: 8;
+    -fx-padding: 12 16 12 16;
+    -fx-font-size: 15px;
+}
+
+.form-input:focused {
+    -fx-background-color: #D0D0D0;
+}
+
+/* Botão Cancelar (vermelho) */
+.btn-cancelar {
+    -fx-background-color: #D9534F;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 12 30 12 30;
+    -fx-cursor: hand;
+}
+
+.btn-cancelar:hover {
+    -fx-background-color: #E36561;
+}
+
+/* Botão Salvar (azul escuro) */
+.btn-salvar {
+    -fx-background-color: #2E4A6B;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 12 30 12 30;
+    -fx-cursor: hand;
+}
+
+.btn-salvar:hover {
+    -fx-background-color: #3A5C82;
+}
+
+/* ===========================================================
+   TELAS DE TURMA
+   (GerenteAdcTurmaView.fxml / GerentePartTurmaView.fxml)
+   =========================================================== */
+
+/* Botão "Adicionar participantes" no formulário de Nova turma */
+.btn-adicionar-participantes {
+    -fx-background-color: #2E4A6B;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 10 18 10 18;
+    -fx-cursor: hand;
+}
+
+.btn-adicionar-participantes:hover {
+    -fx-background-color: #3A5C82;
+}
+
+/* ComboBox de Status dentro do formulário (mesmo visual do form-input) */
+.form-input-combo {
+    -fx-background-color: #DCDCDC;
+    -fx-background-radius: 8;
+    -fx-font-size: 15px;
+}
+
+.form-input-combo .list-cell {
+    -fx-padding: 8 14 8 14;
+}
+
+/* Título de página solto (ex: "Participantes da turma") */
+.page-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1B2A52;
+}
+
+/* Campo "Disciplina:" somente leitura, no topo da tela de participantes */
+.form-input-readonly {
+    -fx-background-color: #DCDCDC;
+    -fx-background-radius: 8;
+    -fx-padding: 12 16 12 16;
+    -fx-font-size: 15px;
+    -fx-opacity: 1;
 }
