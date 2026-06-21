@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="br.edu.ufersa.universidade.controller.LoginController"
+           styleClass="login-root"
+           stylesheets="@../css/styles.css">
+
+    <VBox spacing="0">
+
+        <!-- ===================== HEADER ===================== -->
+        <HBox alignment="CENTER_LEFT" spacing="15" styleClass="login-header">
+            <padding>
+                <Insets top="15" right="30" bottom="15" left="30"/>
+            </padding>
+
+            <ImageView fitWidth="55" fitHeight="55" preserveRatio="true">
+                <image>
+                    <Image url="@../images/logo.png"/>
+                </image>
+            </ImageView>
+
+            <Label text="Faculdade Weitinho" styleClass="header-title"/>
+        </HBox>
+
+        <!-- ===================== CONTEÚDO ===================== -->
+        <StackPane styleClass="login-background" VBox.vgrow="ALWAYS">
+
+            <!-- Card central -->
+            <VBox alignment="CENTER" spacing="22" styleClass="login-card" maxWidth="520">
+                <padding>
+                    <Insets top="40" right="50" bottom="40" left="50"/>
+                </padding>
+
+                <!-- Título e subtítulo -->
+                <VBox alignment="CENTER" spacing="6">
+                    <Label text="Bem-vindo de volta!" styleClass="login-title"/>
+                    <Label text="Faça login para acessar sua conta" styleClass="login-subtitle"/>
+                </VBox>
+
+                <!-- Campo Usuário -->
+                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="input-field">
+                    <Label text="👤" styleClass="input-icon"/>
+                    <TextField fx:id="campoUsuario" promptText="Usuário" styleClass="input-text" HBox.hgrow="ALWAYS"/>
+                </HBox>
+
+                <!-- Campo Senha -->
+                <HBox alignment="CENTER_LEFT" spacing="12" styleClass="input-field">
+                    <Label text="🔒" styleClass="input-icon"/>
+                    <PasswordField fx:id="campoSenha" promptText="Senha" styleClass="input-text" HBox.hgrow="ALWAYS"/>
+                </HBox>
+
+                <!-- Seleção de perfil -->
+                <ComboBox fx:id="comboPerfil" promptText="Selecione o seu perfil de acesso"
+                          styleClass="input-combo" maxWidth="Infinity">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Professor"/>
+                            <String fx:value="Aluno"/>
+                            <String fx:value="Gerente"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <!-- Botão Entrar -->
+                <Button text="Entrar" fx:id="btnEntrar" onAction="#realizarLogin"
+                        styleClass="btn-entrar" maxWidth="Infinity"/>
+
+            </VBox>
+
+        </StackPane>
+
+    </VBox>
+
+</StackPane>
