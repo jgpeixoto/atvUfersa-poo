@@ -1,7 +1,7 @@
 /* =========================================================
    styles.css
    Folha de estilos compartilhada entre as telas de Aluno e
-   Professor, baseada no protótipo Figma "Weitinho".
+   Professor, baseada no protótipo Figma.
    ========================================================= */
 
 .root-bg {
@@ -655,4 +655,51 @@
 
 .btn-salvar:hover {
     -fx-background-color: #3A5C82;
+}
+
+/* ===========================================================
+   TELAS DE TURMA
+   (GerenteAdcTurmaView.fxml / GerentePartTurmaView.fxml)
+   =========================================================== */
+
+/* Botão "Adicionar participantes" no formulário de Nova turma */
+.btn-adicionar-participantes {
+    -fx-background-color: #2E4A6B;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 10 18 10 18;
+    -fx-cursor: hand;
+}
+
+.btn-adicionar-participantes:hover {
+    -fx-background-color: #3A5C82;
+}
+
+/* ComboBox de Status dentro do formulário (mesmo visual do form-input) */
+.form-input-combo {
+    -fx-background-color: #DCDCDC;
+    -fx-background-radius: 8;
+    -fx-font-size: 15px;
+}
+
+.form-input-combo .list-cell {
+    -fx-padding: 8 14 8 14;
+}
+
+/* Título de página solto (ex: "Participantes da turma") */
+.page-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1B2A52;
+}
+
+/* Campo "Disciplina:" somente leitura, no topo da tela de participantes */
+.form-input-readonly {
+    -fx-background-color: #DCDCDC;
+    -fx-background-radius: 8;
+    -fx-padding: 12 16 12 16;
+    -fx-font-size: 15px;
+    -fx-opacity: 1;
 }
