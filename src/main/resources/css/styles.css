@@ -10,13 +10,13 @@
 
 /* ---------- Sidebar ---------- */
 .sidebar {
-    -fx-background-color: #16213e;
+    -fx-background-color: #1b2a4d;
     -fx-pref-width: 165;
     -fx-min-width: 165;
 }
 
 .logo-circle {
-    -fx-background-color: #1f2f55;
+    -fx-background-color: #24375f;
     -fx-background-radius: 50%;
     -fx-border-color: #4d6bb3;
     -fx-border-width: 2;
@@ -41,11 +41,11 @@
 }
 
 .sidebar-item:hover {
-    -fx-background-color: #1f2f55;
+    -fx-background-color: #24375f;
 }
 
 .sidebar-item-active {
-    -fx-background-color: #0d1730;
+    -fx-background-color: #10192e;
     -fx-text-fill: white;
     -fx-font-size: 12px;
     -fx-font-weight: bold;
