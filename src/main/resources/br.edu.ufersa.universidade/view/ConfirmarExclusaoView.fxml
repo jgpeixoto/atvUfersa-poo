@@ -7,35 +7,29 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="br.edu.ufersa.universidade.controller.ConfirmarExclusaoController"
-      styleClass="confirm-popup"
-      prefWidth="500" maxWidth="500"
-      spacing="20"
-      stylesheets="@../css/styles.css">
+<VBox maxWidth="500" prefWidth="500" spacing="20" styleClass="confirm-popup" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.universidade.controller.ConfirmarExclusaoController">
 
     <padding>
-        <Insets top="25" right="30" bottom="25" left="30"/>
+        <Insets bottom="25" left="30" right="30" top="25" />
     </padding>
 
     <!-- Cabeçalho: título + botão fechar (X) -->
     <HBox alignment="CENTER_LEFT">
-        <Label text="Confirmar exclusão" styleClass="confirm-title"/>
-        <Region HBox.hgrow="ALWAYS"/>
-        <Button text="✕" fx:id="btnFechar" onAction="#fechar" styleClass="btn-fechar-popup"/>
+        <Label styleClass="confirm-title" text="Confirmar exclusão" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button onAction="#fechar" styleClass="btn-fechar-popup" text="✕" />
     </HBox>
 
     <!-- Ícone de alerta + mensagem (texto fixo) -->
-    <HBox spacing="15" alignment="CENTER_LEFT">
-        <Label text="⚠" styleClass="confirm-icon"/>
-        <Label text="Tem certeza que deseja excluir este item?" styleClass="confirm-message" wrapText="true"/>
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <Label styleClass="confirm-icon" text="⚠" />
+        <Label styleClass="confirm-message" text="Tem certeza que deseja excluir este item?" wrapText="true" />
     </HBox>
 
     <!-- Botões -->
-    <HBox spacing="15" alignment="CENTER_LEFT">
-        <Button text="Cancelar" fx:id="btnCancelar" onAction="#cancelar" styleClass="btn-cancelar-popup"/>
-        <Button text="Excluir  🗑" fx:id="btnExcluir" onAction="#confirmarExclusao" styleClass="btn-excluir-popup"/>
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <Button onAction="#cancelar" styleClass="btn-cancelar-popup" text="Cancelar" />
+        <Button onAction="#confirmarExclusao" styleClass="btn-excluir-popup" text="Excluir  🗑" />
     </HBox>
 
 </VBox>

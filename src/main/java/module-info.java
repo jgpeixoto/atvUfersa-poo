@@ -7,4 +7,5 @@ module Universidade {
     exports br.edu.ufersa.universidade.view;
     opens br.edu.ufersa.universidade.controller to javafx.fxml, javafx.graphics;
     exports br.edu.ufersa.universidade.controller;
+    exports br.edu.ufersa.universidade.common;
 }

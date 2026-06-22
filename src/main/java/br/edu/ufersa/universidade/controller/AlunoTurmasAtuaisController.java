@@ -2,6 +2,7 @@ package br.edu.ufersa.universidade.controller;
 
 import br.edu.ufersa.universidade.model.entities.Indice;
 import br.edu.ufersa.universidade.model.entities.Turma;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
@@ -14,11 +15,11 @@ public class AlunoTurmasAtuaisController {
     @FXML private TableView<Indice> tableNotas;
     @FXML private VBox boxFrequencia;
 
-    @FXML public void handleAbrirTurmasConcluidas() {
+    @FXML public void handleAbrirTurmasConcluidas(ActionEvent e) {
 
     }
 
-    @FXML public void handleSair() {
+    @FXML public void handleSair(ActionEvent e) {
 
     }
 }
