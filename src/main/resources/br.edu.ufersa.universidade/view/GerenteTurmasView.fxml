@@ -108,7 +108,8 @@
                         <TableColumn text="Alunos" prefWidth="100"/>
                         <TableColumn text="Local" prefWidth="180"/>
                         <TableColumn text="Status" prefWidth="140"/>
-                        <TableColumn text="Ajustes" prefWidth="140"/>
+                        <TableColumn text="Editar" prefWidth="100"/>
+                        <TableColumn text="Excluir" prefWidth="100"/>
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>

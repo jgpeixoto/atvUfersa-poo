@@ -121,6 +121,8 @@
                         <columns>
                             <TableColumn text="Professor" prefWidth="500"/>
                             <TableColumn text="CPF" prefWidth="300"/>
+                            <TableColumn text="Editar" prefWidth="100"/>
+                            <TableColumn text="Excluir" prefWidth="100"/>
                         </columns>
                         <columnResizePolicy>
                             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
@@ -138,6 +140,8 @@
                         <columns>
                             <TableColumn text="Aluno" prefWidth="500"/>
                             <TableColumn text="Matrícula" prefWidth="300"/>
+                            <TableColumn text="Editar" prefWidth="100"/>
+                            <TableColumn text="Excluir" prefWidth="100"/>
                         </columns>
                         <columnResizePolicy>
                             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>

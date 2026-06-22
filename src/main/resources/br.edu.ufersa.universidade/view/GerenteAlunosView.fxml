@@ -99,7 +99,8 @@
                         <TableColumn prefWidth="180" text="Nome" />
                         <TableColumn prefWidth="280" text="Endereço" />
                         <TableColumn prefWidth="160" text="Matrícula" />
-                        <TableColumn prefWidth="140" text="Ajustes" />
+                        <TableColumn text="Editar" prefWidth="100"/>
+                        <TableColumn text="Excluir" prefWidth="100"/>
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

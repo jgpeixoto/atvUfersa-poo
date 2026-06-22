@@ -107,7 +107,8 @@
                         <TableColumn text="Endereço" prefWidth="280"/>
                         <TableColumn text="CPF" prefWidth="160"/>
                         <TableColumn text="Turmas" prefWidth="200"/>
-                        <TableColumn text="Ajustes" prefWidth="140"/>
+                        <TableColumn text="Editar" prefWidth="100"/>
+                        <TableColumn text="Excluir" prefWidth="100"/>
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
