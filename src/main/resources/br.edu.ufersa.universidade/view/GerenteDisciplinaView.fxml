@@ -103,9 +103,9 @@
                 <!-- Tabela -->
                 <TableView fx:id="tabelaDisciplinas" styleClass="app-table" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colNome" text="Nome" prefWidth="300"/>
-                        <TableColumn fx:id="colCodigo" text="Código" prefWidth="300"/>
-                        <TableColumn fx:id="colAjustes" text="Ajustes" prefWidth="140"/>
+                        <TableColumn text="Nome" prefWidth="300"/>
+                        <TableColumn text="Código" prefWidth="300"/>
+                        <TableColumn text="Ajustes" prefWidth="140"/>
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>

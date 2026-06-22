@@ -64,10 +64,10 @@
 
                 <TableView fx:id="tableTurmasConcluidas" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colDisciplina" prefWidth="357.9999580383301" text="Disciplina" />
-                        <TableColumn fx:id="colHorario" prefWidth="158.00009155273438" text="Horário" />
-                        <TableColumn fx:id="colLocal" prefWidth="255.33331298828125" text="Local" />
-                        <TableColumn fx:id="colStatus" prefWidth="263.33331298828125" text="Status" />
+                        <TableColumn prefWidth="357.9999580383301" text="Disciplina" />
+                        <TableColumn prefWidth="158.00009155273438" text="Horário" />
+                        <TableColumn prefWidth="255.33331298828125" text="Local" />
+                        <TableColumn prefWidth="263.33331298828125" text="Status" />
                     </columns>
                 </TableView>
 

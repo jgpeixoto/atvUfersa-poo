@@ -69,10 +69,10 @@
                         <Label styleClass="card-title" text="Minhas Turmas" />
                         <TableView fx:id="tableTurmas" prefHeight="190">
                             <columns>
-                                <TableColumn fx:id="colDisciplina" prefWidth="140" text="Disciplina" />
-                                <TableColumn fx:id="colProfessor" prefWidth="120" text="Professor" />
-                                <TableColumn fx:id="colHorario" prefWidth="100" text="Horário" />
-                                <TableColumn fx:id="colStatusTurma" prefWidth="100" text="Status" />
+                                <TableColumn prefWidth="140" text="Disciplina" />
+                                <TableColumn prefWidth="120" text="Professor" />
+                                <TableColumn prefWidth="100" text="Horário" />
+                                <TableColumn prefWidth="100" text="Status" />
                             </columns>
                         </TableView>
                     </VBox>
@@ -81,11 +81,11 @@
                         <Label styleClass="card-title" text="Notas" />
                         <TableView fx:id="tableNotas" prefHeight="190">
                             <columns>
-                                <TableColumn fx:id="colDisciplinaNota" prefWidth="140" text="Disciplina" />
-                                <TableColumn fx:id="colP1" prefWidth="80" text="P1" />
-                                <TableColumn fx:id="colP2" prefWidth="80" text="P2" />
-                                <TableColumn fx:id="colP3" prefWidth="80" text="P3" />
-                                <TableColumn fx:id="colMedia" prefWidth="90" text="Média" />
+                                <TableColumn prefWidth="140" text="Disciplina" />
+                                <TableColumn prefWidth="80" text="P1" />
+                                <TableColumn prefWidth="80" text="P2" />
+                                <TableColumn prefWidth="80" text="P3" />
+                                <TableColumn prefWidth="90" text="Média" />
                             </columns>
                         </TableView>
                     </VBox>

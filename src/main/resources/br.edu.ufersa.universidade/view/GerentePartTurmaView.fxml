@@ -119,8 +119,8 @@
 
                     <TableView fx:id="tabelaProfessor" styleClass="app-table" prefHeight="90">
                         <columns>
-                            <TableColumn fx:id="colProfessorNome" text="Professor" prefWidth="500"/>
-                            <TableColumn fx:id="colProfessorCpf" text="CPF" prefWidth="300"/>
+                            <TableColumn text="Professor" prefWidth="500"/>
+                            <TableColumn text="CPF" prefWidth="300"/>
                         </columns>
                         <columnResizePolicy>
                             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
@@ -136,8 +136,8 @@
 
                     <TableView fx:id="tabelaAlunos" styleClass="app-table" prefHeight="160">
                         <columns>
-                            <TableColumn fx:id="colAlunoNome" text="Aluno" prefWidth="500"/>
-                            <TableColumn fx:id="colAlunoMatricula" text="Matrícula" prefWidth="300"/>
+                            <TableColumn text="Aluno" prefWidth="500"/>
+                            <TableColumn text="Matrícula" prefWidth="300"/>
                         </columns>
                         <columnResizePolicy>
                             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>

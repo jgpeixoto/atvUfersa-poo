@@ -1,5 +1,7 @@
 package br.edu.ufersa.universidade.controller;
 
+import br.edu.ufersa.universidade.utils.WindowUtils;
+import br.edu.ufersa.universidade.view.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,19 +15,19 @@ public class BaseGerenteController {
     @FXML private VBox btnAlunos;
 
     @FXML public void sair(ActionEvent e) {
-
+        WindowUtils.SwitchToWindow(WelcomeView.class, e);
     }
 
-    @FXML public void abrirDisciplina(ActionEvent e) {
-
+    @FXML public void abrirDisciplina() {
+        WindowUtils.SwitchToWindow(GerenteDisciplinaView.class, btnDisciplina);
     }
-    @FXML public void abrirTurmas(ActionEvent e) {
-
+    @FXML public void abrirTurmas() {
+        WindowUtils.SwitchToWindow(GerenteTurmasView.class, btnTurmas);
     }
-    @FXML public void abrirProfessores(ActionEvent e) {
-
+    @FXML public void abrirProfessores() {
+        WindowUtils.SwitchToWindow(GerenteProfessoresView.class, btnProfessores);
     }
-    @FXML public void abrirAlunos(ActionEvent e) {
-
+    @FXML public void abrirAlunos() {
+        WindowUtils.SwitchToWindow(GerenteAlunosView.class, btnAlunos);
     }
 }

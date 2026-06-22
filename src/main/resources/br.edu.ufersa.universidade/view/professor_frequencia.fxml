@@ -65,9 +65,9 @@
 
                 <TableView fx:id="tableFrequencia" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colNome" prefWidth="537.9999885559082" text="Nome" />
-                        <TableColumn fx:id="colMatricula" prefWidth="304.666748046875" text="Matrícula" />
-                        <TableColumn fx:id="colFaltas" prefWidth="190.66668701171875" text="Faltas" />
+                        <TableColumn prefWidth="537.9999885559082" text="Nome" />
+                        <TableColumn prefWidth="304.666748046875" text="Matrícula" />
+                        <TableColumn prefWidth="190.66668701171875" text="Faltas" />
                     </columns>
                 </TableView>
             </VBox>

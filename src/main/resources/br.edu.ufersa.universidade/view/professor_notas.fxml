@@ -63,12 +63,12 @@
 
                 <TableView fx:id="tableNotas" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colNome" prefWidth="261.99997329711914" text="Nome" />
-                        <TableColumn fx:id="colP1" minWidth="0.0" prefWidth="83.99996948242188" text="P1" />
-                        <TableColumn fx:id="colP2" prefWidth="86.00006103515625" text="P2" />
-                        <TableColumn fx:id="colP3" prefWidth="92.66671752929688" text="P3" />
-                        <TableColumn fx:id="colMedia" prefWidth="174.0" text="Média" />
-                        <TableColumn fx:id="colStatus" prefWidth="337.333251953125" text="Status" />
+                        <TableColumn prefWidth="261.99997329711914" text="Nome" />
+                        <TableColumn minWidth="0.0" prefWidth="83.99996948242188" text="P1" />
+                        <TableColumn prefWidth="86.00006103515625" text="P2" />
+                        <TableColumn prefWidth="92.66671752929688" text="P3" />
+                        <TableColumn prefWidth="174.0" text="Média" />
+                        <TableColumn prefWidth="337.333251953125" text="Status" />
                     </columns>
                 </TableView>
             </VBox>

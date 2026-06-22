@@ -54,11 +54,11 @@
 
                 <TableView fx:id="tableTurmas" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colTurma" prefWidth="101.33330154418945" text="ID" />
-                        <TableColumn fx:id="colDisciplina" prefWidth="384.0000457763672" text="Disciplina" />
-                        <TableColumn fx:id="colCodigo" prefWidth="210.66665649414062" text="Código" />
-                        <TableColumn fx:id="colFrequencia" prefWidth="149.3333740234375" text="Frequência" />
-                        <TableColumn fx:id="colNotas" prefWidth="187.33319091796875" text="Notas" />
+                        <TableColumn prefWidth="101.33330154418945" text="ID" />
+                        <TableColumn prefWidth="384.0000457763672" text="Disciplina" />
+                        <TableColumn prefWidth="210.66665649414062" text="Código" />
+                        <TableColumn prefWidth="149.3333740234375" text="Frequência" />
+                        <TableColumn prefWidth="187.33319091796875" text="Notas" />
                     </columns>
                 </TableView>
 

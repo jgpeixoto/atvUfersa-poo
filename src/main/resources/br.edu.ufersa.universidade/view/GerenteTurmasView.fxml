@@ -103,12 +103,12 @@
                 <!-- Tabela -->
                 <TableView fx:id="tabelaTurmas" styleClass="app-table" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colDisciplina" text="Disciplina" prefWidth="200"/>
-                        <TableColumn fx:id="colHorario" text="Horário" prefWidth="160"/>
-                        <TableColumn fx:id="colAlunos" text="Alunos" prefWidth="100"/>
-                        <TableColumn fx:id="colLocal" text="Local" prefWidth="180"/>
-                        <TableColumn fx:id="colStatus" text="Status" prefWidth="140"/>
-                        <TableColumn fx:id="colAjustes" text="Ajustes" prefWidth="140"/>
+                        <TableColumn text="Disciplina" prefWidth="200"/>
+                        <TableColumn text="Horário" prefWidth="160"/>
+                        <TableColumn text="Alunos" prefWidth="100"/>
+                        <TableColumn text="Local" prefWidth="180"/>
+                        <TableColumn text="Status" prefWidth="140"/>
+                        <TableColumn text="Ajustes" prefWidth="140"/>
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
