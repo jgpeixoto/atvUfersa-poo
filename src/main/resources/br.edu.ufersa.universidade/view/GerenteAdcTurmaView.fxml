@@ -15,59 +15,54 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="br.edu.ufersa.universidade.controller.GerenteAdcTurmaController"
-            prefWidth="1440" prefHeight="1024"
-            styleClass="app-root"
-            stylesheets="@../css/styles.css">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="1280.0" prefHeight="650.0" prefWidth="1280.0" styleClass="app-root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.universidade.controller.GerenteAdcTurmaController">
 
     <!-- ===================== SIDEBAR ===================== -->
     <left>
-        <VBox prefWidth="220" styleClass="sidebar" alignment="TOP_CENTER" spacing="0">
+        <VBox alignment="TOP_CENTER" prefWidth="220" spacing="0" styleClass="sidebar">
 
             <VBox alignment="CENTER" styleClass="sidebar-logo-box">
                 <padding>
-                    <Insets top="30" bottom="30" left="0" right="0"/>
+                    <Insets bottom="30" left="0" right="0" top="30" />
                 </padding>
-                <ImageView fitWidth="120" fitHeight="120" preserveRatio="true">
+                <ImageView fitHeight="120" fitWidth="120" preserveRatio="true">
                     <image>
-                        <Image url="@../images/logo.png"/>
+                        <Image url="@../images/logo.png" />
                     </image>
                 </ImageView>
             </VBox>
 
-            <VBox styleClass="sidebar-menu" spacing="0">
-                <VBox fx:id="btnDisciplina" styleClass="sidebar-item" alignment="CENTER" spacing="8" onMouseClicked="#abrirDisciplina">
+            <VBox spacing="0" styleClass="sidebar-menu">
+                <VBox fx:id="btnDisciplina" alignment="CENTER" onMouseClicked="#abrirDisciplina" spacing="8" styleClass="sidebar-item">
                     <padding>
-                        <Insets top="18" bottom="18" left="0" right="0"/>
+                        <Insets bottom="18" left="0" right="0" top="18" />
                     </padding>
-                    <Label text="Disciplina" styleClass="sidebar-item-label"/>
-                    <Label text="🗓" styleClass="sidebar-item-icon"/>
+                    <Label styleClass="sidebar-item-label" text="Disciplina" />
+                    <Label styleClass="sidebar-item-icon" text="🗓" />
                 </VBox>
 
-                <VBox fx:id="btnTurmas" styleClass="sidebar-item, sidebar-item-active" alignment="CENTER" spacing="8" onMouseClicked="#abrirTurmas">
+                <VBox fx:id="btnTurmas" alignment="CENTER" onMouseClicked="#abrirTurmas" spacing="8" styleClass="sidebar-item, sidebar-item-active">
                     <padding>
-                        <Insets top="18" bottom="18" left="0" right="0"/>
+                        <Insets bottom="18" left="0" right="0" top="18" />
                     </padding>
-                    <Label text="Turmas" styleClass="sidebar-item-label"/>
-                    <Label text="👥" styleClass="sidebar-item-icon"/>
+                    <Label styleClass="sidebar-item-label" text="Turmas" />
+                    <Label styleClass="sidebar-item-icon" text="👥" />
                 </VBox>
 
-                <VBox fx:id="btnProfessores" styleClass="sidebar-item" alignment="CENTER" spacing="8" onMouseClicked="#abrirProfessores">
+                <VBox fx:id="btnProfessores" alignment="CENTER" onMouseClicked="#abrirProfessores" spacing="8" styleClass="sidebar-item">
                     <padding>
-                        <Insets top="18" bottom="18" left="0" right="0"/>
+                        <Insets bottom="18" left="0" right="0" top="18" />
                     </padding>
-                    <Label text="Professores" styleClass="sidebar-item-label"/>
-                    <Label text="🎒" styleClass="sidebar-item-icon"/>
+                    <Label styleClass="sidebar-item-label" text="Professores" />
+                    <Label styleClass="sidebar-item-icon" text="🎒" />
                 </VBox>
 
-                <VBox fx:id="btnAlunos" styleClass="sidebar-item" alignment="CENTER" spacing="8" onMouseClicked="#abrirAlunos">
+                <VBox fx:id="btnAlunos" alignment="CENTER" onMouseClicked="#abrirAlunos" spacing="8" styleClass="sidebar-item">
                     <padding>
-                        <Insets top="18" bottom="18" left="0" right="0"/>
+                        <Insets bottom="18" left="0" right="0" top="18" />
                     </padding>
-                    <Label text="Alunos" styleClass="sidebar-item-label"/>
-                    <Label text="👤" styleClass="sidebar-item-icon"/>
+                    <Label styleClass="sidebar-item-label" text="Alunos" />
+                    <Label styleClass="sidebar-item-icon" text="👤" />
                 </VBox>
             </VBox>
 
@@ -81,73 +76,68 @@
             <!-- Header -->
             <HBox alignment="CENTER_LEFT" styleClass="app-header">
                 <padding>
-                    <Insets top="20" right="40" bottom="20" left="40"/>
+                    <Insets bottom="20" left="40" right="40" top="20" />
                 </padding>
-                <Label text="Gerente" styleClass="app-header-title"/>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Button text="Sair  ➜" fx:id="btnSair" onAction="#sair" styleClass="btn-sair"/>
+                <Label styleClass="app-header-title" text="Gerente" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="btnSair" onAction="#sair" styleClass="btn-sair" text="Sair  ➜" />
             </HBox>
 
             <!-- Corpo -->
             <StackPane styleClass="app-body" VBox.vgrow="ALWAYS">
                 <padding>
-                    <Insets top="30" right="40" bottom="30" left="40"/>
+                    <Insets bottom="30" left="40" right="40" top="30" />
                 </padding>
 
                 <!-- Card do formulário -->
-                <VBox styleClass="form-card" spacing="18" maxWidth="1000" maxHeight="-Infinity"
-                      StackPane.alignment="TOP_LEFT">
+                <VBox maxHeight="-Infinity" maxWidth="1000" spacing="18" styleClass="form-card" StackPane.alignment="TOP_LEFT">
                     <padding>
-                        <Insets top="35" right="45" bottom="35" left="45"/>
+                        <Insets bottom="35" left="45" right="45" top="35" />
                     </padding>
 
                     <!-- Título + botão Adicionar participantes -->
                     <HBox alignment="CENTER_LEFT">
-                        <Label text="Nova turma" styleClass="form-title"/>
-                        <Region HBox.hgrow="ALWAYS"/>
-                        <Button text="Adicionar participantes" fx:id="btnAdicionarParticipantes"
-                                onAction="#abrirParticipantes" styleClass="btn-adicionar-participantes"/>
+                        <Label styleClass="form-title" text="Nova turma" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnAdicionarParticipantes" onAction="#abrirParticipantes" styleClass="btn-adicionar-participantes" text="Adicionar participantes" />
                     </HBox>
 
                     <VBox spacing="6">
-                        <Label text="Disciplina" styleClass="form-label"/>
-                        <TextField fx:id="campoDisciplina" styleClass="form-input"/>
+                        <Label styleClass="form-label" text="Disciplina" />
+                        <TextField fx:id="campoDisciplina" styleClass="form-input" />
                     </VBox>
 
                     <VBox spacing="6">
-                        <Label text="Horário" styleClass="form-label"/>
-                        <TextField fx:id="campoHorario" styleClass="form-input"/>
+                        <Label styleClass="form-label" text="Horário" />
+                        <TextField fx:id="campoHorario" styleClass="form-input" />
+                    </VBox>
+
+                    <VBox spacing="6" />
+
+                    <VBox spacing="6">
+                        <Label styleClass="form-label" text="Local" />
+                        <TextField fx:id="campoLocal" styleClass="form-input" />
                     </VBox>
 
                     <VBox spacing="6">
-                        <Label text="Alunos" styleClass="form-label"/>
-                        <TextField fx:id="campoAlunos" styleClass="form-input"/>
-                    </VBox>
-
-                    <VBox spacing="6">
-                        <Label text="Local" styleClass="form-label"/>
-                        <TextField fx:id="campoLocal" styleClass="form-input"/>
-                    </VBox>
-
-                    <VBox spacing="6">
-                        <Label text="Status (Ativa ou finalizada)" styleClass="form-label"/>
-                        <ComboBox fx:id="comboStatus" promptText="Selecione" styleClass="form-input-combo" prefWidth="320">
+                        <Label styleClass="form-label" text="Status (Ativa ou finalizada)" />
+                        <ComboBox fx:id="comboStatus" prefWidth="320" promptText="Selecione" styleClass="form-input-combo">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
-                                    <String fx:value="Ativa"/>
-                                    <String fx:value="Finalizada"/>
+                                    <String fx:value="Ativa" />
+                                    <String fx:value="Finalizada" />
                                 </FXCollections>
                             </items>
                         </ComboBox>
                     </VBox>
 
                     <!-- Botões -->
-                    <HBox spacing="15" alignment="CENTER_RIGHT">
+                    <HBox alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="909.0" spacing="15">
                         <padding>
-                            <Insets top="25" right="0" bottom="0" left="0"/>
+                            <Insets bottom="0" left="0" right="0" top="25" />
                         </padding>
-                        <Button text="Cancelar" fx:id="btnCancelar" onAction="#cancelar" styleClass="btn-cancelar"/>
-                        <Button text="Salvar" fx:id="btnSalvar" onAction="#salvarTurma" styleClass="btn-salvar"/>
+                        <Button fx:id="btnCancelar" onAction="#cancelar" styleClass="btn-cancelar" text="Cancelar" />
+                        <Button fx:id="btnSalvar" onAction="#salvarTurma" styleClass="btn-salvar" text="Salvar" />
                     </HBox>
 
                 </VBox>

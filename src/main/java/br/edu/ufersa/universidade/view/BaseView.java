@@ -33,15 +33,13 @@ public abstract class BaseView extends Application {
         primaryStage.setScene(new Scene(root));
         this.addLogo(primaryStage);
         this.onStart(primaryStage, root, loader);
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent t) {
-                try {
-                    DatabaseUtils.getConnection().close();
-                } catch (SQLException ignored) {}
-                Platform.exit();
-                System.exit(0);
-            }
+        primaryStage.setOnCloseRequest((WindowEvent t) ->
+        {
+            try {
+                DatabaseUtils.getConnection().close();
+            } catch (SQLException ignored) {}
+            Platform.exit();
+            System.exit(0);
         });
         primaryStage.show();
     }

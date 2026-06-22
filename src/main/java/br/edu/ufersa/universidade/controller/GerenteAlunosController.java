@@ -11,8 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class GerenteAlunosController {
-    @FXML private Button btnSair;
+public class GerenteAlunosController extends BaseGerenteController {
     @FXML private TextField campoBusca;
     @FXML private Button btnAdicionar;
     @FXML private TableView<Aluno> tabelaAlunos;
@@ -21,9 +20,6 @@ public class GerenteAlunosController {
     @FXML private TableColumn<Aluno, SimpleLongProperty> colMatricula;
     @FXML private TableColumn colAjustes;
 
-    @FXML public void sair(ActionEvent e) {
-
-    }
     @FXML public void adicionarAluno(ActionEvent e) {
 
     }

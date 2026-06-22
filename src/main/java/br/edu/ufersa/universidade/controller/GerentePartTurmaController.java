@@ -11,8 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class GerentePartTurmaController {
-    @FXML private Button btnSair;
+public class GerentePartTurmaController extends BaseGerenteController {
     @FXML private TextField campoDisciplina;
     @FXML private Button btnAdicionarProfessor;
     @FXML private TableView<Professor> tabelaProfessor;
@@ -25,9 +24,6 @@ public class GerentePartTurmaController {
     @FXML private Button btnCancelar;
     @FXML private Button btnSalvar;
 
-    @FXML public void sair(ActionEvent e) {
-
-    }
     @FXML public void abrirAdicionarProfessor(ActionEvent e) {
 
     }

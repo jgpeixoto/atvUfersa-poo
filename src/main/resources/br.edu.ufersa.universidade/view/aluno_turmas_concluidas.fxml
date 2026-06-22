@@ -6,39 +6,35 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.shape.Circle?>
 
-<BorderPane styleClass="root-bg" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="br.edu.ufersa.universidade.controller.AlunoTurmasConcluidasController"
-            prefWidth="1100" prefHeight="740">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="1280.0" prefHeight="650.0" prefWidth="1280.0" styleClass="root-bg" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.universidade.controller.AlunoTurmasConcluidasController">
 
     <!-- ===================== SIDEBAR ===================== -->
     <left>
-        <VBox styleClass="sidebar" alignment="TOP_CENTER" spacing="0">
+        <VBox alignment="TOP_CENTER" spacing="0" styleClass="sidebar">
             <StackPane prefHeight="120">
-                <ImageView fitWidth="84" fitHeight="84" preserveRatio="true">
+                <ImageView fitHeight="84" fitWidth="84" preserveRatio="true">
                     <image>
                         <Image url="@../images/logo.png" />
                     </image>
                 </ImageView>
             </StackPane>
 
-            <VBox styleClass="sidebar-item" alignment="CENTER" spacing="4" onMouseClicked="#handleAbrirTurmasAtuais">
-                <Label text="Turmas atuais" styleClass="sidebar-item" />
-                <Label text="📖" style="-fx-font-size: 20px; -fx-text-fill: #d6def2;" />
+            <VBox alignment="CENTER" onMouseClicked="#handleAbrirTurmasAtuais" spacing="4" styleClass="sidebar-item">
+                <Label styleClass="sidebar-item" text="Turmas atuais" />
+                <Label style="-fx-font-size: 20px; -fx-text-fill: #d6def2;" text="📖" />
             </VBox>
 
-            <VBox styleClass="sidebar-item-active" alignment="CENTER" spacing="4">
-                <Label text="Turmas concluídas" styleClass="sidebar-item-active" wrapText="true" maxWidth="120" textAlignment="CENTER" />
-                <Label text="🎓" style="-fx-font-size: 20px; -fx-text-fill: white;" />
+            <VBox alignment="CENTER" spacing="4" styleClass="sidebar-item-active">
+                <Label maxWidth="120" styleClass="sidebar-item-active" text="Turmas concluídas" textAlignment="CENTER" wrapText="true" />
+                <Label style="-fx-font-size: 20px; -fx-text-fill: white;" text="🎓" />
             </VBox>
 
             <Region VBox.vgrow="ALWAYS" />
@@ -48,31 +44,30 @@
     <!-- ===================== CONTEÚDO ===================== -->
     <center>
         <VBox spacing="16">
-            <padding><Insets top="20" right="24" bottom="20" left="24" /></padding>
+            <padding><Insets bottom="20" left="24" right="24" top="20" /></padding>
 
             <!-- Top bar -->
-            <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="16">
-                <Label text="Aluno" styleClass="topbar-subtitle" />
+            <HBox alignment="CENTER_LEFT" spacing="16" styleClass="topbar">
+                <Label styleClass="topbar-subtitle" text="Aluno" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label text="Turmas concluídas" styleClass="topbar-title" />
+                <Label styleClass="topbar-title" text="Turmas concluídas" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Button text="Sair  ➜" styleClass="btn-sair" onAction="#handleSair" />
+                <Button onAction="#handleSair" styleClass="btn-sair" text="Sair  ➜" />
             </HBox>
 
-            <VBox styleClass="card" spacing="12" VBox.vgrow="ALWAYS">
+            <VBox spacing="12" styleClass="card" VBox.vgrow="ALWAYS">
 
-                <HBox styleClass="search-bar" alignment="CENTER_LEFT" spacing="8" maxWidth="460">
-                    <Label text="🔍" styleClass="search-icon" />
+                <HBox alignment="CENTER_LEFT" maxWidth="460" spacing="8" styleClass="search-bar">
+                    <Label styleClass="search-icon" text="🔍" />
                     <TextField fx:id="campoBusca" promptText="Buscar por disciplina, horários..." HBox.hgrow="ALWAYS" />
                 </HBox>
 
                 <TableView fx:id="tableTurmasConcluidas" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colDisciplina" text="Disciplina" prefWidth="160" />
-                        <TableColumn fx:id="colHorario" text="Horário" prefWidth="120" />
-                        <TableColumn fx:id="colAlunos" text="Alunos" prefWidth="100" />
-                        <TableColumn fx:id="colLocal" text="Local" prefWidth="160" />
-                        <TableColumn fx:id="colStatus" text="Status" prefWidth="120" />
+                        <TableColumn fx:id="colDisciplina" prefWidth="357.9999580383301" text="Disciplina" />
+                        <TableColumn fx:id="colHorario" prefWidth="158.00009155273438" text="Horário" />
+                        <TableColumn fx:id="colLocal" prefWidth="255.33331298828125" text="Local" />
+                        <TableColumn fx:id="colStatus" prefWidth="263.33331298828125" text="Status" />
                     </columns>
                 </TableView>
 

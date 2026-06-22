@@ -9,8 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class GerenteDisciplinaController {
-    @FXML private Button btnSair;
+public class GerenteDisciplinaController extends BaseGerenteController {
     @FXML private TextField campoBusca;
     @FXML private Button btnAdicionar;
     @FXML private TableView<Disciplina> tabelaDisciplinas;
@@ -18,9 +17,6 @@ public class GerenteDisciplinaController {
     @FXML private TableColumn<Disciplina, SimpleStringProperty> colCodigo;
     @FXML private TableColumn colAjustes;
 
-    @FXML public void sair(ActionEvent e) {
-
-    }
     @FXML public void adicionarDisciplina(ActionEvent e) {
 
     }

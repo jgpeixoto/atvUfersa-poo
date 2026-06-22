@@ -6,8 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 
-public class GerenteAdcProfessorController {
-    @FXML private Button btnSair;
+public class GerenteAdcProfessorController extends BaseGerenteController {
     @FXML private TextField campoNome;
     @FXML private TextField campoEndereco;
     @FXML private TextField campoCpf;
@@ -22,7 +21,4 @@ public class GerenteAdcProfessorController {
 
     }
 
-    @FXML public void sair(ActionEvent e) {
-
-    }
 }

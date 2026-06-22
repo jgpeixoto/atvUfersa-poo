@@ -1,4 +1,4 @@
-package br.edu.ufersa.universidade.view;
+package br.edu.ufersa.universidade.utils;
 
 import java.util.List;
 import java.util.function.Function;

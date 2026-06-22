@@ -7,7 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import br.edu.ufersa.universidade.model.entities.Turma;
 
-public class GerenteAdcTurmaController {
+public class GerenteAdcTurmaController extends BaseGerenteController{
 
     @FXML private Button btnSair;
     @FXML private Button btnAdicionarParticipantes;
@@ -18,11 +18,6 @@ public class GerenteAdcTurmaController {
     @FXML private ComboBox<Turma.EstadoTurma> comboStatus;
     @FXML private Button btnCancelar;
     @FXML private Button btnSalvar;
-
-
-    @FXML public void sair(ActionEvent e) {
-
-    }
 
     @FXML public void abrirParticipantes(ActionEvent e) {
 

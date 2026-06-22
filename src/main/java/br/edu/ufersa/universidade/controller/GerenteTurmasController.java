@@ -9,8 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class GerenteTurmasController {
-    @FXML private Button btnSair;
+public class GerenteTurmasController extends BaseGerenteController {
     @FXML private TextField campoBusca;
     @FXML private Button btnAdicionar;
     @FXML private TableView<Turma> tabelaTurmas;
@@ -21,10 +20,6 @@ public class GerenteTurmasController {
     @FXML private TableColumn<Turma, SimpleStringProperty> colStatus;
     @FXML private TableColumn colAjustes;
 
-
-    @FXML public void sair(ActionEvent e) {
-
-    }
     @FXML public void adicionarTurma(ActionEvent e) {
 
     }

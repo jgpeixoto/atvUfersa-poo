@@ -8,4 +8,6 @@ module Universidade {
     opens br.edu.ufersa.universidade.controller to javafx.fxml, javafx.graphics;
     exports br.edu.ufersa.universidade.controller;
     exports br.edu.ufersa.universidade.common;
+    exports br.edu.ufersa.universidade.utils;
+    opens br.edu.ufersa.universidade.utils to javafx.fxml, javafx.graphics;
 }

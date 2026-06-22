@@ -5,16 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class GerenteAdcDisciplinaController {
-    @FXML private Button btnSair;
+public class GerenteAdcDisciplinaController extends BaseGerenteController{
     @FXML private Button btnCancelar;
     @FXML private Button btnSalvar;
     @FXML private TextField campoNome;
     @FXML private TextField campoCodigo;
-
-    @FXML public void sair(ActionEvent e) {
-
-    }
 
     @FXML public void cancelar(ActionEvent e) {
 
