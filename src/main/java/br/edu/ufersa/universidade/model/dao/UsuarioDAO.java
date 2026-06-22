@@ -53,7 +53,7 @@ public class UsuarioDAO {
     public ArrayList<Usuario> buscarPorNome(String nome) throws SQLException {
         ArrayList<Usuario> lista = new ArrayList<>();
 
-        String sql = "SELECT * FROM aluno WHERE nome LIKE ?";
+        String sql = "SELECT * FROM usuario WHERE nome LIKE ?";
 
         PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
         stmt.setString(1, "%" + nome + "%");

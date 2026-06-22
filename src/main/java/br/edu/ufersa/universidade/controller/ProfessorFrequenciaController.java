@@ -22,6 +22,13 @@ public class ProfessorFrequenciaController {
     @FXML private TableColumn<Aluno, SimpleLongProperty> colMatricula;
     @FXML private TableColumn<Aluno, SimpleIntegerProperty> colFaltas;
     */
+
+    private int idTurma;
+    public void setTurma(int id) {
+        this.idTurma = id;
+    }
+
+
     @FXML public void sair(ActionEvent e) {
         WindowUtils.SwitchToWindow(WelcomeView.class, e);
     }

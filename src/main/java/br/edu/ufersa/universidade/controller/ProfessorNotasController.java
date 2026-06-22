@@ -26,7 +26,7 @@ public class ProfessorNotasController {
     @FXML public void sair(ActionEvent e) {
         WindowUtils.SwitchToWindow(WelcomeView.class, e);
     }
-    @FXML public void handleAbrirTurmas(ActionEvent e) {
+    @FXML public void handleAbrirTurmas() {
         WindowUtils.SwitchToWindow(ProfessorTurmasView.class, campoBusca);
     }
 }

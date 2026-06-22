@@ -68,4 +68,4 @@ CREATE TABLE indice (
 );
 
 INSERT INTO usuario (nome, senha, endereco, tipo) VALUES
-"Joao", "12345", "Av. Bis, 982", "Admin";
+("Joao", "12345", "Av. Bis, 982", "Admin");

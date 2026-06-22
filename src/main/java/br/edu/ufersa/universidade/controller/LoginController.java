@@ -1,11 +1,9 @@
 package br.edu.ufersa.universidade.controller;
 
+import br.edu.ufersa.universidade.model.entities.Usuario;
+import br.edu.ufersa.universidade.model.service.UsuarioService;
 import br.edu.ufersa.universidade.utils.WindowUtils;
-import br.edu.ufersa.universidade.view.AlunoTurmasAtuaisView;
-import br.edu.ufersa.universidade.view.GerenteAlunosView;
-import br.edu.ufersa.universidade.view.ProfessorTurmasView;
-import br.edu.ufersa.universidade.view.WelcomeView;
-import javafx.beans.property.SimpleStringProperty;
+import br.edu.ufersa.universidade.view.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,14 +11,58 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class LoginController {
     @FXML private TextField campoUsuario;
     @FXML private PasswordField campoSenha;
     @FXML private ComboBox<String> comboPerfil;
     @FXML private Button btnEntrar;
 
+    private static Usuario curUser;
+    private final UsuarioService usuarioService = new UsuarioService();
+
     @FXML public void realizarLogin(ActionEvent e) {
-        switch (comboPerfil.getValue()) {
+        LoginController.curUser = null;
+        String tipo = comboPerfil.getValue();
+        String user = campoUsuario.getText();
+        String pass = campoSenha.getText();
+        System.out.println(user);
+        System.out.println(pass);
+        System.out.println(tipo);
+        if (tipo == null || user == null || pass == null || user.isEmpty() || pass.isEmpty())
+            return;
+        try {
+            var list = usuarioService.buscarPorNome(user);
+            var list2 = new ArrayList<Usuario>();
+            for (var usuario : list) {
+                switch (tipo) {
+                    case "Aluno":
+                        if (usuario.getTipo() == Usuario.TipoUsuario.Aluno)
+                            list2.add(usuario);
+                        break;
+                    case "Professor":
+                        if (usuario.getTipo() == Usuario.TipoUsuario.Prof)
+                            list2.add(usuario);
+                        break;
+                    case "Gerente":
+                        if (usuario.getTipo() == Usuario.TipoUsuario.Admin)
+                            list2.add(usuario);
+                        break;
+                }
+            }
+            for (Usuario usuario : list2) {
+                if (usuario.getNome().equalsIgnoreCase(user) && usuario.getSenha().equals(pass))
+                    LoginController.curUser = usuario;
+            }
+            if (LoginController.curUser == null)
+                return;
+        } catch (SQLException h) {
+            System.out.println(h);
+            return;
+        }
+        switch (tipo) {
             case "Aluno":
                 WindowUtils.SwitchToWindow(AlunoTurmasAtuaisView.class, e);
                 break;
