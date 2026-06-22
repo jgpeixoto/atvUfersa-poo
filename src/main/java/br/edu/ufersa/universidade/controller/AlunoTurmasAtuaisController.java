@@ -3,6 +3,7 @@ package br.edu.ufersa.universidade.controller;
 import br.edu.ufersa.universidade.model.entities.Indice;
 import br.edu.ufersa.universidade.model.entities.Turma;
 import br.edu.ufersa.universidade.utils.WindowUtils;
+import br.edu.ufersa.universidade.view.AlunoTurmasConcluidasView;
 import br.edu.ufersa.universidade.view.WelcomeView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,8 +18,8 @@ public class AlunoTurmasAtuaisController {
     @FXML private TableView<Indice> tableNotas;
     @FXML private VBox boxFrequencia;
 
-    @FXML public void handleAbrirTurmasConcluidas(ActionEvent e) {
-
+    @FXML public void handleAbrirTurmasConcluidas() {
+        WindowUtils.SwitchToWindow(AlunoTurmasConcluidasView.class, boxFrequencia);
     }
 
     @FXML public void handleSair(ActionEvent e) {

@@ -2,6 +2,7 @@ package br.edu.ufersa.universidade.controller;
 
 import br.edu.ufersa.universidade.model.entities.Aluno;
 import br.edu.ufersa.universidade.utils.WindowUtils;
+import br.edu.ufersa.universidade.view.ProfessorTurmasView;
 import br.edu.ufersa.universidade.view.WelcomeView;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
@@ -27,7 +28,7 @@ public class ProfessorFrequenciaController {
     @FXML public void updateAlunos(ActionEvent e) {
 
     }
-    @FXML public void handleAbrirTurmas(ActionEvent e) {
-
+    @FXML public void handleAbrirTurmas() {
+        WindowUtils.SwitchToWindow(ProfessorTurmasView.class, buscaAluno);
     }
 }

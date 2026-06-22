@@ -23,10 +23,13 @@ public class LoginController {
         switch (comboPerfil.getValue()) {
             case "Aluno":
                 WindowUtils.SwitchToWindow(AlunoTurmasAtuaisView.class, e);
+                break;
             case "Professor":
                 WindowUtils.SwitchToWindow(ProfessorTurmasView.class, e);
+                break;
             case "Gerente":
                 WindowUtils.SwitchToWindow(GerenteAlunosView.class, e);
+                break;
         }
     }
 }

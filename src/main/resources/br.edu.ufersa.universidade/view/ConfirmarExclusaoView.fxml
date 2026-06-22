@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxWidth="500" prefWidth="500" spacing="20" styleClass="confirm-popup" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.universidade.controller.ConfirmarExclusaoController">
+<VBox maxWidth="500" prefWidth="500" spacing="20" styleClass="confirm-popup" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.universidade.controller.ConfirmarExclusaoController">
 
     <padding>
         <Insets bottom="25" left="30" right="30" top="25" />

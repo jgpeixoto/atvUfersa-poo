@@ -11,16 +11,18 @@ public class WindowUtils {
             T app = application.getDeclaredConstructor().newInstance();
             app.start(WindowUtils.getStage(event));
         } catch (Exception e) {
-            System.out.println("[WindowUtils] Tried switching to " + application.getName() + "\n" + e.toString());
+            System.out.println("[WindowUtils] Tried switching to " + application.getName() + "\n" + e.toString() + "\n");
+            e.printStackTrace();
         }
     }
 
-    public static <T extends Application> void SwitchToWindow(Class<T> application, Object object) {
+    public static <T extends Application> void SwitchToWindow(Class<T> application, Object from) {
         try {
             T app = application.getDeclaredConstructor().newInstance();
-            app.start(WindowUtils.getStage(object));
+            app.start(WindowUtils.getStage(from));
         } catch (Exception e) {
             System.out.println("[WindowUtils] Tried switching to " + application.getName() + "\n" + e.toString());
+            e.printStackTrace();
         }
     }
 
