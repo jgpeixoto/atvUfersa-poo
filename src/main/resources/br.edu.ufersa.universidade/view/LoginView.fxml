@@ -13,72 +13,71 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<StackPane xmlns="http://javafx.com/javafx"
-           xmlns:fx="http://javafx.com/fxml"
-           fx:controller="br.edu.ufersa.universidade.controller.LoginController"
-           styleClass="login-root"
-           stylesheets="@../css/styles.css">
+<StackPane styleClass="login-root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.universidade.controller.LoginController">
 
     <VBox spacing="0">
 
         <!-- ===================== HEADER ===================== -->
         <HBox alignment="CENTER_LEFT" spacing="15" styleClass="login-header">
             <padding>
-                <Insets top="15" right="30" bottom="15" left="30"/>
+                <Insets bottom="15" left="30" right="30" top="15" />
             </padding>
 
-            <ImageView fitWidth="55" fitHeight="55" preserveRatio="true">
+            <ImageView fitHeight="55" fitWidth="55" preserveRatio="true">
                 <image>
-                    <Image url="@../images/logo.png"/>
+                    <Image url="@../images/logo.png" />
                 </image>
             </ImageView>
 
-            <Label text="Faculdade Weitinho" styleClass="header-title"/>
+            <Label styleClass="header-title" text="Faculdade Weitinho" />
         </HBox>
 
         <!-- ===================== CONTEÚDO ===================== -->
         <StackPane styleClass="login-background" VBox.vgrow="ALWAYS">
 
             <!-- Card central -->
-            <VBox alignment="CENTER" spacing="22" styleClass="login-card" maxWidth="520">
+            <VBox alignment="CENTER" maxWidth="520" spacing="22" styleClass="login-card">
                 <padding>
-                    <Insets top="40" right="50" bottom="40" left="50"/>
+                    <Insets bottom="40" left="50" right="50" top="40" />
                 </padding>
 
                 <!-- Título e subtítulo -->
                 <VBox alignment="CENTER" spacing="6">
-                    <Label text="Bem-vindo de volta!" styleClass="login-title"/>
-                    <Label text="Faça login para acessar sua conta" styleClass="login-subtitle"/>
+                    <Label styleClass="login-title" text="Bem-vindo de volta!" />
+                    <Label styleClass="login-subtitle" text="Faça login para acessar sua conta" />
                 </VBox>
 
                 <!-- Campo Usuário -->
                 <HBox alignment="CENTER_LEFT" spacing="12" styleClass="input-field">
-                    <Label text="👤" styleClass="input-icon"/>
-                    <TextField fx:id="campoUsuario" promptText="Usuário" styleClass="input-text" HBox.hgrow="ALWAYS"/>
+                    <Label styleClass="input-icon" text="👤" />
+                    <TextField fx:id="campoUsuario" promptText="Usuário" styleClass="input-text" HBox.hgrow="ALWAYS" />
                 </HBox>
 
                 <!-- Campo Senha -->
                 <HBox alignment="CENTER_LEFT" spacing="12" styleClass="input-field">
-                    <Label text="🔒" styleClass="input-icon"/>
-                    <PasswordField fx:id="campoSenha" promptText="Senha" styleClass="input-text" HBox.hgrow="ALWAYS"/>
+                    <Label styleClass="input-icon" text="🔒" />
+                    <PasswordField fx:id="campoSenha" promptText="Senha" styleClass="input-text" HBox.hgrow="ALWAYS" />
                 </HBox>
 
                 <!-- Seleção de perfil -->
-                <ComboBox fx:id="comboPerfil" promptText="Selecione o seu perfil de acesso"
-                          styleClass="input-combo" maxWidth="Infinity">
+                <ComboBox fx:id="comboPerfil" maxWidth="Infinity" promptText="Selecione o seu perfil de acesso" styleClass="input-combo">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Professor"/>
-                            <String fx:value="Aluno"/>
-                            <String fx:value="Gerente"/>
+                            <String fx:value="Professor" />
+                            <String fx:value="Aluno" />
+                            <String fx:value="Gerente" />
                         </FXCollections>
                     </items>
                 </ComboBox>
+            <Label fx:id="loginError" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
 
                 <!-- Botão Entrar -->
-                <Button text="Entrar" fx:id="btnEntrar" onAction="#realizarLogin"
-                        styleClass="btn-entrar" maxWidth="Infinity"/>
+                <Button maxWidth="Infinity" onAction="#realizarLogin" styleClass="btn-entrar" text="Entrar" />
 
             </VBox>
 
