@@ -414,7 +414,7 @@
 }
 
 /* ===========================================================
-   TELAS GERENTE (GerenteAlunosView.fxml / GerenteProfessoresView.fxml)
+   TELAS GERENTE (GerenteAlunos / GerenteProfessores)
    Layout base: sidebar + header + tabela
    =========================================================== */
 
@@ -596,7 +596,7 @@
 
 /* ===========================================================
    TELAS DE FORMULÁRIO - ADICIONAR
-   (GerenteAdcDisciplinaView.fxml / -professor- / -aluno-)
+   (GerenteAdcDisciplina/ -professor- / -aluno-)
    =========================================================== */
 
 .form-card {
@@ -659,7 +659,7 @@
 
 /* ===========================================================
    TELAS DE TURMA
-   (GerenteAdcTurmaView.fxml / GerentePartTurmaView.fxml)
+   (GerenteAdcTurma / GerentePartTurma)
    =========================================================== */
 
 /* Botão "Adicionar participantes" no formulário de Nova turma */
