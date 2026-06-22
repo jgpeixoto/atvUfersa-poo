@@ -24,7 +24,7 @@ import java.sql.SQLException;
 public class AppUI extends BaseView {
     @Override
     protected String getResName() {
-        return "LoginView";
+        return "professor_turmas";
     }
 
     public static void main(String[] args) {

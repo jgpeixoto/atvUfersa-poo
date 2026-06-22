@@ -2,43 +2,39 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.shape.Circle?>
 
-<BorderPane styleClass="root-bg" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="br.edu.ufersa.universidade.controller.ProfessorFrequenciaController"
-            maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="1280.0" prefHeight="650.0" prefWidth="1280.0">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="1280.0" prefHeight="650.0" prefWidth="1280.0" styleClass="root-bg" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.universidade.controller.ProfessorFrequenciaController">
 
     <!-- ===================== SIDEBAR ===================== -->
     <left>
-        <VBox styleClass="sidebar" alignment="TOP_CENTER" spacing="0">
+        <VBox alignment="TOP_CENTER" spacing="0" styleClass="sidebar">
             <StackPane prefHeight="120">
-                <ImageView fitWidth="84" fitHeight="84" preserveRatio="true">
+                <ImageView fitHeight="84" fitWidth="84" preserveRatio="true">
                     <image>
                         <Image url="@../images/logo.png" />
                     </image>
                 </ImageView>
             </StackPane>
 
-            <VBox styleClass="sidebar-item" alignment="CENTER" spacing="4" onMouseClicked="#handleAbrirTurmas">
-                <Label text="Turmas" styleClass="sidebar-item" />
-                <Label text="🎓" style="-fx-font-size: 20px; -fx-text-fill: #d6def2;" />
+            <VBox alignment="CENTER" onMouseClicked="#handleAbrirTurmas" spacing="4" styleClass="sidebar-item">
+                <Label styleClass="sidebar-item" text="Turmas" />
+                <Label style="-fx-font-size: 20px; -fx-text-fill: #d6def2;" text="🎓" />
             </VBox>
 
-            <VBox styleClass="sidebar-item-active" alignment="CENTER" spacing="4">
-                <Label text="Frequência" styleClass="sidebar-item-active" />
-                <Label text="📋" style="-fx-font-size: 20px; -fx-text-fill: white;" />
+            <VBox alignment="CENTER" spacing="4" styleClass="sidebar-item-active">
+                <Label styleClass="sidebar-item-active" text="Frequência" />
+                <Label style="-fx-font-size: 20px; -fx-text-fill: white;" text="📋" />
             </VBox>
 
             <Region VBox.vgrow="ALWAYS" />
@@ -48,28 +44,30 @@
     <!-- ===================== CONTEÚDO ===================== -->
     <center>
         <VBox spacing="16">
-            <padding><Insets top="20" right="24" bottom="20" left="24" /></padding>
+            <padding><Insets bottom="20" left="24" right="24" top="20" /></padding>
 
-            <HBox styleClass="topbar" alignment="CENTER_LEFT" spacing="16">
-                <Label text="Professor" styleClass="topbar-subtitle" />
+            <HBox alignment="CENTER_LEFT" spacing="16" styleClass="topbar">
+                <Label styleClass="topbar-subtitle" text="Professor" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label text="Frequência" styleClass="topbar-title" />
+                <Label styleClass="topbar-title" text="Frequência" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Button text="Sair  ➜" styleClass="btn-sair" onAction="#handleSair" />
+                <Button fx:id="btnSair" onAction="#sair" styleClass="btn-sair" text="Sair  ➜" />
             </HBox>
 
-            <VBox styleClass="card" spacing="12" VBox.vgrow="ALWAYS">
+            <VBox spacing="12" styleClass="card" VBox.vgrow="ALWAYS">
 
-                <HBox styleClass="search-bar" alignment="CENTER_LEFT" spacing="8" maxWidth="460">
-                    <ComboBox fx:id="comboAluno" promptText="Buscar aluno...." HBox.hgrow="ALWAYS" maxWidth="Infinity" />
+                <HBox alignment="CENTER_LEFT" maxWidth="460" prefHeight="18.0" prefWidth="460.0" spacing="8" styleClass="search-bar">
+               <children>
+                  <TextField />
+                  <TextField fx:id="buscaAluno" onAction="#updateAlunos" prefHeight="27.0" prefWidth="949.0" promptText="Buscar por nome, matricula..." styleClass="form-input-combo" />
+               </children>
                 </HBox>
 
                 <TableView fx:id="tableFrequencia" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colNome" text="Nome" prefWidth="180" />
-                        <TableColumn fx:id="colMatricula" text="Matrícula" prefWidth="110" />
-                        <TableColumn fx:id="colData" text="Data" prefWidth="120" />
-                        <TableColumn fx:id="colStatus" text="Status" prefWidth="120" />
+                        <TableColumn fx:id="colNome" prefWidth="537.9999885559082" text="Nome" />
+                        <TableColumn fx:id="colMatricula" prefWidth="304.666748046875" text="Matrícula" />
+                        <TableColumn fx:id="colFaltas" prefWidth="190.66668701171875" text="Faltas" />
                     </columns>
                 </TableView>
             </VBox>

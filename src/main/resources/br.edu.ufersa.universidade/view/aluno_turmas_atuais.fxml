@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="1280.0" prefHeight="650.0" prefWidth="1280.0"
+            styleClass="root-bg" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.universidade.controller.AlunoTurmasAtuaisController">
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <left>
+        <VBox alignment="TOP_CENTER" spacing="0" styleClass="sidebar">
+            <StackPane prefHeight="120">
+                <ImageView fitHeight="84" fitWidth="84" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/logo.png" />
+                    </image>
+                </ImageView>
+            </StackPane>
+
+            <VBox alignment="CENTER" spacing="4" styleClass="sidebar-item-active">
+                <Label styleClass="sidebar-item-active" text="Turmas atuais" />
+                <Label style="-fx-font-size: 20px; -fx-text-fill: white;" text="📖" />
+            </VBox>
+
+            <VBox alignment="CENTER" onMouseClicked="#handleAbrirTurmasConcluidas" spacing="4" styleClass="sidebar-item">
+                <Label maxWidth="120" styleClass="sidebar-item" text="Turmas concluídas" textAlignment="CENTER" wrapText="true" />
+                <Label style="-fx-font-size: 20px; -fx-text-fill: #d6def2;" text="🎓" />
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS" />
+        </VBox>
+    </left>
+
+    <!-- ===================== CONTEÚDO ===================== -->
+    <center>
+        <VBox spacing="16">
+            <padding><Insets bottom="20" left="24" right="24" top="20" /></padding>
+
+            <!-- Top bar -->
+            <HBox alignment="CENTER_LEFT" spacing="16" styleClass="topbar">
+                <StackPane>
+                    <Circle radius="28" styleClass="avatar-placeholder" />
+                    <Label style="-fx-font-size: 22px;" text="👤" />
+                </StackPane>
+                <VBox spacing="2">
+                    <Label fx:id="lblNomeAluno" styleClass="topbar-title" text="Olá, Paulo Artur" />
+                    <Label fx:id="lblInfoAluno" styleClass="topbar-subtitle" text="Matrícula: 20250103     Curso: Ciência da Computação" />
+                </VBox>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button onAction="#handleSair" styleClass="btn-sair" text="Sair  ➜" />
+            </HBox>
+
+            <!-- Cards -->
+            <HBox spacing="16" VBox.vgrow="ALWAYS">
+
+                <!-- Coluna esquerda: Minhas Turmas + Notas -->
+                <VBox maxWidth="620" spacing="16" HBox.hgrow="ALWAYS">
+                    <VBox spacing="6" styleClass="card">
+                        <Label styleClass="card-title" text="Minhas Turmas" />
+                        <TableView fx:id="tableTurmas" prefHeight="190">
+                            <columns>
+                                <TableColumn prefWidth="140" text="Disciplina" />
+                                <TableColumn prefWidth="120" text="Professor" />
+                                <TableColumn prefWidth="100" text="Horário" />
+                                <TableColumn prefWidth="100" text="Status" />
+                            </columns>
+                        </TableView>
+                    </VBox>
+
+                    <VBox spacing="6" styleClass="card">
+                        <Label styleClass="card-title" text="Notas" />
+                        <TableView fx:id="tableNotas" prefHeight="190">
+                            <columns>
+                                <TableColumn prefWidth="140" text="Disciplina" />
+                                <TableColumn prefWidth="80" text="P1" />
+                                <TableColumn prefWidth="80" text="P2" />
+                                <TableColumn prefWidth="80" text="P3" />
+                                <TableColumn prefWidth="90" text="Média" />
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </VBox>
+
+                <!-- Coluna direita: Frequência -->
+                <VBox prefWidth="420" spacing="10" styleClass="card" HBox.hgrow="ALWAYS">
+                    <Label styleClass="card-title" text="Frequência" />
+                    <VBox fx:id="boxFrequencia" prefHeight="601.0" prefWidth="361.0" spacing="20">
+                        <!-- linhas preenchidas dinamicamente pelo controller -->
+                    </VBox>
+                    <Region VBox.vgrow="ALWAYS" />
+                </VBox>
+
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
