@@ -26,17 +26,17 @@ public class GerenteAdcDisciplinaController extends BaseGerenteController{
             campoCodigo.setEditable(true);
         }
         else {
-            campoCodigo.setText(codigoAtual);
             try {
                 Disciplina dis = disciplinaService.buscarPorCodigo(codigoAtual);
                 campoNome.setText(dis.getNome());
             } catch (SQLException ignored) {}
+            campoCodigo.setText(codigoAtual);
             campoCodigo.setEditable(false);
         }
     }
 
     @FXML public void cancelar(ActionEvent e) {
-        WindowUtils.SwitchToWindow(GerenteDisciplinaView.class, e);
+        close();
     }
 
     @FXML public void salvarDisciplina(ActionEvent e) {
@@ -58,7 +58,12 @@ public class GerenteAdcDisciplinaController extends BaseGerenteController{
                 disciplinaService.atualizar(disciplina);
             } catch (SQLException ignored) {}
         }
-        WindowUtils.SwitchToWindow(GerenteDisciplinaView.class, e);
+        close();
+    }
+
+    private void close() {
+        codigoAtual = "";
+        WindowUtils.SwitchToWindow(GerenteDisciplinaView.class, labelError);
     }
 
     private boolean validarDisciplina() {
