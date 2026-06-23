@@ -3,6 +3,7 @@ package br.edu.ufersa.universidade.controller;
 import br.edu.ufersa.universidade.model.entities.Aluno;
 import br.edu.ufersa.universidade.model.entities.Professor;
 import br.edu.ufersa.universidade.utils.WindowUtils;
+import br.edu.ufersa.universidade.view.GerenteAdcTurmaView;
 import br.edu.ufersa.universidade.view.GerenteParticipantesAdcAlunoView;
 import br.edu.ufersa.universidade.view.GerenteParticipantesAdcProfessorView;
 import br.edu.ufersa.universidade.view.GerenteTurmasView;
@@ -26,7 +27,7 @@ public class GerentePartTurmaController extends BaseGerenteController {
     // @FXML private TableColumn<Aluno, SimpleLongProperty> colAlunoMatricula;
     @FXML private Button btnCancelar;
     @FXML private Button btnSalvar;
-    static int curTurmaId; // INSERIR ID DA TURMA AQUI
+    static int curTurmaId = -1; // SE O ID DA TURMA ESTIVER DEFINIDO, POPULAR CURPROFCPF E CURALUNOMATRICULAS
     static String curProfCpf; // INSERIR CPF DO PROFESSOR ATUAL
     static ArrayList<Long> curAlunoMatriculas = new ArrayList<Long>();
     // INSERIR MATRICULAS DOS ALUNOS ATUAL
@@ -38,11 +39,12 @@ public class GerentePartTurmaController extends BaseGerenteController {
         WindowUtils.SwitchToWindow(GerenteParticipantesAdcAlunoView.class, e);
     }
     @FXML public void cancelar(ActionEvent e) {
-        WindowUtils.SwitchToWindow(GerenteTurmasView.class, e);
+        WindowUtils.SwitchToWindow(GerenteAdcTurmaView.class, e);
     }
 
     @FXML public void salvarParticipantes(ActionEvent e) {
-        // to-do: save to db
-        WindowUtils.SwitchToWindow(GerenteTurmasView.class, e);
+        GerenteAdcTurmaController.curProfCpf = curProfCpf;
+        GerenteAdcTurmaController.curAlunoMatriculas = (ArrayList<Long>)curAlunoMatriculas.clone();
+        WindowUtils.SwitchToWindow(GerenteAdcTurmaView.class, e);
     }
 }

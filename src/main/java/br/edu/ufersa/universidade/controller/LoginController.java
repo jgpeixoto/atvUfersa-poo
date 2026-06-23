@@ -21,7 +21,7 @@ public class LoginController {
     @FXML private ComboBox<String> comboPerfil;
     @FXML private Label loginError;
 
-    private static Usuario curUser;
+    static Usuario curUser;
     private final UsuarioService usuarioService = new UsuarioService();
 
     private boolean validarLogin(String tipo, String user, String pass) {

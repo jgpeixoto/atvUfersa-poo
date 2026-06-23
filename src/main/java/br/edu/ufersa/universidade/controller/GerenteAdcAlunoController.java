@@ -1,5 +1,7 @@
 package br.edu.ufersa.universidade.controller;
 
+import br.edu.ufersa.universidade.utils.WindowUtils;
+import br.edu.ufersa.universidade.view.GerenteAlunosView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,10 +15,11 @@ public class GerenteAdcAlunoController extends BaseGerenteController{
     @FXML private TextField campoMatricula;
 
     @FXML public void cancelar(ActionEvent e) {
-
+        WindowUtils.SwitchToWindow(GerenteAlunosView.class, e);
     }
 
     @FXML public void salvarAluno(ActionEvent e) {
 
+        WindowUtils.SwitchToWindow(GerenteAlunosView.class, e);
     }
 }
