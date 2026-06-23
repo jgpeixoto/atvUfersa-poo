@@ -37,7 +37,7 @@ public class GerenteParticipantesAdicionarAlunoController extends BaseGerenteCon
             return false;
         }
         try {
-            matricula = Long.getLong(entrada);
+            matricula = Long.parseLong(entrada);
         } catch (NumberFormatException ignored) {}
         if (matricula < 0) {
             this.labelError.setText("A matrícula é inválida.");

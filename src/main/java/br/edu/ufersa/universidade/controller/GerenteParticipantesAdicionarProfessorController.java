@@ -37,12 +37,17 @@ public class GerenteParticipantesAdicionarProfessorController extends BaseGerent
             this.labelError.setText("O CPF deve ter 11 caracteres.");
             return false;
         }
-        if (GerentePartTurmaController.curProfCpf.equals(cpf)) {
+        if (GerentePartTurmaController.curProfCpf != null && GerentePartTurmaController.curProfCpf.equals(cpf)) {
             this.labelError.setText("Esse já é o professor desta turma!");
             return false;
         }
-        Professor prof = professorService.buscarPorCpf(cpf);
-        if (prof == null) {
+        try {
+            Professor prof = professorService.buscarPorCpf(cpf);
+            if (prof == null) {
+                this.labelError.setText("Nenhum professor encontrado com este CPF.");
+                return false;
+            }
+        } catch (RuntimeException ignored) {
             this.labelError.setText("Nenhum professor encontrado com este CPF.");
             return false;
         }
