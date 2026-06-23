@@ -13,8 +13,6 @@ import javafx.scene.control.TextField;
 import java.sql.SQLException;
 
 public class GerenteAdcDisciplinaController extends BaseGerenteController{
-    @FXML private Button btnCancelar;
-    @FXML private Button btnSalvar;
     @FXML private TextField campoNome;
     @FXML private TextField campoCodigo;
     @FXML private Label labelError;

@@ -115,8 +115,8 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                        <Button fx:id="btnCancelar" onAction="#cancelar" styleClass="btn-cancelar" text="Cancelar" />
-                        <Button fx:id="btnSalvar" onAction="#salvarDisciplina" styleClass="btn-salvar" text="Salvar" />
+                        <Button onAction="#cancelar" styleClass="btn-cancelar" text="Cancelar" />
+                        <Button onAction="#salvarDisciplina" styleClass="btn-salvar" text="Salvar" />
                     </HBox>
 
                 </VBox>
