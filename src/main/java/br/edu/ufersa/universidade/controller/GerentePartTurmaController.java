@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import java.util.ArrayList;
 
 public class GerentePartTurmaController extends BaseGerenteController {
-    @FXML private TextField campoDisciplina;
     @FXML private Button btnAdicionarProfessor;
     @FXML private TableView<Professor> tabelaProfessor;
     // @FXML private TableColumn<Professor, SimpleStringProperty> colProfessorNome;
@@ -44,7 +43,9 @@ public class GerentePartTurmaController extends BaseGerenteController {
 
     @FXML public void salvarParticipantes(ActionEvent e) {
         GerenteAdcTurmaController.curProfCpf = curProfCpf;
-        GerenteAdcTurmaController.curAlunoMatriculas = (ArrayList<Long>)curAlunoMatriculas.clone();
+        GerenteAdcTurmaController.curAlunoMatriculas.clear();
+        GerenteAdcTurmaController.curAlunoMatriculas.addAll(curAlunoMatriculas);
+        curAlunoMatriculas.clear();
         WindowUtils.SwitchToWindow(GerenteAdcTurmaView.class, e);
     }
 }
