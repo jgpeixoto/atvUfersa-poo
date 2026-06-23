@@ -23,19 +23,16 @@ public class ProfessorFrequenciaController {
     @FXML private TableColumn<Aluno, SimpleIntegerProperty> colFaltas;
     */
 
-    private int idTurma;
-    public void setTurma(int id) {
-        this.idTurma = id;
-    }
-
+    static int idTurma;
 
     @FXML public void sair(ActionEvent e) {
         WindowUtils.SwitchToWindow(WelcomeView.class, e);
     }
     @FXML public void updateAlunos(ActionEvent e) {
-
+        // ATUALIZAR TABELA COM APENAS ALUNOS COM NOME E/OU MATRÍCULA EM buscaAluno
     }
     @FXML public void handleAbrirTurmas() {
+        idTurma = -1;
         WindowUtils.SwitchToWindow(ProfessorTurmasView.class, buscaAluno);
     }
 }

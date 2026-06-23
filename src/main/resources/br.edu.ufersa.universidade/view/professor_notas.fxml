@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="1280.0" prefHeight="650.0" prefWidth="1280.0" styleClass="root-bg" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.universidade.controller.ProfessorNotasController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="1280.0" prefHeight="650.0" prefWidth="1280.0" styleClass="root-bg" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.universidade.controller.ProfessorNotasController">
 
     <!-- ===================== SIDEBAR ===================== -->
     <left>
@@ -58,7 +58,7 @@
 
                 <HBox alignment="CENTER_LEFT" maxWidth="460" spacing="8" styleClass="search-bar">
                     <Label styleClass="search-icon" text="🔍" />
-                    <TextField fx:id="campoBusca" promptText="Buscar por nome, matrícula..." HBox.hgrow="ALWAYS" />
+                    <TextField fx:id="campoBusca" onAction="#updateAlunos" promptText="Buscar por nome, matrícula..." HBox.hgrow="ALWAYS" />
                 </HBox>
 
                 <TableView fx:id="tableNotas" VBox.vgrow="ALWAYS">

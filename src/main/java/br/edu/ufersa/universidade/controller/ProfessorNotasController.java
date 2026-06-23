@@ -22,11 +22,16 @@ public class ProfessorNotasController {
     @FXML private TableColumn<Aluno, SimpleIntegerProperty> colMedia;
     @FXML private TableColumn<Aluno, SimpleStringProperty> colStatus;
     */
+    static int idTurma;
 
     @FXML public void sair(ActionEvent e) {
         WindowUtils.SwitchToWindow(WelcomeView.class, e);
     }
+    @FXML public void updateAlunos(ActionEvent e) {
+        // ATUALIZAR TABELA COM APENAS ALUNOS COM NOME E/OU MATRÍCULA EM buscaAluno
+    }
     @FXML public void handleAbrirTurmas() {
+        idTurma = -1;
         WindowUtils.SwitchToWindow(ProfessorTurmasView.class, campoBusca);
     }
 }
