@@ -23,6 +23,7 @@ public class GerenteAlunosController extends BaseGerenteController {
     @FXML private TableColumn colAjustes; */
 
     @FXML public void adicionarAluno(ActionEvent e) {
+        GerenteAdcAlunoController.matriculaAtual = -1;
         WindowUtils.SwitchToWindow(GerenteAdcAlunoView.class, e);
     }
 

@@ -18,6 +18,7 @@ public class GerenteDisciplinaController extends BaseGerenteController {
     // @FXML private TableColumn colAjustes;
 
     @FXML public void adicionarDisciplina(ActionEvent e) {
+        GerenteAdcDisciplinaController.codigoAtual = "";
         WindowUtils.SwitchToWindow(GerenteAdcDisciplinaView.class, e);
     }
 }

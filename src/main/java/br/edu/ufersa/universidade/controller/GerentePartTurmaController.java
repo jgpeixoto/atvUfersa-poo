@@ -10,6 +10,7 @@ import br.edu.ufersa.universidade.view.GerenteTurmasView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -26,8 +27,13 @@ public class GerentePartTurmaController extends BaseGerenteController {
     // @FXML private TableColumn<Aluno, SimpleLongProperty> colAlunoMatricula;
     @FXML private Button btnCancelar;
     @FXML private Button btnSalvar;
-    static int curTurmaId = -1; // SE O ID DA TURMA ESTIVER DEFINIDO, POPULAR CURPROFCPF E CURALUNOMATRICULAS
-    static String curProfCpf; // INSERIR CPF DO PROFESSOR ATUAL
+    @FXML private Label labelError;
+
+    static int curTurmaId = -1;
+    // SE O ID DA TURMA ESTIVER DEFINIDO, POPULAR CURPROFCPF E CURALUNOMATRICULAS
+
+    static String curProfCpf;
+    // INSERIR CPF DO PROFESSOR ATUAL
     static ArrayList<Long> curAlunoMatriculas = new ArrayList<Long>();
     // INSERIR MATRICULAS DOS ALUNOS ATUAL
 
@@ -42,10 +48,15 @@ public class GerentePartTurmaController extends BaseGerenteController {
     }
 
     @FXML public void salvarParticipantes(ActionEvent e) {
+
+
+    }
+
+    private void close() {
         GerenteAdcTurmaController.curProfCpf = curProfCpf;
         GerenteAdcTurmaController.curAlunoMatriculas.clear();
         GerenteAdcTurmaController.curAlunoMatriculas.addAll(curAlunoMatriculas);
         curAlunoMatriculas.clear();
-        WindowUtils.SwitchToWindow(GerenteAdcTurmaView.class, e);
+        WindowUtils.SwitchToWindow(GerenteAdcTurmaView.class, labelError);
     }
 }

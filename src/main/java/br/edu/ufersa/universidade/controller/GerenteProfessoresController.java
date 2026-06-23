@@ -16,6 +16,7 @@ public class GerenteProfessoresController extends BaseGerenteController {
     @FXML private TableView<Professor> tabelaProfessores;
 
     @FXML public void adicionarProfessor(ActionEvent e) {
+        GerenteAdcProfessorController.cpfAtual = "";
         WindowUtils.SwitchToWindow(GerenteAdcProfessorView.class, e);
     }
 }
