@@ -28,6 +28,10 @@ public class AlunoService {
         return alunoDAO.buscarPorMatricula(matricula);
     }
 
+    public Aluno buscarPorId(int id) throws SQLException {
+        return alunoDAO.buscarPorId(id);
+    }
+
 
     // CADASTRAR ALUNO
     // Regra de negócio: matrícula não pode ser negativa

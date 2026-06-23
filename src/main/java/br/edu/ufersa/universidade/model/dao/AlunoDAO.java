@@ -156,4 +156,28 @@ public class AlunoDAO {
 
         return concluidas;
     }
+
+    public Aluno buscarPorId(int id) throws SQLException {
+        String sql = "SELECT u.id_usuario, u.nome, u.senha, u.endereco, a.matricula " +
+                "FROM aluno a " +
+                "JOIN usuario u ON a.id_usuario = u.id_usuario " +
+                "WHERE u.id_usuario = ?";
+
+        PreparedStatement stmt = DatabaseUtils.getConnection().prepareStatement(sql);
+        stmt.setInt(1, id);
+        ResultSet rs = stmt.executeQuery();
+
+        Aluno aluno = null;
+        if (rs.next()) {
+            aluno = new Aluno(rs.getInt("id_usuario"));
+            aluno.setNome(rs.getString("nome"));
+            aluno.setSenha(rs.getString("senha"));
+            aluno.setEndereco(rs.getString("endereco"));
+            aluno.setMatricula(rs.getLong("matricula"));
+        }
+
+        rs.close();
+        stmt.close();
+        return aluno;
+    }
 }
