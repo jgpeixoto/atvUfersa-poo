@@ -19,11 +19,11 @@ public class GerenteAdcProfessorController extends BaseGerenteController {
     @FXML private Label labelError;
     private final ProfessorService profService = new ProfessorService();
 
-    @FXML public void salvarProfessor(ActionEvent e) {
+    @FXML public void cancelar(ActionEvent e) {
         WindowUtils.SwitchToWindow(GerenteProfessoresView.class, e);
     }
 
-    @FXML public void cancelar(ActionEvent e) {
+    @FXML public void salvarProfessor(ActionEvent e) {
         if (!validateProf())
             return;
         String nome = campoNome.getText();
