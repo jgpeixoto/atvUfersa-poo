@@ -20,6 +20,9 @@ public class DisciplinaService {
     public Disciplina buscarPorId(int id) throws SQLException {
         return disciplinaDAO.buscarPorId(id);
     }
+    public Disciplina buscarPorCodigo(String codigo) throws SQLException {
+        return disciplinaDAO.buscarPorCodigo(codigo);
+    }
     public ArrayList<Disciplina> buscarPorNome(String nome) throws SQLException {
         return disciplinaDAO.buscarPorNome(nome);
     }
