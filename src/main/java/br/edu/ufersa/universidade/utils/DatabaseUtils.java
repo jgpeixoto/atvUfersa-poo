@@ -3,7 +3,7 @@ import java.io.BufferedReader;
 import java.sql.*;
 import java.io.InputStreamReader;
 
-public class DatabaseUtils {
+public final class DatabaseUtils {
 
     // Singleton connection
     private static Connection instance;

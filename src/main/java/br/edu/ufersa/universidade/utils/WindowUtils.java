@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 
-public class WindowUtils {
+public final class WindowUtils {
     public static <T extends Application> void SwitchToWindow(Class<T> application, ActionEvent event) {
         try {
             T app = application.getDeclaredConstructor().newInstance();

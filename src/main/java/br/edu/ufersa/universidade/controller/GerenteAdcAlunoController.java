@@ -18,9 +18,9 @@ public class GerenteAdcAlunoController extends BaseGerenteController {
     @FXML private TextField campoEndereco;
     @FXML private TextField campoMatricula;
     @FXML private Label labelError;
+
     private final AlunoService alunoService = new AlunoService();
     private final UsuarioService userService = new UsuarioService();
-
     static long matriculaAtual = -1;
 
     public void initialize() {

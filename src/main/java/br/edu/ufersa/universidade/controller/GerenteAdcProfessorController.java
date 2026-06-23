@@ -17,10 +17,26 @@ public class GerenteAdcProfessorController extends BaseGerenteController {
     @FXML private TextField campoEndereco;
     @FXML private TextField campoCpf;
     @FXML private Label labelError;
+
     private final ProfessorService profService = new ProfessorService();
+    static String cpfAtual = "";
+
+    public void initialize() {
+        if (cpfAtual.isEmpty()) {
+            campoCpf.setEditable(true);
+        } else {
+            try {
+                Professor profReal = profService.buscarPorCpf(cpfAtual);
+                campoEndereco.setText(profReal.getEndereco());
+                campoNome.setText(profReal.getNome());
+            } catch (RuntimeException ignored) {}
+            campoCpf.setText(cpfAtual);
+            campoCpf.setEditable(false);
+        }
+    }
 
     @FXML public void cancelar(ActionEvent e) {
-        WindowUtils.SwitchToWindow(GerenteProfessoresView.class, e);
+        close();
     }
 
     @FXML public void salvarProfessor(ActionEvent e) {
@@ -33,11 +49,27 @@ public class GerenteAdcProfessorController extends BaseGerenteController {
         prof.setCpf(cpf);
         prof.setEndereco(endereco);
         prof.setNome(nome);
-        prof.setSenha("professor");
         try {
-            profService.cadastrar(prof, LoginController.curUser);
-        } catch (SQLException ignored) {}
-        WindowUtils.SwitchToWindow(GerenteProfessoresView.class, e);
+            if (cpfAtual.isEmpty()) {
+                prof.setSenha("professor");
+                profService.cadastrar(prof, LoginController.curUser);
+            }
+            else {
+                Professor profReal = profService.buscarPorCpf(cpf);
+                prof.setId(profReal.getId());
+                profService.editar(prof, LoginController.curUser);
+            }
+        } catch (Exception ex) {
+            labelError.setText("Ocorreu um erro desconhecido.");
+            System.out.println(ex);
+            return;
+        }
+        close();
+    }
+
+    private void close() {
+        cpfAtual = "";
+        WindowUtils.SwitchToWindow(GerenteProfessoresView.class, labelError);
     }
 
     private boolean validateProf() {

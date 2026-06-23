@@ -1,6 +1,7 @@
 package br.edu.ufersa.universidade.controller;
 
 import br.edu.ufersa.universidade.model.entities.Disciplina;
+import br.edu.ufersa.universidade.model.entities.Professor;
 import br.edu.ufersa.universidade.model.service.DisciplinaService;
 import br.edu.ufersa.universidade.utils.WindowUtils;
 import br.edu.ufersa.universidade.view.GerenteDisciplinaView;
@@ -16,7 +17,23 @@ public class GerenteAdcDisciplinaController extends BaseGerenteController{
     @FXML private TextField campoNome;
     @FXML private TextField campoCodigo;
     @FXML private Label labelError;
+
     private final DisciplinaService disciplinaService = new DisciplinaService();
+    static String codigoAtual = "";
+
+    public void initialize() {
+        if (codigoAtual.isEmpty()) {
+            campoCodigo.setEditable(true);
+        }
+        else {
+            campoCodigo.setText(codigoAtual);
+            try {
+                Disciplina dis = disciplinaService.buscarPorCodigo(codigoAtual);
+                campoNome.setText(dis.getNome());
+            } catch (SQLException ignored) {}
+            campoCodigo.setEditable(false);
+        }
+    }
 
     @FXML public void cancelar(ActionEvent e) {
         WindowUtils.SwitchToWindow(GerenteDisciplinaView.class, e);
@@ -30,9 +47,17 @@ public class GerenteAdcDisciplinaController extends BaseGerenteController{
         Disciplina disciplina = new Disciplina(-1);
         disciplina.setCodigo(codigo);
         disciplina.setNome(nome);
-        try {
-            disciplinaService.cadastrar(disciplina);
-        } catch (SQLException ignored) {};
+        if (codigoAtual.isEmpty()) {
+            try {
+                disciplinaService.cadastrar(disciplina);
+            } catch (SQLException ignored) {}
+        } else {
+            try {
+                Disciplina disReal = disciplinaService.buscarPorCodigo(codigoAtual);
+                disciplina.setId(disReal.getId());
+                disciplinaService.atualizar(disciplina);
+            } catch (SQLException ignored) {}
+        }
         WindowUtils.SwitchToWindow(GerenteDisciplinaView.class, e);
     }
 
@@ -49,13 +74,16 @@ public class GerenteAdcDisciplinaController extends BaseGerenteController{
             this.labelError.setText("Código não pode estar vazio.");
             return false;
         }
-        try {
-            Disciplina dis = disciplinaService.buscarPorCodigo(codigo);
-            if (dis != null && dis.getCodigo().equals(codigo)) {
-                this.labelError.setText("Já existe uma disciplina com esse código!");
-                return false;
+        if (codigoAtual.isEmpty()) {
+            try {
+                Disciplina dis = disciplinaService.buscarPorCodigo(codigo);
+                if (dis != null && dis.getCodigo().equals(codigo)) {
+                    this.labelError.setText("Já existe uma disciplina com esse código!");
+                    return false;
+                }
+            } catch (SQLException ignored) {
             }
-        } catch (SQLException ignored) {}
+        }
         return true;
     }
 }
