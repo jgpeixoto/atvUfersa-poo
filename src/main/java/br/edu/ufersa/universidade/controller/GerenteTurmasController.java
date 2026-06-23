@@ -25,6 +25,8 @@ public class GerenteTurmasController extends BaseGerenteController {
 
     @FXML public void adicionarTurma(ActionEvent e) {
         GerenteAdcTurmaController.curTurmaId = -1;
+        GerenteAdcTurmaController.curProfCpf = "";
+        GerenteAdcTurmaController.curAlunoMatriculas.clear();
         WindowUtils.SwitchToWindow(GerenteAdcTurmaView.class, e);
     }
 }

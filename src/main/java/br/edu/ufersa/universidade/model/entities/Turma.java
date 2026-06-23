@@ -10,7 +10,6 @@ public class Turma {
     private int id;
     private Disciplina disciplina;
     private Professor professor;
-    private Indice[] indices;
     private int aulasMinistradas;
     private String local;
     private String horario; 
@@ -25,6 +24,7 @@ public class Turma {
     public int getId() {
         return id;
     }
+    public void setId(int id) { this.id = id; }
     public Disciplina getDisciplina() {
         return disciplina;
     }
@@ -36,12 +36,6 @@ public class Turma {
     }
     public void setProfessor(Professor professor) {
         this.professor = professor;
-    }
-    public Indice[] getIndices() {
-        return indices;
-    }
-    public void setIndices(Indice[] indices) {
-        this.indices = indices;
     }
     public int getAulasMinistradas() {
         return aulasMinistradas;
@@ -66,57 +60,5 @@ public class Turma {
     }
     public void setEstado(EstadoTurma estado) {
         this.estado = estado;
-    }
-
-    public Aluno[] obterAlunos() {
-        ArrayList<Aluno> list = new ArrayList<Aluno>();
-        for (int i = 0; i < this.indices.length; i++)
-        {
-            list.add(this.indices[i].getAluno());
-        }
-        return (Aluno[])list.toArray();
-    }
-
-    public double obterFrequenciaTurma() {
-        double frTotal = 0;
-        int numAlunos = 0;
-        for (; numAlunos < this.indices.length; numAlunos++)
-        {
-            frTotal += this.indices[numAlunos].obterFrequencia();
-        }
-        return frTotal / numAlunos;
-    }
-
-    public double obterMediaTurma() {
-        double notaTotal = 0;
-        int numAlunos = 0;
-        for (; numAlunos < this.indices.length; numAlunos++)
-        {
-            notaTotal += this.indices[numAlunos].obterMedia();
-        }
-        return notaTotal / numAlunos;
-    }
-
-    public void fecharTurma() {
-        for (int i = 0; i < this.indices.length; i++)
-        {
-            Indice ind = this.indices[i];
-            if (ind.getEstado() == Indice.EstadoMatricula.Matr) {
-                if (ind.obterMedia() >= 70 && ind.obterFrequencia() >= 75) 
-                    ind.setEstado(Indice.EstadoMatricula.Apr); // Deve ter nota >= 70 e Frequencia >= 75%
-                else
-                    ind.setEstado(Indice.EstadoMatricula.Rep);
-            }
-        }
-        this.setEstado(EstadoTurma.Fin);
-    }
-
-    public static Turma buscar(Disciplina disciplina) {
-        /*
-            Inserir query de banco de dados para busca aqui numa
-            implementação real
-            SELECT * FROM turmas WHERE id_disciplina == {disciplina.getId()}
-        */
-       return null;
     }
 }

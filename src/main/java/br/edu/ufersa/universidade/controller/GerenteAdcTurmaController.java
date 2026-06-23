@@ -1,8 +1,9 @@
 package br.edu.ufersa.universidade.controller;
 
 import br.edu.ufersa.universidade.model.entities.Disciplina;
-import br.edu.ufersa.universidade.model.service.DisciplinaService;
-import br.edu.ufersa.universidade.model.service.TurmaService;
+import br.edu.ufersa.universidade.model.entities.Indice;
+import br.edu.ufersa.universidade.model.entities.Professor;
+import br.edu.ufersa.universidade.model.service.*;
 import br.edu.ufersa.universidade.utils.WindowUtils;
 import br.edu.ufersa.universidade.view.GerentePartTurmaView;
 import br.edu.ufersa.universidade.view.GerenteTurmasView;
@@ -24,15 +25,37 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
     @FXML private ComboBox<String> comboStatus;
     @FXML private Label labelError;
 
+    private final ProfessorService profService = new ProfessorService();
     private final DisciplinaService disService = new DisciplinaService();
     private final TurmaService turmaService = new TurmaService();
+    private final IndiceService indiceService = new IndiceService();
 
     static int curTurmaId = -1;
-
-    static String curProfCpf = ""; // INSERIR CPF DO PROFESSOR ATUAL
+    static String curProfCpf = "";
     static ArrayList<Long> curAlunoMatriculas = new ArrayList<Long>();
 
+    public void initialize() {
+        if (curTurmaId != -1) { // não é uma nova turma
+            Turma turma = turmaService.buscarPorId(curTurmaId);
+            if (curProfCpf.isEmpty()) {
+                curProfCpf = turma.getProfessor().getCpf();
+            }
+            if (curAlunoMatriculas.isEmpty()) {
+                try {
+                    ArrayList<Indice> indices = turmaService.listarIndices(turma);
+                    for (Indice in : indices) {
+                        curAlunoMatriculas.add(in.getAluno().getMatricula());
+                    }
+                }
+                catch (RuntimeException ignored) {}
+            }
+        }
+    }
+
     @FXML public void abrirParticipantes(ActionEvent e) {
+        GerentePartTurmaController.curProfCpf = curProfCpf;
+        GerentePartTurmaController.curAlunoMatriculas.clear();
+        GerentePartTurmaController.curAlunoMatriculas.addAll(curAlunoMatriculas);
         WindowUtils.SwitchToWindow(GerentePartTurmaView.class, e);
     }
 
@@ -41,13 +64,38 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
     }
 
     @FXML public void salvarTurma(ActionEvent e) {
+        if (!validateTurma())
+            return;
         String tipo = comboStatus.getValue();
         String codDisciplina = campoDisciplina.getText();
         String local = campoLocal.getText();
         String horario = campoHorario.getText();
 
-        // save to db here (everything)
+        Turma turma = new Turma(-1);
+        turma.setEstado(tipo.equals("Ativa") ? Turma.EstadoTurma.Ativo : Turma.EstadoTurma.Fin);
+        try {
+            Disciplina dis = disService.buscarPorCodigo(codDisciplina);
+            turma.setDisciplina(dis);
+        } catch (SQLException ignored) {}
+        turma.setLocal(local);
+        turma.setHorario(horario);
+        try {
+            Professor prof = profService.buscarPorCpf(curProfCpf);
+            turma.setProfessor(prof);
+        } catch (RuntimeException ignored) {
+            Professor backup = new Professor(-1);
+            backup.setCpf(null);
+            turma.setProfessor(backup);
+        }
+        turmaService.cadastrar(turma, LoginController.curUser);
 
+        for (long num : curAlunoMatriculas) {
+            try {
+                Indice indice = new Indice(-1);
+                indice.setTurma(turma);
+                indiceService.matricular(num, indice);
+            } catch (SQLException ignored) {}
+        }
         close();
     }
 
@@ -74,9 +122,14 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
         }
         try {
             Disciplina dis = disService.buscarPorCodigo(codDisciplina);
-
-        } catch (SQLException ignored) {}
-
+            if (dis == null) {
+                labelError.setText("Não existe uma disciplina com este código.");
+                return false;
+            }
+        } catch (SQLException ignored) {
+            labelError.setText("Não existe uma disciplina com este código.");
+            return false;
+        }
         return true;
     }
 

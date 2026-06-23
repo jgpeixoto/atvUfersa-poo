@@ -15,7 +15,8 @@ public class TurmaService {
     public void cadastrar(Turma turma, Usuario solicitante) {
         verificarPermissaoGerente(solicitante);
         validar(turma);
-        turma.setEstado(Turma.EstadoTurma.Ativo);
+        if (turma.getEstado() == null)
+            turma.setEstado(Turma.EstadoTurma.Ativo);
         turmaDAO.salvar(turma);
     }
 
@@ -50,6 +51,10 @@ public class TurmaService {
 
     public ArrayList<Turma> listarTodas() {
         return turmaDAO.listarTodas();
+    }
+
+    public ArrayList<Indice> listarIndices(Turma turma) {
+        return turmaDAO.listarIndices(turma);
     }
 
     public void alocarProfessor(int idTurma, Professor professor, Usuario solicitante) {
@@ -93,8 +98,6 @@ public class TurmaService {
             throw new IllegalArgumentException("Turma não pode ser nula.");
         if (turma.getDisciplina() == null)
             throw new IllegalArgumentException("Disciplina da turma não pode ser nula.");
-        if (turma.getProfessor() == null)
-            throw new IllegalArgumentException("Professor da turma não pode ser nulo.");
         if (turma.getLocal() == null || turma.getLocal().isBlank())
             throw new IllegalArgumentException("Local da turma não pode ser vazio.");
         if (turma.getHorario() == null || turma.getHorario().isBlank())

@@ -15,8 +15,7 @@ import java.sql.SQLException;
 public class GerenteParticipantesAdicionarAlunoController extends BaseGerenteController {
     @FXML private TextField campoMatricula;
     @FXML private Label labelError;
-    @FXML private Button btnCancelar;
-    @FXML private Button btnSalvar;
+
     private final AlunoService alunoService = new AlunoService();
 
     @FXML public void cancelar(ActionEvent e) {

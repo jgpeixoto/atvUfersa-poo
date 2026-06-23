@@ -11,11 +11,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class GerenteParticipantesAdicionarProfessorController extends BaseGerenteController {
-    @FXML private Button btnSair;
     @FXML private TextField campoCpf;
     @FXML private Label labelError;
-    @FXML private Button btnCancelar;
-    @FXML private Button btnSalvar;
+
     private final ProfessorService professorService = new ProfessorService();
 
     @FXML public void cancelar(ActionEvent e) {
@@ -37,7 +35,7 @@ public class GerenteParticipantesAdicionarProfessorController extends BaseGerent
             this.labelError.setText("O CPF deve ter 11 caracteres.");
             return false;
         }
-        if (GerentePartTurmaController.curProfCpf != null && GerentePartTurmaController.curProfCpf.equals(cpf)) {
+        if (!GerentePartTurmaController.curProfCpf.isEmpty() && GerentePartTurmaController.curProfCpf.equals(cpf)) {
             this.labelError.setText("Esse já é o professor desta turma!");
             return false;
         }

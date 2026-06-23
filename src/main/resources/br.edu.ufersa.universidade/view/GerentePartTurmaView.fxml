@@ -78,7 +78,7 @@
                 </padding>
                 <Label styleClass="app-header-title" text="Gerente" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Button fx:id="btnSair" onAction="#sair" styleClass="btn-sair" text="Sair  ➜" />
+                <Button onAction="#sair" styleClass="btn-sair" text="Sair  ➜" />
             </HBox>
 
             <!-- Título da página -->
@@ -102,14 +102,13 @@
                     <!-- Bloco Professor -->
                     <HBox alignment="CENTER_LEFT">
                         <Region HBox.hgrow="ALWAYS" />
-                        <Button fx:id="btnAdicionarProfessor" onAction="#abrirAdicionarProfessor" styleClass="btn-adicionar" text="Adicionar prof.  ➕" />
+                        <Button onAction="#abrirAdicionarProfessor" styleClass="btn-adicionar" text="Adicionar prof.  ➕" />
                     </HBox>
 
                     <TableView fx:id="tabelaProfessor" prefHeight="90" styleClass="app-table">
                         <columns>
                             <TableColumn prefWidth="500" text="Professor" />
                             <TableColumn prefWidth="300" text="CPF" />
-                            <TableColumn prefWidth="100" text="Editar" />
                             <TableColumn prefWidth="100" text="Excluir" />
                         </columns>
                         <columnResizePolicy>
@@ -120,14 +119,13 @@
                     <!-- Bloco Alunos -->
                     <HBox alignment="CENTER_LEFT">
                         <Region HBox.hgrow="ALWAYS" />
-                        <Button fx:id="btnAdicionarAluno" onAction="#abrirAdicionarAluno" styleClass="btn-adicionar" text="Adicionar aluno  ➕" />
+                        <Button onAction="#abrirAdicionarAluno" styleClass="btn-adicionar" text="Adicionar aluno  ➕" />
                     </HBox>
 
                     <TableView fx:id="tabelaAlunos" prefHeight="160" styleClass="app-table">
                         <columns>
                             <TableColumn prefWidth="500" text="Aluno" />
                             <TableColumn prefWidth="300" text="Matrícula" />
-                            <TableColumn prefWidth="100" text="Editar" />
                             <TableColumn prefWidth="100" text="Excluir" />
                         </columns>
                         <columnResizePolicy>
@@ -140,8 +138,8 @@
                         <padding>
                             <Insets bottom="0" left="0" right="0" top="15" />
                         </padding>
-                        <Button fx:id="btnCancelar" onAction="#cancelar" styleClass="btn-cancelar" text="Cancelar" />
-                        <Button fx:id="btnSalvar" onAction="#salvarParticipantes" styleClass="btn-salvar" text="Salvar" />
+                        <Button onAction="#cancelar" styleClass="btn-cancelar" text="Cancelar" />
+                        <Button onAction="#salvarParticipantes" styleClass="btn-salvar" text="Salvar" />
                     </HBox>
 
                 </VBox>

@@ -78,7 +78,7 @@
                 </padding>
                 <Label styleClass="app-header-title" text="Gerente" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Button fx:id="btnSair" onAction="#sair" styleClass="btn-sair" text="Sair  ➜" />
+                <Button onAction="#sair" styleClass="btn-sair" text="Sair  ➜" />
             </HBox>
 
             <!-- Corpo -->
@@ -112,8 +112,8 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                        <Button fx:id="btnCancelar" onAction="#cancelar" styleClass="btn-cancelar" text="Cancelar" />
-                        <Button fx:id="btnSalvar" onAction="#salvarAlunoNaTurma" styleClass="btn-salvar" text="Salvar" />
+                        <Button onAction="#cancelar" styleClass="btn-cancelar" text="Cancelar" />
+                        <Button onAction="#salvarAlunoNaTurma" styleClass="btn-salvar" text="Salvar" />
                     </HBox>
 
                 </VBox>
