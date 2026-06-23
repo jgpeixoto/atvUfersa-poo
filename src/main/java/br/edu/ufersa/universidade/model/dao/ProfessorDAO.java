@@ -17,7 +17,7 @@ public class ProfessorDAO {
         return p;
     }
 
-    public void salvar(Professor professor) {
+    public void salvar(Professor professor) throws SQLException {
         String sqlUsuario = "INSERT INTO usuario (nome, senha, endereco, tipo) VALUES (?, ?, ?, 'Prof')";
         String sqlProf    = "INSERT INTO professor (cpf, id_usuario) VALUES (?, ?)";
         try {
@@ -46,6 +46,10 @@ public class ProfessorDAO {
             }
         } catch (SQLException e) {
             System.err.println("Erro ao salvar professor: " + e.getMessage());
+            try {
+                DatabaseUtils.getConnection().setAutoCommit(true);
+            } catch (SQLException ignored) {}
+            throw e;
         }
         try {
             DatabaseUtils.getConnection().setAutoCommit(true);
@@ -119,15 +123,14 @@ public class ProfessorDAO {
                 JOIN professor p ON u.id_usuario = p.id_usuario
                 WHERE p.cpf = ?
                 """;
-        Professor prof = null;
         try (PreparedStatement ps = DatabaseUtils.getConnection().prepareStatement(sql)) {
             ps.setString(1, cpf);
             ResultSet rs = ps.executeQuery();
-            prof = mapear(rs);
+            if (rs.next()) return mapear(rs);
         } catch (SQLException e) {
-            System.err.println("Erro ao buscar professor por nome: " + e.getMessage());
+            System.err.println("Erro ao buscar professor por CPF: " + e.getMessage());
         }
-        return prof;
+        return null;
     }
 
     public ArrayList<Professor> listarTodos() {

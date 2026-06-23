@@ -4,13 +4,14 @@ import br.edu.ufersa.universidade.model.dao.ProfessorDAO;
 import br.edu.ufersa.universidade.model.entities.Professor;
 import br.edu.ufersa.universidade.model.entities.Usuario;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ProfessorService {
 
     private final ProfessorDAO professorDAO = new ProfessorDAO();
 
-    public void cadastrar(Professor professor, Usuario solicitante) {
+    public void cadastrar(Professor professor, Usuario solicitante) throws SQLException {
         verificarPermissaoGerente(solicitante);
         validar(professor);
         professorDAO.salvar(professor);

@@ -34,7 +34,9 @@ public class GerenteAdcProfessorController extends BaseGerenteController {
         prof.setEndereco(endereco);
         prof.setNome(nome);
         prof.setSenha("professor");
-        profService.cadastrar(prof, LoginController.curUser);
+        try {
+            profService.cadastrar(prof, LoginController.curUser);
+        } catch (SQLException ignored) {}
         WindowUtils.SwitchToWindow(GerenteProfessoresView.class, e);
     }
 
@@ -61,13 +63,14 @@ public class GerenteAdcProfessorController extends BaseGerenteController {
             this.labelError.setText("CPF deve ser 11 caracteres.");
             return false;
         }
+        Professor prof = null;
         try {
-            Professor prof = profService.buscarPorCpf(cpf);
+            prof = profService.buscarPorCpf(cpf);
             if (prof != null && prof.getCpf().equals(cpf)) {
                 this.labelError.setText("Já existe um professor com este CPF!");
                 return false;
             }
-        } catch (Exception ignored) {}
+        } catch (RuntimeException ignored) {}
         return true;
     }
 }
