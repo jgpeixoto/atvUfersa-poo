@@ -12,7 +12,7 @@ import javafx.scene.control.TableView;
 public class ProfessorTurmasController {
     @FXML private TableView<Turma> tableTurmas;
     /*
-    @FXML private TableColumn<Turma, SimpleIntegerProperty> colTurma; // id da turma
+    @FXML private TableColumn<Turma, SimpleIntegerProperty> colTurma; // curId da turma
     @FXML private TableColumn<Turma, SimpleStringProperty> colDisciplina;
     @FXML private TableColumn<Turma, SimpleStringProperty> colCodigo;
     @FXML private TableColumn colFrequencia;

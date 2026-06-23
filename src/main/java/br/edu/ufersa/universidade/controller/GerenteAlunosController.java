@@ -1,6 +1,8 @@
 package br.edu.ufersa.universidade.controller;
 
 import br.edu.ufersa.universidade.model.entities.Aluno;
+import br.edu.ufersa.universidade.utils.WindowUtils;
+import br.edu.ufersa.universidade.view.GerenteAdcAlunoView;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -21,7 +23,7 @@ public class GerenteAlunosController extends BaseGerenteController {
     @FXML private TableColumn colAjustes; */
 
     @FXML public void adicionarAluno(ActionEvent e) {
-
+        WindowUtils.SwitchToWindow(GerenteAdcAlunoView.class, e);
     }
 
 }

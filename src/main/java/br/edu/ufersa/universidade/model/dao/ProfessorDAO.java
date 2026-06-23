@@ -112,6 +112,24 @@ public class ProfessorDAO {
         return lista;
     }
 
+    public Professor buscarPorCpf(String cpf) {
+        String sql = """
+                SELECT u.id_usuario, u.nome, u.senha, u.endereco, p.cpf
+                FROM usuario u
+                JOIN professor p ON u.id_usuario = p.id_usuario
+                WHERE p.cpf = ?
+                """;
+        Professor prof = null;
+        try (PreparedStatement ps = DatabaseUtils.getConnection().prepareStatement(sql)) {
+            ps.setString(1, cpf);
+            ResultSet rs = ps.executeQuery();
+            prof = mapear(rs);
+        } catch (SQLException e) {
+            System.err.println("Erro ao buscar professor por nome: " + e.getMessage());
+        }
+        return prof;
+    }
+
     public ArrayList<Professor> listarTodos() {
         String sql = """
                 SELECT u.id_usuario, u.nome, u.senha, u.endereco, p.cpf

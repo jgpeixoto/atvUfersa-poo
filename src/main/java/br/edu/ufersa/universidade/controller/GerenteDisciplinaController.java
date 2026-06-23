@@ -1,7 +1,8 @@
 package br.edu.ufersa.universidade.controller;
 
 import br.edu.ufersa.universidade.model.entities.Disciplina;
-import javafx.beans.property.SimpleStringProperty;
+import br.edu.ufersa.universidade.utils.WindowUtils;
+import br.edu.ufersa.universidade.view.GerenteAdcDisciplinaView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,6 +18,6 @@ public class GerenteDisciplinaController extends BaseGerenteController {
     // @FXML private TableColumn colAjustes;
 
     @FXML public void adicionarDisciplina(ActionEvent e) {
-
+        WindowUtils.SwitchToWindow(GerenteAdcDisciplinaView.class, e);
     }
 }

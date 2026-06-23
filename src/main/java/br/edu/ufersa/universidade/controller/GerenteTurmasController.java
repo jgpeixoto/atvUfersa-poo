@@ -1,6 +1,8 @@
 package br.edu.ufersa.universidade.controller;
 
 import br.edu.ufersa.universidade.model.entities.Turma;
+import br.edu.ufersa.universidade.utils.WindowUtils;
+import br.edu.ufersa.universidade.view.GerenteAdcTurmaView;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +21,9 @@ public class GerenteTurmasController extends BaseGerenteController {
     @FXML private TableColumn<Turma, SimpleStringProperty> colStatus;
     @FXML private TableColumn colAjustes; */
 
-    @FXML public void adicionarTurma(ActionEvent e) {
 
+
+    @FXML public void adicionarTurma(ActionEvent e) {
+        WindowUtils.SwitchToWindow(GerenteAdcTurmaView.class, e);
     }
 }

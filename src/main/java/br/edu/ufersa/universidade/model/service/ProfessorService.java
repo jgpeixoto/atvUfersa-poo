@@ -36,6 +36,13 @@ public class ProfessorService {
         return p;
     }
 
+    public Professor buscarPorCpf(String cpf) {
+        Professor p = professorDAO.buscarPorCpf(cpf);
+        if (p == null)
+            throw new RuntimeException("Professor não encontrado para o CPF: " + cpf);
+        return p;
+    }
+
     public ArrayList<Professor> buscarPorNome(String nome) {
         if (nome == null || nome.isBlank())
             throw new IllegalArgumentException("Nome para busca não pode ser vazio.");
