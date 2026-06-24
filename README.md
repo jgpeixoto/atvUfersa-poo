@@ -26,8 +26,18 @@ src/main/java/br/edu/ufersa/universidade/Main.java
 ```
 ![alt text](https://github.com/jgpeixoto/atvUfersa-poo/blob/main/.images/main.png?raw=true)
 
-O usuário Admin inicial é o seguinte:
+O usuário Admin inicial é:
 - Usuário: joao
 - Senha: 12345
+
+O login de novos alunos será:
+- Usuário: nomeDoAluno
+- Senha: aluno
+
+O login de novos professores será:
+- Usuário: nomeDoProfessor
+- Senha: professor
+
+
 
 
