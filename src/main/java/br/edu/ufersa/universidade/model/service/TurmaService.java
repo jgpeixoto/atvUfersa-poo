@@ -1,5 +1,6 @@
 package br.edu.ufersa.universidade.model.service;
 
+import br.edu.ufersa.universidade.exceptions.ServiceException;
 import br.edu.ufersa.universidade.model.dao.IndiceDAO;
 import br.edu.ufersa.universidade.model.dao.TurmaDAO;
 import br.edu.ufersa.universidade.model.entities.*;
@@ -29,23 +30,23 @@ public class TurmaService {
     public void deletar(int id, Usuario solicitante) {
         verificarPermissaoGerente(solicitante);
         if (turmaDAO.buscarPorId(id) == null)
-            throw new RuntimeException("Turma não encontrada para o id: " + id);
+            throw new ServiceException("Turma não encontrada para o id: " + id);
         turmaDAO.deletar(id);
     }
 
     public Turma buscarPorId(int id) {
         Turma t = turmaDAO.buscarPorId(id);
         if (t == null)
-            throw new RuntimeException("Turma não encontrada para o id: " + id);
+            throw new ServiceException("Turma não encontrada para o id: " + id);
         return t;
     }
 
     public ArrayList<Turma> buscarPorProfessor(int idProfessor, Usuario solicitante) {
         if (solicitante.getTipo() == Usuario.TipoUsuario.Prof
                 && solicitante.getId() != idProfessor)
-            throw new RuntimeException("Acesso negado: professor só pode ver as próprias turmas.");
+            throw new ServiceException("Acesso negado: professor só pode ver as próprias turmas.");
         if (solicitante.getTipo() == Usuario.TipoUsuario.Aluno)
-            throw new RuntimeException("Acesso negado: alunos não podem buscar turmas por professor.");
+            throw new ServiceException("Acesso negado: alunos não podem buscar turmas por professor.");
         return turmaDAO.buscarPorProfessor(idProfessor);
     }
 
@@ -73,9 +74,9 @@ public class TurmaService {
                 && turma.getProfessor().getId() == solicitante.getId();
 
         if (!ehGerente && !ehProfDaTurma)
-            throw new RuntimeException("Acesso negado: apenas o gerente ou o professor da turma podem finalizá-la.");
+            throw new ServiceException("Acesso negado: apenas o gerente ou o professor da turma podem finalizá-la.");
         if (turma.getEstado() == Turma.EstadoTurma.Fin)
-            throw new RuntimeException("Turma já está finalizada.");
+            throw new ServiceException("Turma já está finalizada.");
 
         try {
             ArrayList<Indice> indices = indiceDAO.buscarPorTurma(idTurma);
@@ -95,17 +96,17 @@ public class TurmaService {
 
     private void validar(Turma turma) {
         if (turma == null)
-            throw new IllegalArgumentException("Turma não pode ser nula.");
+            throw new ServiceException("Turma não pode ser nula.");
         if (turma.getDisciplina() == null)
-            throw new IllegalArgumentException("Disciplina da turma não pode ser nula.");
+            throw new ServiceException("Disciplina da turma não pode ser nula.");
         if (turma.getLocal() == null || turma.getLocal().isBlank())
-            throw new IllegalArgumentException("Local da turma não pode ser vazio.");
+            throw new ServiceException("Local da turma não pode ser vazio.");
         if (turma.getHorario() == null || turma.getHorario().isBlank())
-            throw new IllegalArgumentException("Horário da turma não pode ser vazio.");
+            throw new ServiceException("Horário da turma não pode ser vazio.");
     }
 
     private void verificarPermissaoGerente(Usuario solicitante) {
         if (solicitante == null || solicitante.getTipo() != Usuario.TipoUsuario.Admin)
-            throw new RuntimeException("Acesso negado: apenas o gerente pode realizar esta operação.");
+            throw new ServiceException("Acesso negado: apenas o gerente pode realizar esta operação.");
     }
 }

@@ -1,5 +1,6 @@
 package br.edu.ufersa.universidade.controller;
 
+import br.edu.ufersa.universidade.exceptions.ServiceException;
 import br.edu.ufersa.universidade.model.entities.Professor;
 import br.edu.ufersa.universidade.model.service.ProfessorService;
 import br.edu.ufersa.universidade.model.service.TurmaService;
@@ -51,7 +52,7 @@ public class GerenteProfessoresController extends BaseGerenteController {
     private int contarTurmas(Professor prof) {
         try {
             return turmaService.buscarPorProfessor(prof.getId(), LoginController.curUser).size();
-        } catch (RuntimeException ignored) {
+        } catch (ServiceException ignored) {
             return 0;
         }
     }

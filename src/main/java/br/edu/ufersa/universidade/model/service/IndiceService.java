@@ -15,6 +15,9 @@ public class IndiceService {
         return indiceDAO.buscarPorAluno(matricula);
     }
 
+    public ArrayList<Indice> buscarPorTurma(int idTurma) throws SQLException {
+        return indiceDAO.buscarPorTurma(idTurma);
+    }
 
     // MATRICULAR ALUNO EM UMA TURMA
     // Regra de negócio: estado inicial sempre é "Matr"
@@ -42,7 +45,7 @@ public class IndiceService {
 
         // Define o estado automaticamente com base na média
         double media = indice.obterMedia();
-        if (media >= 50) {
+        if (media >= 60) {
             indice.setEstado(Indice.EstadoMatricula.Apr); // Aprovado
         } else {
             indice.setEstado(Indice.EstadoMatricula.Rep); // Reprovado

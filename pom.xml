@@ -27,12 +27,16 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>22</version>
+            <type>jar</type>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>22</version>
+            <type>jar</type>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>

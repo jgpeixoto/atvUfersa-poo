@@ -1,5 +1,6 @@
 package br.edu.ufersa.universidade.controller;
 
+import br.edu.ufersa.universidade.exceptions.ServiceException;
 import br.edu.ufersa.universidade.model.entities.Professor;
 import br.edu.ufersa.universidade.model.service.ProfessorService;
 import br.edu.ufersa.universidade.utils.WindowUtils;
@@ -45,7 +46,7 @@ public class GerenteParticipantesAdicionarProfessorController extends BaseGerent
                 this.labelError.setText("Nenhum professor encontrado com este CPF.");
                 return false;
             }
-        } catch (RuntimeException ignored) {
+        } catch (ServiceException ignored) {
             this.labelError.setText("Nenhum professor encontrado com este CPF.");
             return false;
         }

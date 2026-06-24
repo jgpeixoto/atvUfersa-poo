@@ -1,5 +1,6 @@
 package br.edu.ufersa.universidade.model.dao;
 
+import br.edu.ufersa.universidade.model.entities.Aluno;
 import br.edu.ufersa.universidade.model.entities.Indice;
 import br.edu.ufersa.universidade.model.entities.Turma;
 import br.edu.ufersa.universidade.utils.DatabaseUtils;
@@ -26,6 +27,10 @@ public class IndiceDAO {
             // Cria a Turma e associa ao Indice
             Turma turma = new Turma(rs.getInt("id_turma"));
             indice.setTurma(turma);
+
+            Aluno aluno = new Aluno(-1);
+            aluno.setMatricula(rs.getLong("matricula_aluno"));
+            indice.setAluno(aluno);
 
             indice.setNota1(rs.getInt("nota1"));
             indice.setNota2(rs.getInt("nota2"));
@@ -60,6 +65,9 @@ public class IndiceDAO {
 
             // Cria a Turma e associa ao Indice
             Turma turma = new Turma(rs.getInt("id_turma"));
+            Aluno aluno = new Aluno(-1);
+            aluno.setMatricula(rs.getLong("matricula_aluno"));
+            indice.setAluno(aluno);
             indice.setTurma(turma);
 
             indice.setNota1(rs.getInt("nota1"));
@@ -131,6 +139,9 @@ public class IndiceDAO {
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             Indice indice = new Indice(rs.getInt("id_indice"));
+            Aluno aluno = new Aluno(-1);
+            aluno.setMatricula(rs.getLong("matricula_aluno"));
+            indice.setAluno(aluno);
             Turma turma = new Turma(rs.getInt("id_turma"));
             indice.setTurma(turma);
             indice.setNota1(rs.getInt("nota1"));

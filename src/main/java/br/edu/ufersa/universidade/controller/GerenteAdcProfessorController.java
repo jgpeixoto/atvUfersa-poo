@@ -1,5 +1,6 @@
 package br.edu.ufersa.universidade.controller;
 
+import br.edu.ufersa.universidade.exceptions.ServiceException;
 import br.edu.ufersa.universidade.model.entities.Professor;
 import br.edu.ufersa.universidade.model.service.ProfessorService;
 import br.edu.ufersa.universidade.utils.WindowUtils;
@@ -29,7 +30,7 @@ public class GerenteAdcProfessorController extends BaseGerenteController {
                 Professor profReal = profService.buscarPorCpf(cpfAtual);
                 campoEndereco.setText(profReal.getEndereco());
                 campoNome.setText(profReal.getNome());
-            } catch (RuntimeException ignored) {}
+            } catch (ServiceException ignored) {}
             campoCpf.setText(cpfAtual);
             campoCpf.setEditable(false);
         }
@@ -102,7 +103,7 @@ public class GerenteAdcProfessorController extends BaseGerenteController {
                 this.labelError.setText("Já existe um professor com este CPF!");
                 return false;
             }
-        } catch (RuntimeException ignored) {}
+        } catch (ServiceException ignored) {}
         return true;
     }
 }

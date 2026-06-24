@@ -1,5 +1,6 @@
 package br.edu.ufersa.universidade.controller;
 
+import br.edu.ufersa.universidade.exceptions.ServiceException;
 import br.edu.ufersa.universidade.model.entities.Disciplina;
 import br.edu.ufersa.universidade.model.entities.Indice;
 import br.edu.ufersa.universidade.model.entities.Professor;
@@ -56,7 +57,7 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
                         curAlunoMatriculas.add(in.getAluno().getMatricula());
                     }
                 }
-                catch (RuntimeException ignored) {}
+                catch (ServiceException ignored) {}
             }
         }
         if (!lastLocal.isEmpty()) {
@@ -121,7 +122,7 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
             try {
                 Professor prof = profService.buscarPorCpf(curProfCpf);
                 turma.setProfessor(prof);
-            } catch (RuntimeException ignored) {
+            } catch (ServiceException ignored) {
                 Professor backup = new Professor(-1);
                 backup.setCpf(null);
                 turma.setProfessor(backup);
@@ -150,7 +151,7 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
             try {
                 Professor prof = profService.buscarPorCpf(curProfCpf);
                 turma.setProfessor(prof);
-            } catch (RuntimeException ignored) {
+            } catch (ServiceException ignored) {
                 Professor backup = new Professor(-1);
                 backup.setCpf(null);
                 turma.setProfessor(backup);

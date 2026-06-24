@@ -1,7 +1,9 @@
 package br.edu.ufersa.universidade.controller;
 
-import br.edu.ufersa.universidade.model.dao.IndiceDAO;
+import br.edu.ufersa.universidade.model.entities.Aluno;
 import br.edu.ufersa.universidade.model.entities.Indice;
+import br.edu.ufersa.universidade.model.service.AlunoService;
+import br.edu.ufersa.universidade.model.service.IndiceService;
 import br.edu.ufersa.universidade.utils.TableViewUtils;
 import br.edu.ufersa.universidade.utils.WindowUtils;
 import br.edu.ufersa.universidade.view.ProfessorTurmasView;
@@ -28,7 +30,8 @@ public class ProfessorNotasController {
 
     static int idTurma;
 
-    private final IndiceDAO indiceDAO = new IndiceDAO();
+    private final IndiceService indiceService = new IndiceService();
+    private final AlunoService alunoService = new AlunoService();
     private ArrayList<Indice> todos = new ArrayList<>();
 
     public void initialize() {
@@ -40,7 +43,11 @@ public class ProfessorNotasController {
         TableViewUtils.setColumn(tableNotas, 5, i -> i.getEstado().toString());
 
         try {
-            todos = idTurma > 0 ? indiceDAO.buscarPorTurma(idTurma) : new ArrayList<>();
+            todos = idTurma > 0 ? indiceService.buscarPorTurma(idTurma) : new ArrayList<>();
+            for (Indice i : todos) {
+                Aluno al = alunoService.buscarPorMatricula(i.getAluno().getMatricula());
+                i.setAluno(al);
+            }
             aplicarFiltro();
             campoBusca.textProperty().addListener((obs, oldV, newV) -> aplicarFiltro());
         } catch (SQLException ignored) {}
