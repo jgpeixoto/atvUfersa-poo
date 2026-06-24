@@ -56,11 +56,11 @@ public class TurmaDAO {
                 i.faltas, i.estado,
                 i.matricula_aluno,
                 u.nome AS nome_aluno,
-                u.endereco AS endereco_aluno
+                u.endereco AS endereco_aluno,
                 u.id_usuario AS id_usuario
             FROM indice i
             JOIN turma t ON i.id_turma = t.id_turma
-            JOIN aluno a ON i.matrucula_aluno = a.matricula
+            JOIN aluno a ON i.matricula_aluno = a.matricula
             JOIN usuario u ON a.id_usuario = u.id_usuario
             """;
 

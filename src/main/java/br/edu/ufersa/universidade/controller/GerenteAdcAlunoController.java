@@ -1,6 +1,7 @@
 package br.edu.ufersa.universidade.controller;
 
 import br.edu.ufersa.universidade.model.entities.Aluno;
+import br.edu.ufersa.universidade.model.entities.Professor;
 import br.edu.ufersa.universidade.model.service.AlunoService;
 import br.edu.ufersa.universidade.model.service.UsuarioService;
 import br.edu.ufersa.universidade.utils.WindowUtils;
@@ -27,6 +28,11 @@ public class GerenteAdcAlunoController extends BaseGerenteController {
         if (matriculaAtual == -1) {
             campoMatricula.setEditable(true);
         } else {
+            try {
+                Aluno alunReal = alunoService.buscarPorMatricula(matriculaAtual);
+                campoEndereco.setText(alunReal.getEndereco());
+                campoNome.setText(alunReal.getNome());
+            } catch (SQLException ignored) {}
             campoMatricula.setEditable(false);
             campoMatricula.setText(Long.toString(matriculaAtual));
         }
@@ -89,7 +95,7 @@ public class GerenteAdcAlunoController extends BaseGerenteController {
             this.labelError.setText("A matrícula é inválida.");
             return false;
         }
-        if (matriculaAtual != -1) {
+        if (matriculaAtual == -1) {
             try {
                 Aluno al = alunoService.buscarPorMatricula(matricula);
                 if (al != null) {

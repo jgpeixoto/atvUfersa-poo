@@ -49,6 +49,10 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
                 }
                 catch (RuntimeException ignored) {}
             }
+            campoDisciplina.setText(turma.getDisciplina().getCodigo());
+            campoHorario.setText(turma.getHorario());
+            campoLocal.setText(turma.getLocal());
+            comboStatus.setValue("Ativa");
         }
     }
 
