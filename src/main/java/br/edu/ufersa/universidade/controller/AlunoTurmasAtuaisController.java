@@ -5,6 +5,7 @@ import br.edu.ufersa.universidade.model.entities.Indice;
 import br.edu.ufersa.universidade.model.entities.Turma;
 import br.edu.ufersa.universidade.model.service.AlunoService;
 import br.edu.ufersa.universidade.model.service.IndiceService;
+import br.edu.ufersa.universidade.model.service.TurmaService;
 import br.edu.ufersa.universidade.utils.TableViewUtils;
 import br.edu.ufersa.universidade.utils.WindowUtils;
 import br.edu.ufersa.universidade.view.AlunoTurmasConcluidasView;
@@ -32,6 +33,7 @@ public class AlunoTurmasAtuaisController {
     private final AlunoService alunoService = new AlunoService();
     private final IndiceService indiceService = new IndiceService();
     private Aluno alunoAtual;
+    private final TurmaService turmaService = new TurmaService();
 
     public void initialize() {
         try {
@@ -41,6 +43,10 @@ public class AlunoTurmasAtuaisController {
             lblInfoAluno.setText("Matrícula: " + al.getMatricula());
 
             ArrayList<Indice> indices = indiceService.listarPorAluno(al.getMatricula());
+            for (Indice indice : indices) {
+                Turma turma = turmaService.buscarPorId(indice.getTurma().getId());
+                indice.setTurma(turma);
+            }
             popularMinhasTurmas(indices);
             popularNotas(indices);
             popularFrequencia(indices);
@@ -76,7 +82,7 @@ public class AlunoTurmasAtuaisController {
     private void popularFrequencia(ArrayList<Indice> indices) {
         boxFrequencia.getChildren().clear();
         for (Indice indice : indices) {
-            double percentual = indice.obterFrequencia() / 100.0;
+            double percentual = indice.obterFrequencia();
             boxFrequencia.getChildren().add(
                     linhaFrequencia(indice.getTurma().getDisciplina().getNome(), percentual));
         }

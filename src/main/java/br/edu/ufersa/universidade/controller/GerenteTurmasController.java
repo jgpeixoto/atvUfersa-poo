@@ -62,7 +62,10 @@ public class GerenteTurmasController extends BaseGerenteController {
 
         botaoNaColuna(5, "Editar", turma -> {
             GerenteAdcTurmaController.curTurmaId = turma.getId();
-
+            GerenteAdcTurmaController.lastCodigo = "";
+            GerenteAdcTurmaController.lastHorario = "";
+            GerenteAdcTurmaController.lastLocal = "";
+            GerenteAdcTurmaController.lastState = "";
             WindowUtils.SwitchToWindow(
                     GerenteAdcTurmaView.class,
                     btnAdicionar

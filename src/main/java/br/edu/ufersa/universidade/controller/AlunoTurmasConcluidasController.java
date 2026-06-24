@@ -2,8 +2,10 @@ package br.edu.ufersa.universidade.controller;
 
 import br.edu.ufersa.universidade.model.entities.Aluno;
 import br.edu.ufersa.universidade.model.entities.Indice;
+import br.edu.ufersa.universidade.model.entities.Turma;
 import br.edu.ufersa.universidade.model.service.AlunoService;
 import br.edu.ufersa.universidade.model.service.IndiceService;
+import br.edu.ufersa.universidade.model.service.TurmaService;
 import br.edu.ufersa.universidade.utils.TableViewUtils;
 import br.edu.ufersa.universidade.utils.WindowUtils;
 import br.edu.ufersa.universidade.view.AlunoTurmasAtuaisView;
@@ -28,6 +30,7 @@ public class AlunoTurmasConcluidasController {
     @FXML private TextField campoBusca;
     @FXML private TableView<Indice> tableTurmasConcluidas;
 
+    private final TurmaService turmaService = new TurmaService();
     private final AlunoService alunoService = new AlunoService();
     private final IndiceService indiceService = new IndiceService();
     private ArrayList<Indice> concluidos = new ArrayList<>();
@@ -50,7 +53,10 @@ public class AlunoTurmasConcluidasController {
                     concluidos.add(i);
                 }
             }
-
+            for (Indice indice : concluidos) {
+                Turma turma = turmaService.buscarPorId(indice.getTurma().getId());
+                indice.setTurma(turma);
+            }
             aplicarFiltro();
             campoBusca.textProperty().addListener((obs, oldV, newV) -> aplicarFiltro());
         } catch (SQLException ignored) {}

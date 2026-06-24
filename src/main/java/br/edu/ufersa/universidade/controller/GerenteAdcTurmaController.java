@@ -34,11 +34,20 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
     static String curProfCpf = "";
     static ArrayList<Long> curAlunoMatriculas = new ArrayList<Long>();
 
+    static String lastHorario = "";
+    static String lastLocal = "";
+    static String lastState = "";
+    static String lastCodigo = "";
+
     public void initialize() {
         if (curTurmaId != -1) { // não é uma nova turma
             Turma turma = turmaService.buscarPorId(curTurmaId);
             if (curProfCpf.isEmpty()) {
                 curProfCpf = turma.getProfessor().getCpf();
+                campoDisciplina.setText(turma.getDisciplina().getCodigo());
+                campoHorario.setText(turma.getHorario());
+                campoLocal.setText(turma.getLocal());
+                comboStatus.setValue("Ativa");
             }
             if (curAlunoMatriculas.isEmpty()) {
                 try {
@@ -49,10 +58,18 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
                 }
                 catch (RuntimeException ignored) {}
             }
-            campoDisciplina.setText(turma.getDisciplina().getCodigo());
-            campoHorario.setText(turma.getHorario());
-            campoLocal.setText(turma.getLocal());
-            comboStatus.setValue("Ativa");
+        }
+        if (!lastLocal.isEmpty()) {
+            campoLocal.setText(lastLocal);
+        }
+        if (!lastHorario.isEmpty()) {
+            campoHorario.setText(lastHorario);
+        }
+        if (!lastCodigo.isEmpty()) {
+            campoDisciplina.setText(lastCodigo);
+        }
+        if (!lastState.isEmpty()) {
+            comboStatus.setValue(lastState);
         }
     }
 
@@ -60,6 +77,22 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
         GerentePartTurmaController.curProfCpf = curProfCpf;
         GerentePartTurmaController.curAlunoMatriculas.clear();
         GerentePartTurmaController.curAlunoMatriculas.addAll(curAlunoMatriculas);
+        String local = campoLocal.getText();
+        String horario = campoHorario.getText();
+        String codigo = campoDisciplina.getText();
+        String state = comboStatus.getValue();
+        if (local != null && !local.isEmpty()) {
+            lastLocal = local;
+        }
+        if (horario != null && !horario.isEmpty()) {
+            lastHorario = horario;
+        }
+        if (codigo != null && !codigo.isEmpty()) {
+            lastCodigo = codigo;
+        }
+        if (state != null && !state.isEmpty()) {
+            lastState = state;
+        }
         WindowUtils.SwitchToWindow(GerentePartTurmaView.class, e);
     }
 
@@ -75,30 +108,63 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
         String local = campoLocal.getText();
         String horario = campoHorario.getText();
 
-        Turma turma = new Turma(-1);
-        turma.setEstado(tipo.equals("Ativa") ? Turma.EstadoTurma.Ativo : Turma.EstadoTurma.Fin);
-        try {
-            Disciplina dis = disService.buscarPorCodigo(codDisciplina);
-            turma.setDisciplina(dis);
-        } catch (SQLException ignored) {}
-        turma.setLocal(local);
-        turma.setHorario(horario);
-        try {
-            Professor prof = profService.buscarPorCpf(curProfCpf);
-            turma.setProfessor(prof);
-        } catch (RuntimeException ignored) {
-            Professor backup = new Professor(-1);
-            backup.setCpf(null);
-            turma.setProfessor(backup);
-        }
-        turmaService.cadastrar(turma, LoginController.curUser);
-
-        for (long num : curAlunoMatriculas) {
+        if (curTurmaId == -1) {
+            Turma turma = new Turma(-1);
+            turma.setEstado(tipo.equals("Ativa") ? Turma.EstadoTurma.Ativo : Turma.EstadoTurma.Fin);
             try {
-                Indice indice = new Indice(-1);
-                indice.setTurma(turma);
-                indiceService.matricular(num, indice);
-            } catch (SQLException ignored) {}
+                Disciplina dis = disService.buscarPorCodigo(codDisciplina);
+                turma.setDisciplina(dis);
+            } catch (SQLException ignored) {
+            }
+            turma.setLocal(local);
+            turma.setHorario(horario);
+            try {
+                Professor prof = profService.buscarPorCpf(curProfCpf);
+                turma.setProfessor(prof);
+            } catch (RuntimeException ignored) {
+                Professor backup = new Professor(-1);
+                backup.setCpf(null);
+                turma.setProfessor(backup);
+            }
+            turmaService.cadastrar(turma, LoginController.curUser);
+
+            for (long num : curAlunoMatriculas) {
+                try {
+                    Indice indice = new Indice(-1);
+                    indice.setTurma(turma);
+                    indiceService.matricular(num, indice);
+                } catch (SQLException ignored) {
+                }
+            }
+        }
+        else {
+            Turma turma = new Turma(curTurmaId);
+            turma.setEstado(tipo.equals("Ativa") ? Turma.EstadoTurma.Ativo : Turma.EstadoTurma.Fin);
+            try {
+                Disciplina dis = disService.buscarPorCodigo(codDisciplina);
+                turma.setDisciplina(dis);
+            } catch (SQLException ignored) {
+            }
+            turma.setLocal(local);
+            turma.setHorario(horario);
+            try {
+                Professor prof = profService.buscarPorCpf(curProfCpf);
+                turma.setProfessor(prof);
+            } catch (RuntimeException ignored) {
+                Professor backup = new Professor(-1);
+                backup.setCpf(null);
+                turma.setProfessor(backup);
+            }
+            turmaService.editar(turma, LoginController.curUser);
+
+            for (long num : curAlunoMatriculas) {
+                try {
+                    Indice indice = new Indice(-1);
+                    indice.setTurma(turma);
+                    indiceService.matricular(num, indice);
+                } catch (SQLException ignored) {
+                }
+            }
         }
         close();
     }
@@ -141,6 +207,10 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
         curTurmaId = -1;
         curProfCpf = "";
         curAlunoMatriculas.clear();
+        lastCodigo = "";
+        lastState = "";
+        lastHorario = "";
+        lastLocal = "";
         WindowUtils.SwitchToWindow(GerenteTurmasView.class, labelError);
     }
 }
