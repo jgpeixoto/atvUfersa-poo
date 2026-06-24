@@ -32,13 +32,11 @@ public class AlunoTurmasAtuaisController {
 
     private final AlunoService alunoService = new AlunoService();
     private final IndiceService indiceService = new IndiceService();
-    private Aluno alunoAtual;
     private final TurmaService turmaService = new TurmaService();
 
     public void initialize() {
         try {
             Aluno al = alunoService.buscarPorId(LoginController.curUser.getId());
-            this.alunoAtual = al;
             lblNomeAluno.setText("Olá, " + al.getNome());
             lblInfoAluno.setText("Matrícula: " + al.getMatricula());
 

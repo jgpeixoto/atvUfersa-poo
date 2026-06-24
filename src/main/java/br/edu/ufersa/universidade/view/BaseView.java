@@ -3,7 +3,6 @@ package br.edu.ufersa.universidade.view;
 import br.edu.ufersa.universidade.utils.DatabaseUtils;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,6 +23,7 @@ public abstract class BaseView extends Application {
         stage.getIcons().add(new Image(getClass().getResourceAsStream(logoDir)));
     }
     protected void onStart(Stage primaryStage, Parent root, FXMLLoader loader) {}
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
