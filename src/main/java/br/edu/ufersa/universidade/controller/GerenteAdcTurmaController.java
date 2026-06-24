@@ -156,7 +156,6 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
                 turma.setProfessor(backup);
             }
             turmaService.editar(turma, LoginController.curUser);
-
             for (long num : curAlunoMatriculas) {
                 try {
                     Indice indice = new Indice(-1);
