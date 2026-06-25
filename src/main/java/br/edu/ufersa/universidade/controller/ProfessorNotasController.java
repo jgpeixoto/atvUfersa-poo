@@ -8,21 +8,32 @@ import br.edu.ufersa.universidade.utils.TableViewUtils;
 import br.edu.ufersa.universidade.utils.WindowUtils;
 import br.edu.ufersa.universidade.view.ProfessorTurmasView;
 import br.edu.ufersa.universidade.view.WelcomeView;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.StringConverter;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
 /**
  * NOTA: o fx:id "tableNotas" estava tipado como TableView<Aluno>, mas as
  * notas e o status são informação do Indice, não do Aluno — por isso troquei
  * o tipo para TableView<Indice> aqui no controller.
+ *
+ * As colunas P1/P2/P3 agora são EDITÁVEIS: clique duplo na célula, digita um
+ * número de 0 a 100, aperta Enter — salva direto no banco via
+ * IndiceService.lancarNotas(...), que também recalcula a Média e o Status
+ * (Aprovado/Reprovado) automaticamente.
  */
 public class ProfessorNotasController {
     @FXML private TextField campoBusca;
@@ -35,10 +46,12 @@ public class ProfessorNotasController {
     private ArrayList<Indice> todos = new ArrayList<>();
 
     public void initialize() {
+        tableNotas.setEditable(true);
+
         TableViewUtils.setColumn(tableNotas, 0, i -> i.getAluno().getNome());
-        TableViewUtils.setColumn(tableNotas, 1, Indice::getNota1);
-        TableViewUtils.setColumn(tableNotas, 2, Indice::getNota2);
-        TableViewUtils.setColumn(tableNotas, 3, Indice::getNota3);
+        colunaEditavel(1, Indice::getNota1, Indice::setNota1);
+        colunaEditavel(2, Indice::getNota2, Indice::setNota2);
+        colunaEditavel(3, Indice::getNota3, Indice::setNota3);
         TableViewUtils.setColumn(tableNotas, 4, Indice::obterMedia);
         TableViewUtils.setColumn(tableNotas, 5, i -> i.getEstado().toString());
 
@@ -51,6 +64,27 @@ public class ProfessorNotasController {
             aplicarFiltro();
             campoBusca.textProperty().addListener((obs, oldV, newV) -> aplicarFiltro());
         } catch (SQLException ignored) {}
+    }
+
+    /** Liga uma coluna existente do FXML a um getter/setter de nota, deixando-a editável. */
+    @SuppressWarnings("unchecked")
+    private void colunaEditavel(int indice, Function<Indice, Integer> getter, BiConsumer<Indice, Integer> setter) {
+        TableColumn<Indice, Integer> coluna = (TableColumn<Indice, Integer>) tableNotas.getColumns().get(indice);
+        coluna.setCellValueFactory(cell -> new SimpleObjectProperty<>(getter.apply(cell.getValue())));
+        coluna.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Integer>() {
+            @Override public String toString(Integer valor) { return valor == null ? "0" : String.valueOf(valor); }
+            @Override public Integer fromString(String texto) {
+                try { return Integer.parseInt(texto.trim()); } catch (NumberFormatException e) { return 0; }
+            }
+        }));
+        coluna.setOnEditCommit(event -> {
+            Indice ind = event.getRowValue();
+            setter.accept(ind, event.getNewValue());
+            try {
+                indiceService.lancarNotas(ind.getId(), ind);
+            } catch (SQLException | IllegalArgumentException ignored) {}
+            tableNotas.refresh();
+        });
     }
 
     private void aplicarFiltro() {
