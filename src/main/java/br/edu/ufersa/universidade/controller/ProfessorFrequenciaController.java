@@ -1,10 +1,13 @@
 package br.edu.ufersa.universidade.controller;
 
 import br.edu.ufersa.universidade.model.dao.IndiceDAO;
+import br.edu.ufersa.universidade.model.dao.TurmaDAO;
 import br.edu.ufersa.universidade.model.entities.Aluno;
 import br.edu.ufersa.universidade.model.entities.Indice;
+import br.edu.ufersa.universidade.model.entities.Turma;
 import br.edu.ufersa.universidade.model.service.AlunoService;
 import br.edu.ufersa.universidade.model.service.IndiceService;
+import br.edu.ufersa.universidade.model.service.TurmaService;
 import br.edu.ufersa.universidade.utils.TableViewUtils;
 import br.edu.ufersa.universidade.utils.WindowUtils;
 import br.edu.ufersa.universidade.view.ProfessorTurmasView;
@@ -16,6 +19,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -30,16 +34,18 @@ import java.util.ArrayList;
  * número de faltas é informação do Indice, não do Aluno — por isso troquei
  * o tipo para TableView<Indice> aqui no controller.
  *
- * NOTA 2: o banco só guarda o total de faltas por aluno (Indice.faltas), não
- * uma chamada por data. Por isso a coluna "Faltas" mostra esse total — não
- * tem como mostrar presença dia a dia sem criar uma tabela nova no banco.
- *
- * A coluna "Faltas" agora é EDITÁVEL: clique duplo, digita o número, Enter —
- * salva direto no banco via IndiceDAO.atualizar(...).
+ * NOVO: campo "Aulas ministradas" — Indice.obterFrequencia() SEMPRE retorna
+ * 0% quando Turma.aulasMinistradas == 0 (é assim de propósito, pra evitar
+ * divisão por zero). Como não existia nenhuma tela pra atualizar esse
+ * número, a % de frequência do aluno nunca aparecia certa. Esse campo
+ * resolve isso, salvando direto via TurmaDAO (o TurmaService.editar exige
+ * permissão de Gerente, e essa tela é do Professor).
  */
 public class ProfessorFrequenciaController {
     @FXML private Button btnSair;
     @FXML private TextField buscaAluno;
+    @FXML private TextField campoAulasMinistradas;
+    @FXML private Label labelAvisoAulas;
     @FXML private TableView<Indice> tableFrequencia;
 
     static int idTurma;
@@ -47,6 +53,8 @@ public class ProfessorFrequenciaController {
     private final IndiceService indiceService = new IndiceService();
     private final AlunoService alunoService = new AlunoService();
     private final IndiceDAO indiceDAO = new IndiceDAO();
+    private final TurmaDAO turmaDAO = new TurmaDAO();
+    private final TurmaService turmaService = new TurmaService();
     private ArrayList<Indice> todos = new ArrayList<>();
 
     public void initialize() {
@@ -55,6 +63,9 @@ public class ProfessorFrequenciaController {
         TableViewUtils.setColumn(tableFrequencia, 0, i -> i.getAluno().getNome());
         TableViewUtils.setColumn(tableFrequencia, 1, i -> i.getAluno().getMatricula());
         colunaFaltasEditavel(2);
+
+        Turma turma = idTurma > 0 ? turmaService.buscarPorId(idTurma) : null;
+        campoAulasMinistradas.setText(turma == null ? "0" : String.valueOf(turma.getAulasMinistradas()));
 
         try {
             todos = idTurma > 0 ? indiceService.buscarPorTurma(idTurma) : new ArrayList<>();
@@ -65,6 +76,29 @@ public class ProfessorFrequenciaController {
             aplicarFiltro();
             buscaAluno.textProperty().addListener((obs, oldV, newV) -> aplicarFiltro());
         } catch (SQLException ignored) {}
+    }
+
+    @FXML public void salvarAulasMinistradas(ActionEvent e) {
+        if (idTurma <= 0) return;
+        int novoValor;
+        try {
+            novoValor = Integer.parseInt(campoAulasMinistradas.getText().trim());
+        } catch (NumberFormatException ex) {
+            labelAvisoAulas.setText("Digite um número válido.");
+            return;
+        }
+        if (novoValor < 0) {
+            labelAvisoAulas.setText("Não pode ser negativo.");
+            return;
+        }
+
+        Turma turma = turmaService.buscarPorId(idTurma);
+        if (turma == null) return;
+        turma.setAulasMinistradas(novoValor);
+        turmaDAO.atualizar(turma);
+
+        labelAvisoAulas.setText("Salvo!");
+        tableFrequencia.refresh();
     }
 
     @SuppressWarnings("unchecked")

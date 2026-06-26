@@ -56,11 +56,19 @@
 
             <VBox spacing="12" styleClass="card" VBox.vgrow="ALWAYS">
 
+                <!-- NOVO: campo + botão para atualizar quantas aulas já foram ministradas nessa turma -->
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="Aulas ministradas nesta turma:" />
+                    <TextField fx:id="campoAulasMinistradas" prefWidth="80" />
+                    <Button text="Salvar" onAction="#salvarAulasMinistradas" styleClass="btn-link" />
+                    <Label fx:id="labelAvisoAulas" textFill="#3d2c8d" />
+                </HBox>
+
                 <HBox alignment="CENTER_LEFT" maxWidth="460" prefHeight="18.0" prefWidth="460.0" spacing="8" styleClass="search-bar">
-               <children>
-                  <TextField />
-                  <TextField fx:id="buscaAluno" onAction="#updateAlunos" prefHeight="27.0" prefWidth="949.0" promptText="Buscar por nome, matricula..." styleClass="form-input-combo" />
-               </children>
+                    <children>
+                        <TextField />
+                        <TextField fx:id="buscaAluno" onAction="#updateAlunos" prefHeight="27.0" prefWidth="949.0" promptText="Buscar por nome, matricula..." styleClass="form-input-combo" />
+                    </children>
                 </HBox>
 
                 <TableView fx:id="tableFrequencia" VBox.vgrow="ALWAYS">
