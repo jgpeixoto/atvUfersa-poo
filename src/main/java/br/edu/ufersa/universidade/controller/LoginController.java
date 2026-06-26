@@ -44,7 +44,7 @@ public class LoginController {
     @FXML public void realizarLogin(ActionEvent e) {
         LoginController.curUser = null;
         String tipo = comboPerfil.getValue();
-        String user = campoUsuario.getText();
+        String user = campoUsuario.getText().trim();
         String pass = campoSenha.getText();
         if (!validarLogin(tipo, user, pass))
             return;
