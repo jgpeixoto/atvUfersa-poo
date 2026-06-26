@@ -102,7 +102,7 @@ public class AlunoTurmasAtuaisController {
             bar.getStyleClass().add("freq-bar-red");
         }
 
-        Label percentLabel = new Label("%" + (int) Math.round(percentual * 100));
+        Label percentLabel = new Label("%" + (int) Math.round(percentual));
         percentLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #2c2c2c;");
 
         Region spacer = new Region();
