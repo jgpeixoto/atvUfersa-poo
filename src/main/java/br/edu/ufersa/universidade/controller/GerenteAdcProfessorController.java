@@ -97,13 +97,16 @@ public class GerenteAdcProfessorController extends BaseGerenteController {
             return false;
         }
         Professor prof = null;
-        try {
-            prof = profService.buscarPorCpf(cpf);
-            if (prof != null && prof.getCpf().equals(cpf)) {
-                this.labelError.setText("Já existe um professor com este CPF!");
-                return false;
+        if (cpfAtual.isEmpty()) {
+            try {
+                prof = profService.buscarPorCpf(cpf);
+                if (prof != null && prof.getCpf().equals(cpf)) {
+                    this.labelError.setText("Já existe um professor com este CPF!");
+                    return false;
+                }
+            } catch (ServiceException ignored) {
             }
-        } catch (ServiceException ignored) {}
+        }
         return true;
     }
 }
