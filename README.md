@@ -38,7 +38,7 @@ O login de novos professores será:
 - Usuário: nomeDoProfessor
 - Senha: professor
 
-Em relação ao diagrama de classes, é necessário fazer o download da imagem para poder dar zoom e vizualiza-lá da melhor forma.
+Em relação ao diagrama de classes, entre na pasta .images e realize o download da imagem para poder dar zoom e vizualizá-la da melhor forma.
 
 
 
