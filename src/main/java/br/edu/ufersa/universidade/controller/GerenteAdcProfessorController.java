@@ -58,6 +58,10 @@ public class GerenteAdcProfessorController extends BaseGerenteController {
             else {
                 Professor profReal = profService.buscarPorCpf(cpf);
                 prof.setId(profReal.getId());
+                // IMPORTANTE: preserva a senha existente — sem isso, editar um
+                // professor zerava a senha dele no banco (ficava NULL) e
+                // quebrava o login.
+                prof.setSenha(profReal.getSenha());
                 profService.editar(prof, LoginController.curUser);
             }
         } catch (Exception ex) {
@@ -96,16 +100,19 @@ public class GerenteAdcProfessorController extends BaseGerenteController {
             this.labelError.setText("CPF deve ser 11 caracteres.");
             return false;
         }
-        Professor prof = null;
-        if (cpfAtual.isEmpty()) {
+        // CORRIGIDO: se estamos editando o MESMO professor (cpf == cpfAtual),
+        // não faz sentido bloquear dizendo "já existe" — é ele mesmo.
+        // Antes essa checagem não tinha essa exceção e bloqueava 100% das
+        // edições de professor.
+        boolean estaEditandoOMesmo = !cpfAtual.isEmpty() && cpf.equals(cpfAtual);
+        if (!estaEditandoOMesmo) {
             try {
-                prof = profService.buscarPorCpf(cpf);
+                Professor prof = profService.buscarPorCpf(cpf);
                 if (prof != null && prof.getCpf().equals(cpf)) {
                     this.labelError.setText("Já existe um professor com este CPF!");
                     return false;
                 }
-            } catch (ServiceException ignored) {
-            }
+            } catch (ServiceException ignored) {}
         }
         return true;
     }

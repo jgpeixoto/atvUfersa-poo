@@ -1,14 +1,12 @@
 package br.edu.ufersa.universidade.controller;
 
 import br.edu.ufersa.universidade.model.entities.Aluno;
-import br.edu.ufersa.universidade.model.entities.Professor;
 import br.edu.ufersa.universidade.model.service.AlunoService;
 import br.edu.ufersa.universidade.model.service.UsuarioService;
 import br.edu.ufersa.universidade.utils.WindowUtils;
 import br.edu.ufersa.universidade.view.GerenteAlunosView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -60,7 +58,12 @@ public class GerenteAdcAlunoController extends BaseGerenteController {
             }
         } else {
             try {
-                al.setId(alunoService.buscarPorMatricula(matriculaAtual).getId());
+                Aluno alunoReal = alunoService.buscarPorMatricula(matriculaAtual);
+                al.setId(alunoReal.getId());
+                // IMPORTANTE: preserva a senha existente — sem isso, editar um
+                // aluno zerava a senha dele no banco (ficava NULL) e quebrava
+                // o login (mesmo bug que existia no cadastro de Professor).
+                al.setSenha(alunoReal.getSenha());
                 userService.atualizar(al);
             } catch (SQLException ignored) {
             }

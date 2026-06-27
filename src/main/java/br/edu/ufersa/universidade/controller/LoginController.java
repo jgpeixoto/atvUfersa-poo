@@ -44,7 +44,7 @@ public class LoginController {
     @FXML public void realizarLogin(ActionEvent e) {
         LoginController.curUser = null;
         String tipo = comboPerfil.getValue();
-        String user = campoUsuario.getText().trim();
+        String user = campoUsuario.getText();
         String pass = campoSenha.getText();
         if (!validarLogin(tipo, user, pass))
             return;
@@ -68,6 +68,14 @@ public class LoginController {
                 }
             }
             for (Usuario usuario : list2) {
+                // CORRIGIDO: getNome()/getSenha() podem vir null se o
+                // cadastro de algum usuário ficou incompleto no banco —
+                // antes isso travava o app inteiro com NullPointerException
+                // assim que você tentava logar. Agora só ignora esse
+                // usuário (não trava, e ainda mostra "usuário e/ou senha
+                // incorretos" normalmente).
+                if (usuario.getNome() == null || usuario.getSenha() == null)
+                    continue;
                 if (usuario.getNome().equalsIgnoreCase(user) && usuario.getSenha().equals(pass))
                     LoginController.curUser = usuario;
             }
