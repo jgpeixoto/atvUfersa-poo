@@ -2,8 +2,10 @@ package br.edu.ufersa.universidade.controller;
 
 import br.edu.ufersa.universidade.model.entities.Aluno;
 import br.edu.ufersa.universidade.model.entities.Professor;
+import br.edu.ufersa.universidade.model.entities.Turma;
 import br.edu.ufersa.universidade.model.service.AlunoService;
 import br.edu.ufersa.universidade.model.service.ProfessorService;
+import br.edu.ufersa.universidade.model.service.TurmaService;
 import br.edu.ufersa.universidade.utils.TableViewUtils;
 import br.edu.ufersa.universidade.utils.WindowUtils;
 import br.edu.ufersa.universidade.view.GerenteAdcTurmaView;
@@ -35,6 +37,7 @@ public class GerentePartTurmaController extends BaseGerenteController {
 
     private final ProfessorService professorService = new ProfessorService();
     private final AlunoService alunoService = new AlunoService();
+    private final TurmaService turmaService = new TurmaService();
 
     public void initialize() {
         TableViewUtils.setColumn(tabelaProfessor, 0, Professor::getNome);
@@ -61,6 +64,18 @@ public class GerentePartTurmaController extends BaseGerenteController {
             try {
                 lista.add(professorService.buscarPorCpf(curProfCpf));
             } catch (RuntimeException ignored) {}
+        } else if (GerenteAdcTurmaController.curTurmaId != -1) {
+            try {
+                Turma turma = turmaService.buscarPorId(GerenteAdcTurmaController.curTurmaId);
+                if (turma != null && turma.getProfessor() != null) {
+                    lista.add(turma.getProfessor());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        if (!lista.isEmpty()) {
+            Professor p = lista.get(0);
         }
         TableViewUtils.popular(tabelaProfessor, lista);
     }
