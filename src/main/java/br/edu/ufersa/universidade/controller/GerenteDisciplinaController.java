@@ -74,6 +74,11 @@ public class GerenteDisciplinaController extends BaseGerenteController {
         coluna.setCellFactory(col -> new TableCell<>() {
             private final Button botao = new Button(texto);
             {
+                if (texto.equalsIgnoreCase("Editar")) {
+                    botao.getStyleClass().add("btn-editar");
+                } else if (texto.equalsIgnoreCase("Excluir")) {
+                    botao.getStyleClass().add("btn-excluir");
+                }
                 botao.setOnAction(e -> acao.accept(getTableView().getItems().get(getIndex())));
             }
 

@@ -772,3 +772,25 @@
 .btn-excluir-popup:hover {
     -fx-background-color: #F03A3A;
 }
+
+.btn-editar {
+    -fx-background-color: #2E4A7A;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-background-radius: 5;
+}
+
+.btn-editar:hover {
+    -fx-background-color: #1a3560;
+}
+
+.btn-excluir {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-background-radius: 5;
+}
+
+.btn-excluir:hover {
+    -fx-background-color: #c0392b;
+}
