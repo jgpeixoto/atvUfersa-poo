@@ -136,6 +136,11 @@ public class GerenteTurmasController extends BaseGerenteController {
             private final Button botao = new Button(texto);
 
             {
+                if (texto.equalsIgnoreCase("Editar")) {
+                    botao.getStyleClass().add("btn-editar");
+                } else if (texto.equalsIgnoreCase("Excluir")) {
+                    botao.getStyleClass().add("btn-excluir");
+                }
                 botao.setOnAction(e ->
                         acao.accept(
                                 getTableView()

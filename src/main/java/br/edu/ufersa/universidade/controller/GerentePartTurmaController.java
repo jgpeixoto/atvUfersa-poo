@@ -82,6 +82,9 @@ public class GerentePartTurmaController extends BaseGerenteController {
         coluna.setCellFactory(col -> new TableCell<>() {
             private final Button botao = new Button(texto);
             {
+                if (texto.equalsIgnoreCase("Excluir")) {
+                    botao.getStyleClass().add("btn-excluir");
+                }
                 botao.setOnAction(e -> acao.accept(getTableView().getItems().get(getIndex())));
             }
 
