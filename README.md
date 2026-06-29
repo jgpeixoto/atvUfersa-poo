@@ -24,7 +24,7 @@ Abra o projeto no IntelliJ IDEA, selecione e execute o arquivo java no diretóri
 ```
 src/main/java/br/edu/ufersa/universidade/Main.java
 ```
-![alt text](https://github.com/jgpeixoto/atvUfersa-poo/blob/main/.images/main.png?raw=true)
+![imagem para iniciar o programa](https://github.com/jgpeixoto/atvUfersa-poo/blob/main/.images/main.png?raw=true)
 
 O usuário Admin inicial é:
 - Usuário: joao
@@ -39,7 +39,4 @@ O login de novos professores será:
 - Senha: professor
 
 Em relação ao diagrama de classes, entre na pasta .images e realize o download da imagem para poder dar zoom e vizualizá-la da melhor forma.
-
-
-
-
+![diagrama de classes](https://github.com/jgpeixoto/atvUfersa-poo/blob/main/.images/Class%20Diagram1.png?raw=true)
