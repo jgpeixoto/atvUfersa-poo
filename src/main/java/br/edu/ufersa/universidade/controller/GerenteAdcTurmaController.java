@@ -56,9 +56,9 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
                     for (Indice in : indices) {
                         curAlunoMatriculas.add(in.getAluno().getMatricula());
                     }
-                }
-                catch (ServiceException ignored) {}
+                } catch (ServiceException ignored) {}
             }
+
         }
         if (!lastLocal.isEmpty()) {
             campoLocal.setText(lastLocal);
@@ -157,14 +157,22 @@ public class GerenteAdcTurmaController extends BaseGerenteController {
                 turma.setProfessor(backup);
             }
             turmaService.editar(turma, LoginController.curUser);
-            for (long num : curAlunoMatriculas) {
-                try {
-                    Indice indice = new Indice(-1);
-                    indice.setTurma(turma);
-                    indiceService.matricular(num, indice);
-                } catch (SQLException ignored) {
+            try {
+                ArrayList<Indice> jaMatriculados = indiceService.buscarPorTurma(curTurmaId);
+                ArrayList<Long> matriculasExistentes = new ArrayList<>();
+                for (Indice ind : jaMatriculados) {
+                    matriculasExistentes.add(ind.getAluno().getMatricula());
                 }
-            }
+                for (long num : curAlunoMatriculas) {
+                    if (!matriculasExistentes.contains(num)) {
+                        try {
+                            Indice indice = new Indice(-1);
+                            indice.setTurma(turma);
+                            indiceService.matricular(num, indice);
+                        } catch (SQLException ignored) {}
+                    }
+                }
+            } catch (SQLException ignored) {}
         }
         close();
     }

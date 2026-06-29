@@ -187,13 +187,14 @@ public class TurmaDAO {
 
     public ArrayList<Indice> listarIndices(Turma turma) {
         ArrayList<Indice> lista = new ArrayList<>();
-        try (PreparedStatement ps = DatabaseUtils.getConnection().prepareStatement(SQL_INDICES)) {
+        String sql = SQL_INDICES + " WHERE i.id_turma = ?";
+        try (PreparedStatement ps = DatabaseUtils.getConnection().prepareStatement(sql)) {
+            ps.setInt(1, turma.getId());
             ResultSet rs = ps.executeQuery();
             while (rs.next()) lista.add(mapearIndice(rs));
         } catch (SQLException e) {
             System.err.println("Erro ao listar alunos da turma: " + e.getMessage());
         }
-
         return lista;
     }
 }
